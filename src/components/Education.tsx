@@ -99,7 +99,7 @@ export default function Education() {
               <div className="flex items-center justify-between gap-2 mb-4">
                 <h4 className="font-mono text-xs text-accent-cyan uppercase tracking-wider flex items-center gap-2">
                   <BookOpen size={14} />
-                  <span>// PROFESSIONAL_COURSES ({courses.length})</span>
+                  <span>{"// PROFESSIONAL_COURSES"} ({courses.length})</span>
                 </h4>
               </div>
 

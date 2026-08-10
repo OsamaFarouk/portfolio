@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
 import { Terminal as TerminalIcon, Menu, X, ArrowUp, ChevronDown, ExternalLink } from "lucide-react";
 import { profile } from "@/utils/dataLoader";
-import { scrollToSection, cancelCurrentScroll } from "@/utils/scrollHelper";
+import { scrollToSection } from "@/utils/scrollHelper";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const router = useRouter();

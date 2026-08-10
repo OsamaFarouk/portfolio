@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { profile, portfolioStats, socialLinks } from "@/utils/dataLoader";
-import { Download, Mail, FileText, MapPin, Clock, Calendar, CheckCircle2, ChevronRight, ChevronDown, GitBranch, Cpu, Cloud, Box, Activity } from "lucide-react";
+import { Download, Mail, FileText, MapPin, Clock, Calendar, ChevronRight, ChevronDown, GitBranch, Cpu, Cloud, Box, Activity } from "lucide-react";
 import { Github, Linkedin } from "@/components/SocialIcons";
 
 export default function Hero() {
@@ -160,7 +160,7 @@ export default function Hero() {
       <div className="lg:col-span-8 flex flex-col gap-6">
         {/* Main Console Board */}
         <div className="bg-bg-secondary border border-border-color rounded-lg overflow-hidden shadow-[0_4px_20px_rgba(6,182,212,0.05)] p-6">
-          <h2 className="font-mono text-xs text-accent-cyan uppercase tracking-wider mb-2">// PROFESSIONAL_SUMMARY</h2>
+          <h2 className="font-mono text-xs text-accent-cyan uppercase tracking-wider mb-2">{"// PROFESSIONAL_SUMMARY"}</h2>
           <p className="text-text-primary text-base leading-relaxed mb-6">{profile.summary}</p>
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4 font-mono">

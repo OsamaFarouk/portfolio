@@ -12,7 +12,6 @@ import {
   Course,
   Experience as ExpType,
   Project,
-  SkillCategory,
 } from "./dataLoader";
 
 export type TerminalContext =
@@ -1048,7 +1047,7 @@ ${certifications.map((c, i) => `│   ├── [${(i + 1).toString().padStart(2
   return `Tree view for path '${subpath}' loaded.`;
 };
 
-export const getAutocompleteSuggestions = (input: string, context: TerminalContext): string[] => {
+export const getAutocompleteSuggestions = (input: string, _context: TerminalContext): string[] => {
   const clean = input.trim().toLowerCase();
   if (!clean) return [];
 
@@ -1119,7 +1118,7 @@ export const getAutocompleteSuggestions = (input: string, context: TerminalConte
 export const processTerminalCommand = (
   rawCmd: string,
   context: TerminalContext,
-  cmdHistory: string[] = []
+  _cmdHistory: string[] = []
 ): CommandResult => {
   const clean = rawCmd.trim();
   if (!clean) return { output: "" };

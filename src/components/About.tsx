@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import { profile, futureSections, education } from "@/utils/dataLoader";
-import { User, Award, Globe, Shield, Terminal, Landmark, Activity, GitBranch, Zap } from "lucide-react";
+import { profile, futureSections } from "@/utils/dataLoader";
+import { User, Globe, Shield, Terminal, Landmark, Activity, GitBranch, Zap } from "lucide-react";
 
 export default function About() {
   const specs = [
@@ -16,7 +16,7 @@ export default function About() {
     <section id="about" className="py-12 border-t border-border-muted scroll-mt-16">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
         <div>
-          <h2 className="font-mono text-xs text-accent-cyan uppercase tracking-wider">// SYSTEM_PROFILE</h2>
+          <h2 className="font-mono text-xs text-accent-cyan uppercase tracking-wider">{"// SYSTEM_PROFILE"}</h2>
           <h3 className="text-2xl font-bold tracking-tight mt-1">About Operator</h3>
         </div>
         <div className="font-mono text-[11px] text-text-secondary bg-bg-secondary px-3 py-1.5 rounded border border-border-muted self-start flex items-center gap-1.5">
@@ -29,7 +29,7 @@ export default function About() {
         {/* Biography & Specs - Left (7 Cols) */}
         <div className="lg:col-span-7 space-y-6">
           <div className="bg-bg-secondary border border-border-muted rounded-lg p-6">
-            <h4 className="font-mono text-xs text-accent-cyan uppercase tracking-wider mb-3">// PROFESSIONAL_STORY</h4>
+            <h4 className="font-mono text-xs text-accent-cyan uppercase tracking-wider mb-3">{"// PROFESSIONAL_STORY"}</h4>
             <p className="text-text-primary text-sm leading-relaxed mb-4">
               {profile.aboutStoryParagraph1}
             </p>
@@ -64,7 +64,7 @@ export default function About() {
         <div className="lg:col-span-5 space-y-6">
           {/* Target Industries */}
           <div className="bg-bg-secondary border border-border-muted rounded-lg p-6">
-            <h4 className="font-mono text-xs text-accent-cyan uppercase tracking-wider mb-4">// INDUSTRY_EXPERIENCE</h4>
+            <h4 className="font-mono text-xs text-accent-cyan uppercase tracking-wider mb-4">{"// INDUSTRY_EXPERIENCE"}</h4>
             <div className="space-y-3 font-mono text-xs text-text-secondary">
               
               {/* Financial Services & Fintech */}

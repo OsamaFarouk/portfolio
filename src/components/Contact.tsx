@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import { profile, socialLinks } from "@/utils/dataLoader";
 import { Mail, Phone, MapPin, Send, CheckCircle2, AlertCircle, ChevronDown, Copy, Check } from "lucide-react";
 import { Github, Linkedin } from "@/components/SocialIcons";
 
@@ -73,17 +72,23 @@ export default function Contact() {
     const nameTrimmed = formData.name.trim();
     if (!nameTrimmed) {
       newErrors.name = "PLEASE ENTER YOUR NAME";
+    } else if (nameTrimmed.length > 100) {
+      newErrors.name = "NAME MUST NOT EXCEED 100 CHARACTERS";
     }
 
     const emailTrimmed = formData.email.trim();
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailTrimmed || !emailRegex.test(emailTrimmed)) {
       newErrors.email = "PLEASE ENTER A VALID EMAIL ADDRESS";
+    } else if (emailTrimmed.length > 254) {
+      newErrors.email = "EMAIL ADDRESS IS TOO LONG";
     }
 
     const messageTrimmed = formData.message.trim();
     if (!messageTrimmed) {
       newErrors.message = "PLEASE ENTER YOUR MESSAGE";
+    } else if (messageTrimmed.length > 3000) {
+      newErrors.message = "MESSAGE MUST NOT EXCEED 3000 CHARACTERS";
     }
 
     setErrors(newErrors);
@@ -160,7 +165,7 @@ export default function Contact() {
       } else {
         setSubmitStatus("error");
       }
-    } catch (err) {
+    } catch (_err) {
       setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
@@ -171,7 +176,7 @@ export default function Contact() {
     <section id="contact" className="py-12 border-t border-border-muted scroll-mt-16">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
         <div>
-          <h2 className="font-mono text-xs text-accent-cyan uppercase tracking-wider">// COMM_LINK</h2>
+          <h2 className="font-mono text-xs text-accent-cyan uppercase tracking-wider">{"// COMM_LINK"}</h2>
           <h3 className="text-2xl font-bold tracking-tight mt-1">Connect with Operator</h3>
         </div>
         <div className="font-mono text-[11px] font-bold text-text-secondary bg-bg-secondary px-3 py-1.5 rounded border border-border-muted self-start flex items-center gap-1.5">
@@ -183,7 +188,7 @@ export default function Contact() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         <div className="lg:col-span-5 space-y-6">
           <div className="bg-bg-secondary border border-border-muted rounded-lg p-6">
-            <h4 className="font-mono text-xs text-accent-cyan uppercase tracking-wider mb-4">// OPERATOR_ENDPOINTS</h4>
+            <h4 className="font-mono text-xs text-accent-cyan uppercase tracking-wider mb-4">{"// OPERATOR_ENDPOINTS"}</h4>
             
             <div className="space-y-4 font-mono text-xs text-text-secondary">
               <div className="flex items-start gap-3">

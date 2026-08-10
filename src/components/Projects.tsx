@@ -3,7 +3,7 @@
 import React, { useState, useMemo } from "react";
 import Link from "next/link";
 import { projects, Project } from "@/utils/dataLoader";
-import { Search, SlidersHorizontal, ArrowRight, ShieldAlert, Cpu, Cloud, Box, GitBranch } from "lucide-react";
+import { Search, SlidersHorizontal, ArrowRight, Cpu, Cloud, Box, GitBranch } from "lucide-react";
 
 export default function Projects() {
   const [searchQuery, setSearchQuery] = useState("");

@@ -46,7 +46,7 @@ export default function Certifications() {
       {/* Section Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
         <div>
-          <h2 className="font-mono text-xs text-accent-cyan uppercase tracking-wider">// CREDENTIALS</h2>
+          <h2 className="font-mono text-xs text-accent-cyan uppercase tracking-wider">{"// CREDENTIALS"}</h2>
           <h3 className="text-2xl font-bold tracking-tight mt-1">Certifications</h3>
           <p className="font-mono text-xs text-text-secondary mt-1">
             Verified professional credentials and technical certifications.

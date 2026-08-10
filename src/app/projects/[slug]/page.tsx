@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
-import { allProjects, Project } from "@/utils/dataLoader";
-import { ArrowLeft, Calendar, User, Briefcase, Landmark, ExternalLink, Cpu, Lightbulb, AlertTriangle, ShieldCheck } from "lucide-react";
+import { allProjects } from "@/utils/dataLoader";
+import { ArrowLeft, Calendar, User, Landmark, ExternalLink, Cpu, Lightbulb, AlertTriangle } from "lucide-react";
 import Layout from "@/components/Layout";
 import { ThemeProvider } from "@/components/ThemeContext";
 import Mermaid from "@/components/Mermaid";
@@ -26,12 +26,11 @@ export default async function ProjectDetailPage({ params }: PageProps) {
     return (
       <ThemeProvider>
         <Layout>
-          <div className="max-w-xl mx-auto py-16 text-center font-mono border border-dashed border-accent-orange/40 rounded-lg p-8">
-            <AlertTriangle className="mx-auto text-accent-orange h-10 w-10 mb-4 animate-bounce" />
-            <h1 className="text-lg font-bold text-accent-orange">NODE_NOT_FOUND: 404</h1>
-            <p className="text-xs text-text-secondary mt-2">Requested project container could not be found in inventory.</p>
-            <Link href="/" className="inline-block mt-6 px-4 py-2 bg-bg-secondary border border-border-muted rounded text-xs text-text-primary hover:border-accent-cyan hover:text-accent-cyan">
-              RETURN_TO_CONSOLE
+          <div className="py-20 text-center space-y-4">
+            <h1 className="text-2xl font-mono text-accent-red font-bold">PROJECT_NOT_FOUND</h1>
+            <p className="text-text-secondary text-sm">Requested project slug &apos;{slug}&apos; does not exist in dataset.</p>
+            <Link href="/#projects" className="inline-block font-mono text-xs text-accent-cyan underline">
+              &larr; BACK_TO_INVENTORY
             </Link>
           </div>
         </Layout>
@@ -42,82 +41,55 @@ export default async function ProjectDetailPage({ params }: PageProps) {
   return (
     <ThemeProvider>
       <Layout>
-        <div className="max-w-4xl mx-auto space-y-8">
-          {/* Back link */}
-          <Link 
-            href="/#projects" 
-            className="inline-flex items-center gap-1.5 font-mono text-xs text-accent-cyan hover:underline print:hidden"
-          >
-            <ArrowLeft size={14} />
-            <span>RETURN_TO_PROJECT_INVENTORY</span>
-          </Link>
+        <div className="py-8 space-y-8 max-w-5xl mx-auto">
+          {/* Top Bar Navigation & Actions */}
+          <div className="flex items-center justify-between border-b border-border-muted pb-6">
+            <Link
+              href="/#projects"
+              className="inline-flex items-center gap-2 font-mono text-xs text-accent-cyan font-bold hover:underline group"
+            >
+              <ArrowLeft size={14} className="transition-transform group-hover:-translate-x-1" />
+              <span>BACK_TO_PROJECTS</span>
+            </Link>
 
-          {/* Project header card */}
-          <header className="bg-bg-secondary border border-border-color rounded-lg p-6 sm:p-8 shadow-[0_4px_25px_rgba(6,182,212,0.06)] relative overflow-hidden">
-            {/* Status node glow */}
-            <div className="absolute top-0 right-0 bg-bg-tertiary border-l border-b border-border-color px-4 py-2 font-mono text-[10px] text-text-secondary uppercase">
-              STATUS: {project.status}
+            <div className="font-mono text-xs text-text-secondary flex items-center gap-2">
+              <span className="text-text-secondary/70">TYPE:</span>
+              <span className="text-accent-cyan font-semibold">{project.type}</span>
+            </div>
+          </div>
+
+          {/* Project Title Header */}
+          <header className="space-y-4">
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="font-mono text-xs font-bold px-2.5 py-0.5 rounded bg-accent-cyan/15 text-accent-cyan border border-accent-cyan/30">
+                {project.type}
+              </span>
+              <span className="font-mono text-xs text-text-secondary bg-bg-secondary px-2.5 py-0.5 rounded border border-border-muted">
+                {project.date}
+              </span>
             </div>
 
-            <div className="space-y-4">
-              <div className="flex flex-wrap items-center gap-2">
-                <span className="px-2 py-0.5 rounded bg-bg-tertiary border border-border-muted font-mono text-[10px] text-text-secondary">
-                  {project.type}
-                </span>
-                {project.confidential && (
-                  <span className="px-2 py-0.5 rounded bg-accent-orange-glow/10 border border-accent-orange/30 font-mono text-[10px] text-accent-orange font-bold">
-                    CONFIDENTIAL / SANITIZED
-                  </span>
-                )}
+            <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-text-primary">
+              {project.title}
+            </h1>
+
+            <p className="text-base text-text-secondary leading-relaxed max-w-3xl">
+              {project.tagline}
+            </p>
+
+            {/* Meta stats bar */}
+            <div className="flex flex-wrap items-center gap-6 pt-4 border-t border-border-muted/50 font-mono text-xs text-text-secondary">
+              <div className="flex items-center gap-2">
+                <User size={14} className="text-accent-cyan" />
+                <span>ROLE: <strong className="text-text-primary">{project.role}</strong></span>
               </div>
-
-              <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-text-primary">
-                {project.title}
-              </h1>
-              
-              <p className="text-sm font-mono text-accent-cyan font-semibold">
-                &gt; {project.tagline}
-              </p>
-
-              {/* Quick specs grid */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 font-mono text-xs text-text-secondary border-t border-border-muted pt-6 mt-6">
-                <div>
-                  <span className="block text-[11px] uppercase text-text-secondary/50">PERIOD</span>
-                  <div className="flex items-center gap-1.5 mt-1 text-text-primary">
-                    <Calendar size={12} className="text-accent-cyan" />
-                    <span>{project.date}</span>
-                  </div>
-                </div>
-                <div>
-                  <span className="block text-[11px] uppercase text-text-secondary/50">ROLE</span>
-                  <div className="flex items-center gap-1.5 mt-1 text-text-primary">
-                    <User size={12} className="text-accent-cyan" />
-                    <span>{project.role}</span>
-                  </div>
-                </div>
-                <div>
-                  <span className="block text-[11px] uppercase text-text-secondary/50">EMPLOYER</span>
-                  <div className="flex items-center gap-1.5 mt-1 text-text-primary">
-                    <Landmark size={12} className="text-accent-cyan" />
-                    <span>{project.employer || "Personal Task"}</span>
-                  </div>
-                </div>
-                <div>
-                  <span className="block text-[11px] uppercase text-text-secondary/50">ENVIRONMENTS</span>
-                  {project.environments && project.environments.length > 0 ? (
-                    project.environments.map((env, idx) => (
-                      <div key={idx} className="flex items-center gap-1.5 mt-1 text-accent-emerald">
-                        <ShieldCheck size={12} />
-                        <span>{env}</span>
-                      </div>
-                    ))
-                  ) : (
-                    <div className="flex items-center gap-1.5 mt-1 text-accent-emerald">
-                      <ShieldCheck size={12} />
-                      <span>PRODUCTION / STAGING</span>
-                    </div>
-                  )}
-                </div>
+              <div className="flex items-center gap-2">
+                <Landmark size={14} className="text-accent-cyan" />
+                <span>ORGANIZATION: <strong className="text-text-primary">{project.employer || "Personal"}</strong></span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Calendar size={14} className="text-accent-cyan" />
+                <span>PERIOD: <strong className="text-text-primary">{project.date}</strong></span>
               </div>
             </div>
           </header>
@@ -125,7 +97,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
           {/* Dynamic Architecture Diagram (Mermaid) */}
           {project.architecture && (
             <section className="bg-bg-secondary border border-border-muted rounded-lg p-6">
-              <h2 className="font-mono text-xs text-accent-cyan uppercase tracking-wider mb-4">// ARCHITECTURE_TOPOLOGY</h2>
+              <h2 className="font-mono text-xs text-accent-cyan uppercase tracking-wider mb-4">{"// ARCHITECTURE_TOPOLOGY"}</h2>
               <Mermaid chart={project.architecture} />
             </section>
           )}
@@ -166,7 +138,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
             <div className="md:col-span-4 space-y-6">
               {/* Outcomes */}
               <div className="bg-bg-secondary border border-border-color rounded-lg p-6 shadow-[0_4px_15px_rgba(16,185,129,0.03)]">
-                <h2 className="font-mono text-xs text-accent-emerald uppercase tracking-wider mb-3">// Key_OUTCOMES</h2>
+                <h2 className="font-mono text-xs text-accent-emerald uppercase tracking-wider mb-3">{"// Key_OUTCOMES"}</h2>
                 <ul className="space-y-2 font-mono text-[11px] text-text-primary bg-bg-primary/50 border border-border-muted rounded p-4 list-none">
                   {project.results.map((res, i) => (
                     <li key={i} className="flex items-start gap-1.5">
@@ -179,7 +151,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
 
               {/* Responsibilities list */}
               <div className="bg-bg-secondary border border-border-muted rounded-lg p-6">
-                <h2 className="font-mono text-xs text-text-secondary uppercase tracking-wider mb-3">// RESPONSIBILITIES</h2>
+                <h2 className="font-mono text-xs text-text-secondary uppercase tracking-wider mb-3">{"// RESPONSIBILITIES"}</h2>
                 <ul className="list-none space-y-2.5 font-mono text-[11px] text-text-secondary">
                   {project.responsibilities.map((resp, i) => (
                     <li key={i} className="flex items-start gap-1.5">
@@ -192,7 +164,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
 
               {/* Stack & Links */}
               <div className="bg-bg-secondary border border-border-muted rounded-lg p-6 font-mono text-xs">
-                <h2 className="text-[11px] text-text-secondary uppercase tracking-wider mb-4">// TECHNOLOGY_STACK</h2>
+                <h2 className="text-[11px] text-text-secondary uppercase tracking-wider mb-4">{"// TECHNOLOGY_STACK"}</h2>
                 <div className="flex flex-wrap gap-1.5 mb-6">
                   {project.tags.map((tag) => (
                     <span 
