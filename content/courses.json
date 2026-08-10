@@ -1,0 +1,209 @@
+[
+  {
+    "id": "cka-course-kodekloud",
+    "title": "Certified Kubernetes Administrator (CKA) Course",
+    "provider": "KodeKloud",
+    "year": 2025,
+    "certificateImage": null,
+    "certificateUrl": null,
+    "verificationUrl": null
+  },
+  {
+    "id": "elk-stack-udemy",
+    "title": "Ultimate Elasticsearch 8, Kibana, Logstash, Beats: ELK Stack",
+    "provider": "Udemy",
+    "year": 2024,
+    "certificateImage": "/assets/course-certificates/elk-stack-udemy.jpg",
+    "certificateUrl": null,
+    "verificationUrl": "https://www.udemy.com/certificate/UC-5f143bc5-6573-4aa5-b812-c16372ebd02d/"
+  },
+  {
+    "id": "vmware-vsphere-icm",
+    "title": "VMware vSphere: Install, Configure, Manage",
+    "provider": "VMware IT Academy",
+    "year": 2024,
+    "certificateImage": "/assets/course-certificates/vmware-vsphere-icm.jpg",
+    "certificateUrl": "https://drive.google.com/file/d/1TKJ2Bhayw5TWbju6TRHEbuVXd942dsKi/view?usp=sharing",
+    "verificationUrl": null
+  },
+  {
+    "id": "vmware-vsphere-oss",
+    "title": "VMware vSphere: Operate, Scale and Secure",
+    "provider": "VMware IT Academy",
+    "year": 2024,
+    "certificateImage": "/assets/course-certificates/vmware-vsphere-oss.jpg",
+    "certificateUrl": "https://drive.google.com/file/d/1pV4EeQAwgpLUVY2RJOr62A4UeU0suYek/view?usp=sharing",
+    "verificationUrl": null
+  },
+  {
+    "id": "redhat-sa-1",
+    "title": "Red Hat System Administration I",
+    "provider": "Red Hat Academy",
+    "year": 2024,
+    "certificateImage": "/assets/course-certificates/redhat-system-administration-1.jpg",
+    "certificateUrl": "https://drive.google.com/file/d/1rY6T77NwckGnhe8i5pEZHXhPCa45n2e8/view?usp=sharing",
+    "verificationUrl": null
+  },
+  {
+    "id": "redhat-sa-2",
+    "title": "Red Hat System Administration II",
+    "provider": "Red Hat Academy",
+    "year": 2024,
+    "certificateImage": "/assets/course-certificates/redhat-system-administration-2.jpg",
+    "certificateUrl": "https://drive.google.com/file/d/1lcg0oAioBNpKlAY6b7xl7HQhQusGYVrW/view?usp=sharing",
+    "verificationUrl": null
+  },
+  {
+    "id": "huawei-ip-network-sales",
+    "title": "Huawei Certified Specialist Associate IP Network Sales",
+    "provider": "Huawei",
+    "year": 2023,
+    "certificateImage": "/assets/course-certificates/huawei-specialist-ip-network-sales.jpg",
+    "certificateUrl": "https://drive.google.com/file/d/1hpn2VHIWXTmO5FoGwKDcQRzn8_J2wtBJ/view?usp=sharing",
+    "verificationUrl": null
+  },
+  {
+    "id": "huawei-transmission-access",
+    "title": "Huawei Certified Specialist Transmission & Access Sales",
+    "provider": "Huawei",
+    "year": 2023,
+    "certificateImage": "/assets/course-certificates/huawei-specialist-transmission-access.jpg",
+    "certificateUrl": "https://drive.google.com/file/d/1A8EepqRLhfx35KqzVnzI5FdZTWwb7WFj/view?usp=sharing",
+    "verificationUrl": null
+  },
+  {
+    "id": "huawei-intelligent-collaboration",
+    "title": "Huawei Certified Specialist Associate Intelligent Collaboration",
+    "provider": "Huawei",
+    "year": 2023,
+    "certificateImage": "/assets/course-certificates/huawei-specialist-intelligent-collaboration.jpg",
+    "certificateUrl": "https://drive.google.com/file/d/1qBYhaEXrsjOVfTydEmS1IHTpoU4JIuN4/view?usp=sharing",
+    "verificationUrl": null
+  },
+  {
+    "id": "huawei-digital-power",
+    "title": "Huawei Certified Specialist Associate Digital Power",
+    "provider": "Huawei",
+    "year": 2023,
+    "certificateImage": "/assets/course-certificates/huawei-specialist-digital-power.jpg",
+    "certificateUrl": "https://drive.google.com/file/d/1o1Yjx0fe3_AdC509v9a8KxlhBRNg0bD6/view?usp=sharing",
+    "verificationUrl": null
+  },
+  {
+    "id": "huawei-storage",
+    "title": "Huawei Certified Specialist Associate Storage",
+    "provider": "Huawei",
+    "year": 2023,
+    "certificateImage": "/assets/course-certificates/huawei-specialist-storage.jpg",
+    "certificateUrl": "https://drive.google.com/file/d/1A7hgtuwh4BoXusnvnq2xeL0L4etI3IZJ/view?usp=sharing",
+    "verificationUrl": null
+  },
+  {
+    "id": "database-fundamentals-maharatech",
+    "title": "Database Fundamentals",
+    "provider": "Mahara-Tech",
+    "year": 2023,
+    "certificateImage": "/assets/course-certificates/database-fundamentals-mahara-tech.jpg",
+    "certificateUrl": null,
+    "verificationUrl": "https://maharatech.gov.eg/mod/customcert/verify_certificate.php?contextid=162686&code=n8gBJTHDdV"
+  },
+  {
+    "id": "git-github-codecademy",
+    "title": "Git/GitHub",
+    "provider": "Codecademy",
+    "year": 2023,
+    "certificateImage": "/assets/course-certificates/git-github-codecademy.jpg",
+    "certificateUrl": null,
+    "verificationUrl": "https://www.codecademy.com/profiles/osamafaroukk/certificates/a8ab218d5950c29861635cc0bf12fd13"
+  },
+  {
+    "id": "python-codecademy",
+    "title": "Python",
+    "provider": "Codecademy",
+    "year": 2023,
+    "certificateImage": "/assets/course-certificates/python-codecademy.jpg",
+    "certificateUrl": null,
+    "verificationUrl": "https://www.codecademy.com/profiles/osamafaroukk/certificates/26db06660f844cd394a1a8ca2973b273"
+  },
+  {
+    "id": "flutter-dart-udemy",
+    "title": "Flutter and Dart Development",
+    "provider": "Udemy",
+    "year": 2021,
+    "certificateImage": "/assets/course-certificates/flutter-dart-udemy.jpg",
+    "certificateUrl": "https://drive.google.com/file/d/1pUw4jx6upDbpyRqgVYjEAhJvgenopAA5/view?usp=sharing",
+    "verificationUrl": null
+  },
+  {
+    "id": "hcia-5g-huawei",
+    "title": "HCIA - 5G",
+    "provider": "Huawei",
+    "year": 2021,
+    "certificateImage": "/assets/course-certificates/hcia-5g-huawei.png",
+    "certificateUrl": "https://drive.google.com/file/d/1Sa1DOWUcI6AuE01t3wQbOMEnDKequxDF/view?usp=sharing",
+    "verificationUrl": null
+  },
+  {
+    "id": "javascript-codecademy",
+    "title": "JavaScript",
+    "provider": "Codecademy",
+    "year": 2020,
+    "certificateImage": "/assets/course-certificates/javascript-codecademy.png",
+    "certificateUrl": null,
+    "verificationUrl": "https://www.codecademy.com/profiles/osamafaroukk/certificates/705dcb15de0da4dd9d9fc4f3274b430e"
+  },
+  {
+    "id": "java-codecademy",
+    "title": "Java",
+    "provider": "Codecademy",
+    "year": 2020,
+    "certificateImage": "/assets/course-certificates/java-codecademy.png",
+    "certificateUrl": null,
+    "verificationUrl": "https://www.codecademy.com/profiles/osamafaroukk/certificates/23a06f0af71448c0a2ed456d6191e11e"
+  },
+  {
+    "id": "sql-codecademy",
+    "title": "SQL",
+    "provider": "Codecademy",
+    "year": 2020,
+    "certificateImage": "/assets/course-certificates/sql-codecademy.png",
+    "certificateUrl": null,
+    "verificationUrl": "https://www.codecademy.com/profiles/osamafaroukk/certificates/042a4e5884e3eb6ea1f2a12be6abb851"
+  },
+  {
+    "id": "python-michigan",
+    "title": "Python",
+    "provider": "University of Michigan - USA",
+    "year": 2020,
+    "certificateImage": "/assets/course-certificates/python-university-of-michigan.png",
+    "certificateUrl": null,
+    "verificationUrl": "https://www.coursera.org/account/accomplishments/verify/7UGAWPVQTK7U"
+  },
+  {
+    "id": "android-new-horizons",
+    "title": "Android Development",
+    "provider": "New Horizons",
+    "year": 2018,
+    "certificateImage": "/assets/course-certificates/android-development-new-horizons.png",
+    "certificateUrl": "https://drive.google.com/file/d/1GGJXLBBWyK8985iPZDt0Xsln5YxLQ-xR/view?usp=sharing",
+    "verificationUrl": null
+  },
+  {
+    "id": "network-plus-new-horizons",
+    "title": "Network+",
+    "provider": "New Horizons",
+    "year": 2018,
+    "certificateImage": "/assets/course-certificates/network-plus-new-horizons.png",
+    "certificateUrl": "https://drive.google.com/file/d/11Sf05dFYrHzy56PcSnscbqUkZBK1YOVf/view?usp=sharing",
+    "verificationUrl": null
+  },
+  {
+    "id": "java-syscoms-iti",
+    "title": "Java",
+    "provider": "Syscoms ITI - UAE",
+    "year": 2017,
+    "certificateImage": "/assets/course-certificates/java-syscoms-iti.png",
+    "certificateUrl": "https://drive.google.com/file/d/1WTwt1voNdIDjiG9eIczIwvgdFiiTrvJb/view?usp=sharing",
+    "verificationUrl": null
+  }
+]

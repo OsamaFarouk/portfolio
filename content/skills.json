@@ -1,0 +1,215 @@
+[
+  {
+    "category": "Cloud & Virtualization",
+    "skills": [
+      {
+        "name": "AWS",
+        "proficiency": "Advanced",
+        "years": 4,
+        "certified": true,
+        "certifications": [
+          {
+            "shortName": "SAA-C03",
+            "targetId": "aws-solutions-architect-associate",
+            "fullName": "AWS Certified Solutions Architect – Associate"
+          },
+          {
+            "shortName": "CLF-C01",
+            "targetId": "aws-certified-cloud-practitioner",
+            "fullName": "AWS Certified Cloud Practitioner"
+          }
+        ]
+      },
+      {
+        "name": "Microsoft Azure",
+        "proficiency": "Intermediate",
+        "years": 1,
+        "certified": false
+      },
+      {
+        "name": "VMware vSphere",
+        "proficiency": "Advanced",
+        "years": 3,
+        "certified": false
+      }
+    ]
+  },
+  {
+    "category": "Containers & Orchestration",
+    "skills": [
+      {
+        "name": "Kubernetes",
+        "proficiency": "Advanced",
+        "years": 3,
+        "certified": true,
+        "certifications": [
+          {
+            "shortName": "CKA",
+            "targetId": "certified-kubernetes-administrator",
+            "fullName": "Certified Kubernetes Administrator"
+          }
+        ]
+      },
+      {
+        "name": "Docker",
+        "proficiency": "Advanced",
+        "years": 3,
+        "certified": false
+      },
+      {
+        "name": "Helm",
+        "proficiency": "Advanced",
+        "years": 2,
+        "certified": false
+      }
+    ]
+  },
+  {
+    "category": "Infrastructure as Code & Scripting",
+    "skills": [
+      {
+        "name": "Terraform",
+        "proficiency": "Advanced",
+        "years": 3,
+        "certified": false
+      },
+      {
+        "name": "Ansible",
+        "proficiency": "Intermediate",
+        "years": 2,
+        "certified": false
+      },
+      {
+        "name": "Bash / Shell Scripting",
+        "proficiency": "Advanced",
+        "years": "2+",
+        "certified": false
+      },
+      {
+        "name": "Python",
+        "proficiency": "Intermediate",
+        "years": 2,
+        "certified": false
+      }
+    ]
+  },
+  {
+    "category": "CI/CD, Version Control & Code Quality",
+    "skills": [
+      {
+        "name": "GitLab CI/CD",
+        "proficiency": "Advanced",
+        "years": "2+",
+        "certified": false
+      },
+      {
+        "name": "Jenkins",
+        "proficiency": "Advanced",
+        "years": 3,
+        "certified": false
+      },
+      {
+        "name": "Git",
+        "proficiency": "Advanced",
+        "years": "3+",
+        "certified": false
+      },
+      {
+        "name": "SonarQube",
+        "proficiency": "Intermediate",
+        "years": "1+",
+        "certified": false
+      }
+    ]
+  },
+  {
+    "category": "Monitoring & Observability",
+    "skills": [
+      {
+        "name": "Prometheus",
+        "proficiency": "Advanced",
+        "years": "3+",
+        "certified": false
+      },
+      {
+        "name": "Grafana",
+        "proficiency": "Advanced",
+        "years": "3+",
+        "certified": false
+      },
+      {
+        "name": "Loki",
+        "proficiency": "Intermediate",
+        "years": 1,
+        "certified": false
+      },
+      {
+        "name": "Elastic Stack (ELK)",
+        "proficiency": "Intermediate",
+        "years": 1,
+        "certified": false
+      },
+      {
+        "name": "Alertmanager",
+        "proficiency": "Advanced",
+        "years": "2+",
+        "certified": false
+      }
+    ]
+  },
+  {
+    "category": "Systems, Networking & Operations",
+    "skills": [
+      {
+        "name": "Linux / Red Hat",
+        "proficiency": "Advanced",
+        "years": 4,
+        "certified": true,
+        "certifications": [
+          {
+            "shortName": "RHCSA",
+            "targetId": "red-hat-certified-system-administrator",
+            "fullName": "Red Hat Certified System Administrator"
+          }
+        ]
+      },
+      {
+        "name": "Windows Server",
+        "proficiency": "Intermediate",
+        "years": 1,
+        "certified": false
+      },
+      {
+        "name": "Nginx",
+        "proficiency": "Intermediate",
+        "years": "1+",
+        "certified": false
+      },
+      {
+        "name": "Routing & Switching",
+        "proficiency": "Advanced",
+        "years": "4+",
+        "certified": true,
+        "certifications": [
+          {
+            "shortName": "HCIA Datacom",
+            "targetId": "huawei-hcia-datacom",
+            "fullName": "Huawei HCIA-Datacom"
+          }
+        ]
+      },
+      {
+        "name": "Network Security",
+        "proficiency": "Advanced",
+        "years": "3+",
+        "certified": false
+      },
+      {
+        "name": "Incident & SLA Management",
+        "proficiency": "Advanced",
+        "years": "2+",
+        "certified": false
+      }
+    ]
+  }
+]

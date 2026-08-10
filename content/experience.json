@@ -1,0 +1,166 @@
+[
+  {
+    "id": "zaintech-bas",
+    "company": "ZainTech",
+    "project": "Bahrain Airport Services (BAS)",
+    "role": "DevOps Engineer",
+    "location": "Cairo, Egypt",
+    "startDate": "July 2026",
+    "endDate": "Present",
+    "employmentType": "Full-time",
+    "summary": "Contributing to the delivery of secure, scalable AWS cloud infrastructure and automated DevOps workflows for Bahrain Airport Services, with a focus on deployment reliability, infrastructure consistency, observability, and operational stability.",
+    "responsibilities": [
+      "Support the design, provisioning, and management of AWS cloud infrastructure following security, availability, and operational best practices.",
+      "Build and support CI/CD workflows for automated application build, testing, containerization, and deployment.",
+      "Collaborate with cloud, application, security, and operations teams to troubleshoot deployment and infrastructure issues."
+    ],
+    "achievements": [
+      "Supporting the establishment of standardized AWS infrastructure and DevOps delivery practices for the BAS environment.",
+      "Contributing to automation, deployment reliability, infrastructure monitoring, and technical documentation across the delivery lifecycle."
+    ],
+    "technologies": ["AWS", "CodePipeline", "CloudFormation", "Docker", "Kubernetes", "Linux"],
+    "logo": "/assets/logos/zaintech.png",
+    "current": true
+  },
+  {
+    "id": "progressoft-boubyan",
+    "company": "ProgressSoft",
+    "project": "Boubyan Bank, Kuwait",
+    "role": "DevOps Engineer",
+    "location": "Kuwait City, Kuwait (Remote/Hybrid)",
+    "startDate": "May 2025",
+    "endDate": "July 2026",
+    "employmentType": "Full-time",
+    "summary": "Supporting Boubyan Bank’s PayHub environments through CI/CD management, Kubernetes deployments, release testing, and troubleshooting, with a focus on reliable delivery and stable system performance.",
+    "responsibilities": [
+      "Manage and optimize GitLab CI/CD pipelines and deploy services to Kubernetes across local and Boubyan Bank UAT environments.",
+      "Support testing, upgrades, configuration, and troubleshooting for the PayHub platform, including ACH and DMS systems, in alignment with Central Bank of Kuwait requirements.",
+      "Collaborate with development and support teams to investigate deployment issues, coordinate releases, and maintain stable application performance."
+    ],
+    "achievements": [
+      "Contributed to successful PayHub ACH and DMS deployments across local and Boubyan Bank testing environments.",
+      "Resolved Kubernetes and Helm deployment issues involving container images, configuration values, jobs, and application startup."
+    ],
+    "technologies": ["GitLab CI/CD", "Kubernetes", "Docker", "Helm", "PayHub (ACH/DMS)"],
+    "logo": "/assets/logos/progresssoft.png",
+    "current": false
+  },
+  {
+    "id": "qeema-stc",
+    "company": "Qeema",
+    "project": "STC, Saudi Arabia",
+    "role": "DevOps Engineer",
+    "location": "Cairo, Egypt",
+    "startDate": "Jun 2024",
+    "endDate": "Jun 2025",
+    "employmentType": "Full-time",
+    "summary": "Supported DevOps delivery and Kubernetes-based deployments for STC internal applications while contributing to infrastructure monitoring, alerting, team coordination, and technical documentation.",
+    "responsibilities": [
+      "Designed and maintained Jenkins CI/CD pipelines to automate the deployment of internal enterprise applications to a local Kubernetes cluster.",
+      "Implemented infrastructure and API monitoring using Prometheus and Grafana, with Slack alert notifications to improve incident visibility and response.",
+      "Coordinated team activities, prepared weekly management reports, and created technical documentation to improve knowledge transfer and onboarding."
+    ],
+    "achievements": [
+      "Automated application deployment workflows, reducing manual release steps and improving deployment consistency.",
+      "Improved system visibility and operational response through Prometheus and Grafana monitoring with Slack alert notifications.",
+      "Supported team onboarding and knowledge transfer through standardized technical documentation and reporting processes."
+    ],
+    "technologies": ["Jenkins", "Kubernetes", "Docker", "Prometheus", "Grafana", "Linux", "API Observability"],
+    "logo": "/assets/logos/qeema.png",
+    "current": false
+  },
+  {
+    "id": "iti-internship",
+    "company": "Information Technology Institute (ITI)",
+    "project": "System Administration / DevOps Track",
+    "role": "System Administration & DevOps Trainee",
+    "location": "Cairo, Egypt",
+    "startDate": "Nov 2023",
+    "endDate": "Mar 2024",
+    "employmentType": "Training Program",
+    "summary": "Completed a 504-hour intensive code camp covering system administration, networking, cloud infrastructure, virtualization, automation, containerization, orchestration, infrastructure as code, and scripting.",
+    "responsibilities": [
+      "Administered Red Hat Linux and Windows Server environments, configured web services, and automated administrative tasks using Ansible, Bash, and Python.",
+      "Gained hands-on experience with networking, VMware vSphere, AWS SysOps, Microsoft Azure, and cloud infrastructure fundamentals.",
+      "Practised DevOps workflows using Git, Docker, Kubernetes, Jenkins, and Terraform for application delivery and infrastructure automation."
+    ],
+    "achievements": [
+      "Built a multibranch Jenkins CI/CD pipeline using Docker and Kubernetes to automate the build, testing, containerization, and deployment of a web application.",
+      "Created reusable Terraform configurations to provision consistent development and testing environments."
+    ],
+    "technologies": ["Jenkins", "Docker", "Kubernetes", "Git", "AWS", "Microsoft Azure", "Terraform", "Red Hat Linux", "Bash", "Python", "Windows Server", "Ansible"],
+    "logo": "/assets/logos/iti.png",
+    "current": false
+  },
+  {
+    "id": "alx-africa",
+    "company": "ALX Africa",
+    "project": "AWS Cloud Computing Program | Multinational Scholarship",
+    "role": "AWS Cloud Computing Trainee",
+    "location": "Cairo, Egypt",
+    "startDate": "May 2023",
+    "endDate": "Feb 2024",
+    "employmentType": "Training Program",
+    "summary": "Completed an intensive AWS Cloud Computing scholarship program covering cloud fundamentals, networking, compute, storage, databases, security, monitoring, automatic scaling, automation, and highly available architecture design.",
+    "responsibilities": [  
+      "Studied AWS cloud architecture across networking, compute, storage, database, security, monitoring, and automatic scaling layers.",
+      "Designed cloud solutions using AWS architecture principles for availability, scalability, security, and fault tolerance.",
+      "Explored decoupled, microservices, serverless, caching, and disaster recovery architectures through guided learning and practical exercises."
+    ],
+    "achievements": [
+      "Designed a Multi-AZ AWS architecture using an Application Load Balancer and Auto Scaling Group to distribute traffic and support availability and scalability.",
+      "Built storage and database layers using Amazon S3 and DynamoDB while applying decoupled architecture principles."
+    ],
+    "technologies": ["AWS", "Amazon VPC", "Amazon EC2", "AWS IAM", "Elastic Load Balancing", "Auto Scaling", "Amazon CloudWatch", "Amazon S3", "Amazon DynamoDB"],
+    "logo": "/assets/logos/alx.webp",
+    "current": false
+  },
+  {
+    "id": "huawei-shift-leader",
+    "company": "Huawei",
+    "project": "MTN, South Africa",
+    "role": "Shift Leader / Incident Manager",
+    "location": "Cairo, Egypt",
+    "startDate": "Mar 2023",
+    "endDate": "Jun 2023",
+    "employmentType": "Full-time",
+    "summary": "Coordinated shift operations, incident response, network monitoring, and SLA follow-up for the MTN South Africa telecommunications network.",
+    "responsibilities": [
+      "Coordinated incident handling and SLA follow-up using Huawei U2020 to monitor network alarms, traffic, and performance indicators.",
+      "Led shift activities, prioritized operational issues, and escalated critical incidents to the appropriate technical, field, and management teams.",
+      "Prepared network performance reports and supported team members with monitoring procedures, troubleshooting, and incident-handling practices."
+    ],
+    "achievements": [
+      "Supported SLA adherence through proactive monitoring, timely escalation, and structured incident coordination.",
+      "Coordinated the escalation and resolution of a critical site outage during a night shift, engaging management and incident-response teams until service was restored.",
+      "Improved shift consistency through technical guidance, knowledge sharing, and standardized monitoring and reporting practices.",
+      "Trained and mentored 15+ new team members through structured shadowing and reverse-shadowing phases, monitored their progress, provided practical feedback, and ensured they met all operational requirements before independently managing shifts."
+    ],
+    "technologies": ["U2020 Tool", "NOC Operations", "Network Monitoring", "SLA Management", "Incident Response", "KPI Reporting"],
+    "logo": "/assets/logos/huawei.png",
+    "current": false
+  },
+  {
+    "id": "huawei-front-office",
+    "company": "Huawei",
+    "project": "MTN, South Africa",
+    "role": "Front Office Engineer",
+    "location": "Cairo, Egypt",
+    "startDate": "Aug 2021",
+    "endDate": "Feb 2023",
+    "employmentType": "Full-time",
+    "summary": "Monitored MTN South Africa’s telecommunications network, performed first-line incident triage, and coordinated the resolution of network, site, power, and hardware outages.",
+    "responsibilities": [
+      "Monitored network alarms, performance indicators, and service availability using Huawei U2020 and OWS.",
+      "Performed first-line analysis and incident triage for power failures, hardware alarms, network issues, and site outages.",
+      "Created and escalated incidents to field engineers, vendors, and technical teams, tracking progress until service restoration.",
+      "Maintained accurate incident updates, shift handovers, and operational reports to support continuous network monitoring."
+    ],
+    "achievements": [
+      "Promoted to Shift Leader after demonstrating strong performance in network monitoring, incident coordination, escalation management, and shift operations."
+    ],
+    "technologies": ["OWS", "U2020 Tool", "Telecom Infrastructure", "Alarm Triage", "Incident Management", "Vendor Coordination"],
+    "logo": "/assets/logos/huawei.png",
+    "current": false
+  }
+]

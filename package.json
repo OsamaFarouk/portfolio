@@ -1,14 +1,21 @@
 {
   "name": "osama-portfolio",
-  "version": "0.1.0",
+  "version": "1.2.1",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "add:project": "node scripts/add-content.js project",
+    "add:experience": "node scripts/add-content.js experience",
+    "add:skill": "node scripts/add-content.js skill",
+    "add:certification": "node scripts/add-content.js certification",
+    "validate:content": "node scripts/validate-content.js"
   },
   "dependencies": {
+    "lucide-react": "^1.24.0",
+    "mermaid": "^11.16.0",
     "next": "16.2.10",
     "react": "19.2.4",
     "react-dom": "19.2.4"

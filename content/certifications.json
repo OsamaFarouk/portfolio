@@ -1,0 +1,61 @@
+[
+  {
+    "id": "aws-ccp",
+    "name": "AWS Certified Cloud Practitioner",
+    "issuer": "Amazon Web Services (AWS)",
+    "code": "CLF-C01",
+    "issueDate": "2023",
+    "expiryDate": "2026",
+    "credentialId": "1739736b-b689-4846-a5db-d15abcbdbc7d",
+    "verificationLink": "https://www.credly.com/badges/1739736b-b689-4846-a5db-d15abcbdbc7d/public_url",
+    "badgeUrl": "/images/certifications/aws-cloud-practitioner.png",
+    "imageClass": "max-h-[85%] max-w-[85%] object-contain"
+  },
+  {
+    "id": "aws-saa",
+    "name": "AWS Certified Solutions Architect – Associate",
+    "issuer": "Amazon Web Services (AWS)",
+    "code": "SAA-C03",
+    "issueDate": "2023",
+    "expiryDate": "2026",
+    "credentialId": "bbf9e362-54e3-4a00-a2bf-c7932ad3ae57",
+    "verificationLink": "https://www.credly.com/badges/bbf9e362-54e3-4a00-a2bf-c7932ad3ae57/public_url",
+    "badgeUrl": "/images/certifications/aws-solutions-architect-associate.png",
+    "imageClass": "max-h-[85%] max-w-[85%] object-contain"
+  },
+  {
+    "id": "cka",
+    "name": "CKA: Certified Kubernetes Administrator",
+    "issuer": "The Linux Foundation",
+    "code": "CKA",
+    "issueDate": "2025",
+    "expiryDate": "2028",
+    "credentialId": "2ab90ca3-77ad-44ca-9840-127beeae83d2",
+    "verificationLink": "https://www.credly.com/badges/2ab90ca3-77ad-44ca-9840-127beeae83d2/public_url",
+    "badgeUrl": "/images/certifications/cka-certified-kubernetes-administrator.png",
+    "imageClass": "max-h-[90%] max-w-[90%] object-contain"
+  },
+  {
+    "id": "rhcsa",
+    "name": "Red Hat Certified System Administrator (RHCSA)",
+    "issuer": "Red Hat",
+    "code": "RHCSA",
+    "issueDate": "2024",
+    "expiryDate": "2027",
+    "credentialId": "240-041-269",
+    "verificationLink": "https://www.credly.com/badges/bbb7587f-5f73-4a1c-a07d-e9d4c2c5061f/public_url",
+    "badgeUrl": "/images/certifications/redhat-rhcsa.png",
+    "imageClass": "max-h-[85%] max-w-[85%] object-contain"
+  },
+  {
+    "id": "hcia-datacom",
+    "name": "HCIA – Datacom, Huawei Certified (Routing & Switching)",
+    "issuer": "Huawei",
+    "code": "HCIA-Datacom",
+    "issueDate": "2021",
+    "expiryDate": "2024",
+    "credentialId": "01010010180841889813377",
+    "verificationLink": "https://drive.google.com/file/d/12VXidWgR2iOgkVVBeDyZJFKeDs4pBKyV/view?usp=sharing",
+    "badgeUrl": "/images/certifications/huawei-hcia-datacom.jpg"
+  }
+]

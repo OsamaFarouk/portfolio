@@ -1,0 +1,214 @@
+[
+  {
+    "slug": "aws-ecs-fargate-container-deployment",
+    "title": "AWS ECS Fargate Container Deployment",
+    "tagline": "Deployed a containerized web application on Amazon ECS using AWS Fargate, Amazon ECR, an Application Load Balancer, and managed AWS networking.",
+    "type": "Personal Lab",
+    "status": "Completed",
+    "date": "2026",
+    "employer": null,
+    "role": "Cloud / DevOps Engineer",
+    "featured": false,
+    "draft": false,
+    "confidential": false,
+    "environments": ["AWS ECS FARGATE"],
+    "tags": ["AWS", "Amazon ECS", "AWS Fargate","Amazon ECR", "Docker", "ALB", "Amazon VPC","AWS IAM"],
+    "background": "Deploy a containerized web application on AWS using a managed compute model that removes the need to provision or maintain EC2 instances while providing reliable traffic routing and container service management.",
+    "solution": "Built and tagged a Docker container image, pushed it to Amazon ECR, and created an Amazon ECS task definition and service using AWS Fargate. Integrated the service with an Application Load Balancer and target group, configured the required VPC networking and security groups, and validated application access through the load balancer endpoint.",
+    "responsibilities": [
+      "Built and tagged a Docker image and published it to a private Amazon ECR repository.",
+      "Created an Amazon ECS cluster, Fargate task definition, and ECS service with the required CPU, memory, container port, and execution-role configuration.",
+      "Configured VPC networking, subnets, and security groups for communication between the Application Load Balancer and Fargate tasks.",
+      "Created an Application Load Balancer, listener, and target group with application health checks.",
+      "Diagnosed and resolved the ECS service-linked IAM role issue that initially prevented service creation.",
+      "Validated application availability through the load balancer endpoint and removed lab resources after testing to avoid unnecessary AWS charges."
+    ],
+    "challenges": "ECS service creation initially failed because the required ECS service-linked role was unavailable. Resolved the IAM dependency, completed the service creation, and verified that the Fargate task registered successfully with the Application Load Balancer target group.",
+    "results": [
+      "Successfully deployed and exposed a containerized web application using Amazon ECS and AWS Fargate without managing EC2 instances.",
+      "Established an end-to-end deployment flow from a local Docker image to Amazon ECR and running Fargate tasks.",
+      "Configured load-balanced access and health-based target registration through an Application Load Balancer.",
+      "Gained practical experience integrating ECS, Fargate, ECR, Elastic Load Balancing, IAM, and VPC networking."
+    ],
+    "githubLink": "[ADD GITHUB URL]",
+    "liveLink": null,
+    "architecture": "graph TD\n    A[Developer] -->|Build and Tag Image| B[Docker Image]\n    B -->|Push| C[Amazon ECR]\n    C -->|Image Reference| D[ECS Task Definition]\n    D -->|Used By| E[Amazon ECS Service]\n    E -->|Launches and Maintains| F[AWS Fargate Tasks]\n    U[User Traffic] -->|HTTP| ALB[Application Load Balancer]\n    ALB -->|Listener| TG[Target Group]\n    TG -->|Health-Checked Traffic| F\n    IAM[IAM Task Execution Role] -.->|Authorizes ECR Image Pull| F\n    VPC[VPC / Subnets / Security Groups] -.->|Network Boundary for ALB & \nFargate Tasks| ALB\n    VPC -.-> F"
+  },
+  {
+    "slug": "payhub-release-operations",
+    "title": "PayHub CI/CD & Kubernetes Release Operations",
+    "tagline": "Reliable CI/CD and Helm-based Kubernetes deployments for PayHub ACH and DMS services across local and bank UAT environments.",
+    "type": "Professional Work",
+    "status": "PROFESSIONAL / SANITIZED",
+    "date": "2025",
+    "employer": "ProgresSoft | Boubyan Bank",
+    "role": "DevOps Engineer",
+    "featured": false,
+    "draft": false,
+    "confidential": true,
+    "environments": ["LOCAL", "BANK UAT"],
+    "tags": ["CI/CD", "Kubernetes", "GitLab CI/CD", "Helm", "Docker", "Private Container Registry", "Linux", "PayHub", "ACH / DMS"],
+    "background": "PayHub releases required consistent deployments across local and Boubyan Bank UAT environments while managing multiple container images, Helm values, and environment-specific configurations. Incorrect image tags or configuration values could block releases, delay testing, and prevent Kubernetes workloads from starting correctly.",
+    "solution": "Managed GitLab CI/CD pipelines and Helm-based Kubernetes deployments using versioned container images and environment-specific configuration values. Supported release testing, application upgrades, troubleshooting, and post-deployment validation for PayHub ACH and DMS services across local and bank UAT environments.",
+    "responsibilities": [
+      "Managed and maintained GitLab CI/CD pipelines supporting containerized PayHub service deployments.",
+      "Deployed and upgraded applications using Helm and Kubernetes across local and Boubyan Bank UAT environments.",
+      "Maintained consistent image versions and deployment configurations across pipeline and Kubernetes stages.",
+      "Troubleshot container image, Helm, Kubernetes job, policy, health-check, and application startup issues.",
+      "Supported ACH and DMS release testing and collaborated with development and support teams during deployments."
+    ],
+    "challenges": "Investigated and resolved deployment issues involving unavailable or mismatched container image tags, incorrect Helm value types, Kubernetes security policies, job configuration and label mismatches, startup probe failures, and post-deployment restart behaviour. Coordinated with development and support teams to correct configurations and complete releases successfully.",
+    "results": [
+      "Supported successful ACH and DMS releases across local and Boubyan Bank testing environments.",
+      "Improved release consistency and traceability by maintaining aligned container image versions across CI/CD and deployment stages.",
+      "Resolved deployment blockers and restored affected Kubernetes workloads to a healthy operational state."
+    ],
+    "githubLink": "[ADD GITHUB URL]",
+    "liveLink": null,
+    "architecture": "graph TD\n    A[GitLab Repository] --> B[GitLab CI/CD Pipeline]\n    B --> C[Package Application]\n    C --> D[Build & Version \n Container Image]\n    D --> E[Push to Private \n Container Registry]\n   F --> G[Local Kubernetes Cluster]\n    F --> H[Boubyan Bank UAT]\n    G --> I[Local Validation]\n    H --> J[UAT Validation]\n    E -.->|Pull Versioned Image| G\n  E --> F[Helm Deploy / Upgrade]\n   E -.->|Pull Versioned Image| H\n    style D font-size:12px\n    style E font-size:12px"
+  },
+  {
+    "slug": "kubernetes-observability-platform",
+    "title": "Kubernetes Observability Platform",
+    "tagline": "Built a Kubernetes observability platform for centralized cluster metrics, container logs, Grafana dashboards, and automated alerting using Prometheus and Loki.",
+    "type": "Personal Lab",
+    "status": "Completed",
+    "date": "2026",
+    "employer": null,
+    "role": "DevOps / SRE Engineer",
+    "featured": false,
+    "draft": false,
+    "confidential": false,
+    "environments": ["Local Kubernetes Cluster"],
+    "tags": ["Kubernetes", "Prometheus", "Grafana", "Loki", "node-exporter", "Promtail", "Helm", "kube-state-metrics"],
+    "background": "Establish centralized visibility across Kubernetes nodes, workloads, and application services by collecting infrastructure metrics and container logs, presenting them through Grafana dashboards, and generating actionable alerts for operational issues.",
+    "solution": "Deployed the kube-prometheus-stack using Helm to provide Prometheus, Grafana, Alertmanager, kube-state-metrics, and node-exporter. Integrated Loki and Promtail for centralized container-log collection, configured Kubernetes monitoring resources and alert rules, and created Grafana dashboards for metrics and log exploration.",
+    "responsibilities": [
+      "Deployed and configured Kubernetes monitoring components using Helm and customized values files.",
+      "Collected cluster and workload metrics through Prometheus, kube-state-metrics, and node-exporter.",
+      "Integrated Loki and Promtail to centralize container logs and make them searchable through Grafana.",
+      "Created Grafana dashboards for Kubernetes resource usage, workload health, and log exploration.",
+      "Configured Prometheus alert rules and Alertmanager notification routing, if actually implemented.",
+      "Tuned metric scraping and log-processing configurations to control unnecessary ingestion and resource consumption.",
+      "Validated the platform by inspecting workload metrics, querying application logs, and testing alert conditions."
+    ],
+    "challenges": "Excessive metric series and unnecessary log labels increased memory usage within the monitoring stack. Reduced ingestion overhead by refining scrape targets and intervals, removing unnecessary high-cardinality labels, tuning Promtail pipelines, and defining appropriate resource limits for monitoring components.",
+    "results": [
+      "Established centralized visibility into Kubernetes node, workload, and application health.",
+      "Combined Prometheus metrics and Loki logs within Grafana for easier operational investigation.",
+      "Implemented repeatable Helm-based installation and configuration of the monitoring stack.",
+      "Validated alert generation and notification routing for selected Kubernetes failure conditions, if tested.",
+      "Improved practical understanding of Kubernetes-native metrics, log aggregation, dashboards, and alert management."
+    ],
+    "githubLink": "[ADD GITHUB URL]",
+    "liveLink": null,
+    "architecture": "graph TD\n    A[Kubernetes Nodes & Workloads] -->|Node Metrics| B[node-exporter]\n    A -->|Object State| C[kube-state-metrics]\n    A -->|Application Metrics| D[Prometheus Server]\n    B --> D\n    C --> D\n    D -->|Metrics| E[Grafana]\n    D -->|Alerts| F[Alertmanager]\n    F --> G[Slack]\n    A -->|Container Logs| H[Promtail]\n    H --> I[Loki]\n    I --> E\n    PO[Prometheus Operator] -.->|Manages Prometheus, alert rules, ServiceMonitors & PodMonitors| D"
+  },
+
+  {
+    "slug": "gitlab-cicd-kubernetes-helm-lab",
+    "title": "End-to-End GitLab CI/CD with Kubernetes and Helm",
+    "tagline": "Built an end-to-end GitLab CI/CD pipeline to package a Java application, create versioned Docker images, and deploy releases to a local Kubernetes environment using Helm.",
+    "type": "Personal Lab",
+    "status": "Completed",
+    "date": "2025",
+    "employer": null,
+    "role": "DevOps Engineer",
+    "featured": false,
+    "draft": false,
+    "confidential": false,
+    "environments": ["Local Minikube Cluster"],
+    "tags": ["CI/CD", "GitLab CI/CD", "GitLab Runner", "Maven", "Kubernetes", "Minikube", "Helm", "Docker", "Docker Hub", "MySQL", "NGINX Ingress", "Linux"],
+    "background": "Build a complete automated delivery workflow for a Java application, covering application packaging, container image versioning, registry publishing, and repeatable deployment to Kubernetes using Helm.",
+    "solution": "Configured a GitLab CI/CD pipeline using a local Shell Runner to package the Java application with Maven, build a Docker image, and assign a dynamic tag using the commit date and short commit SHA. Published the versioned image to Docker Hub and deployed it to a local Minikube cluster using a custom Helm chart with environment-specific values.",
+    "responsibilities": [
+      "Created GitLab CI/CD stages for Maven packaging, Docker image creation, Kubernetes deployment, and post-pipeline cleanup.",
+      "Implemented dynamic Docker image versioning using the commit date and short commit SHA to provide traceable releases.",
+      "Published versioned container images to Docker Hub and passed the same image tag into the Helm deployment.",
+      "Developed a custom Helm chart with parameterized values, ConfigMaps, Secrets, application services, Ingress, and Kubernetes health probes.",
+      "Configured GitLab Runner access to the local Minikube cluster using a dedicated kubeconfig.",
+      "Integrated the application with MySQL and used an init container to wait for database availability before application startup.",
+      "Validated the deployed application through Kubernetes Ingress at app.local."
+    ],
+    "challenges": "Resolved pipeline access to the local Minikube cluster by configuring a dedicated kubeconfig for the GitLab Runner. Troubleshot duplicate Kubernetes Ingress resources caused by overlapping Helm templates and standardized the chart structure to ensure consistent deployments.",
+    "results": [
+      "Established a complete automated workflow from source-code commit to a running application in Kubernetes.",
+      "Improved release traceability through unique, commit-based Docker image tags.",
+      "Standardized Kubernetes application deployment through a reusable and configurable Helm chart.",
+      "Successfully integrated GitLab Runner, Docker Hub, Helm, Minikube, Ingress, and application health checks in one delivery workflow."
+    ],
+    "githubLink": "[ADD GITHUB URL]",
+    "liveLink": null,
+    "architecture": "graph TD\n    A[Developer] -->|Push| B[GitLab Repository]\n    B -->|Trigger| C[GitLab CI/CD Pipeline]\n    C -->|Execute| D[Local GitLab Shell Runner]\n    D --> E[Maven Package]\n    E --> F[Build & Tag Docker Image]\n    F -->|Push yymmdd-shortSHA| G[Docker Hub]\n    G -->|Image Tag Passed to Deployment| I[Helm Upgrade / Install]\n    H[Custom Helm Chart] --> I\n    I --> J[Local Minikube Cluster]\n    J --> K[Application Pods & Service]\n    K --> L[NGINX Ingress]\n    L --> M[app.local]\n    G -.->|Pull Versioned Image| K"
+  },
+  
+  {
+    "slug": "stc-enterprise-cluster",
+    "title": "STC Enterprise Application Deployment & Observability",
+    "tagline": "Automated Jenkins-based deployment of internal enterprise applications to a local Kubernetes environment, supported by infrastructure and API monitoring using Prometheus, Grafana, and Slack alerts.",
+    "type": "Professional Work",
+    "status": "Completed",
+    "date": "2024",
+    "employer": "Qeema | STC Saudi Arabia Project",
+    "role": "DevOps Engineer · Acting Team Lead",
+    "featured": false,
+    "draft": false,
+    "confidential": true,
+    "environments": ["Local Kubernetes Cluster", "Local Servers"],
+    "tags": ["Kubernetes", "Jenkins", "Docker","Prometheus", "Grafana", "Linux"],
+    "background": "STC internal enterprise applications required repeatable deployment workflows and improved operational visibility across the local Kubernetes environment, application APIs, and supporting servers. Manual deployment steps and limited centralized monitoring made releases and incident detection more difficult.",
+    "solution": "Designed and implemented Jenkins CI/CD pipelines to automate the build, packaging, and deployment of internal enterprise applications to a local Kubernetes cluster. Established infrastructure and API monitoring using Prometheus and Grafana, with automated Slack notifications to improve operational visibility and incident awareness.",
+    "responsibilities": [
+      "Designed and maintained Jenkins CI/CD pipelines to automate the build, packaging, and deployment of internal enterprise applications.",
+      "Deployed and maintained containerized applications within a local Kubernetes cluster using standardized deployment configurations.",
+      "Implemented infrastructure and API monitoring across local servers using Prometheus and Grafana, with automated Slack alert notifications.",
+      "Acted as Team Lead by coordinating team activities, preparing weekly management reports, and creating technical documentation to support onboarding and knowledge transfer."
+    ],
+    "challenges": "Monitoring Kubernetes workloads, application APIs, and services distributed across multiple local servers required consistent metric collection and alerting. Configured Prometheus monitoring targets and alert rules, created Grafana dashboards, and integrated actionable notifications with Slack to centralize visibility across the environment.",
+    "results": [
+      "Automated repeatable application deployment workflows, reducing manual release steps and improving deployment consistency.",
+      "Improved infrastructure and API visibility through centralized dashboards and automated alert notifications.",
+      "Strengthened team coordination and knowledge transfer through standardized reporting and technical documentation."
+    ],
+    "githubLink": "[ADD GITHUB URL]",
+    "liveLink": null,
+    "architecture": "graph TD\n    A[Developer] -->|Push| B[GitLab Repository]\n    B -->|Webhook| C[Jenkins CI/CD Pipeline]\n    C --> D[Build & Package \nContainer Image]\n    C -->|Deploy with Kustomize| G[Local Kubernetes Cluster]\n    D --> E[Local Container Registry]\n    E -.->|Pull Image| G\n    G -->|Metrics| H[Prometheus]\n    H -->|Query| I[Grafana]\n    H -->|Alerts| J[Alertmanager]\n    J --> K[Slack]"
+  },
+  
+  
+  {
+    "slug": "highly-available-aws-architecture",
+    "title": "Highly Available AWS Web Architecture",
+    "tagline": "Designed a highly available AWS web architecture using EC2 Auto Scaling, an Application Load Balancer, Amazon DynamoDB, Amazon S3, and private VPC endpoints.",
+    "type": "Scholarship Project",
+    "status": "Completed",
+    "date": "2023",
+    "employer": "ALX Africa (Cloud Computing Program)",
+    "role": "Cloud Computing Trainee",
+    "featured": false,
+    "draft": false,
+    "confidential": false,
+    "environments": ["Multi-AZ AWS Training Environment"],
+    "tags": ["AWS","AWS EC2", "Application Load Balancer","Amazon VPC","VPC Endpoints", "EC2 Auto Scaling", "Amazon DynamoDB", "Amazon S3", "AWS IAM","Security Groups"],
+    "background": "Design a resilient web architecture capable of distributing application traffic across multiple Availability Zones, automatically replacing unhealthy compute instances, and securely accessing AWS data services without routing application traffic through the public internet.",
+    "solution": "Designed a Multi-AZ VPC architecture with public subnets for an Application Load Balancer and private subnets for EC2 web servers managed by an Auto Scaling Group. Configured target-group health checks, security groups, Amazon S3 for object storage, Amazon DynamoDB for application data, and Gateway VPC Endpoints for private access to S3 and DynamoDB.",
+    "responsibilities": [
+      "Designed a VPC spanning two Availability Zones with public and private subnets, route tables, and an Internet Gateway.",
+      "Configured an Application Load Balancer, target group, health checks, and security-group rules.",
+      "Created an EC2 launch template and Auto Scaling Group distributed across private subnets.",
+      "Integrated the application with Amazon DynamoDB for data storage and Amazon S3 for object storage.",
+      "Configured S3 and DynamoDB Gateway VPC Endpoints for private service access.",
+      "Tested application availability and load-balancer health routing under simulated instance failure conditions."
+    ],
+    "challenges": "EC2 instances in private subnets required secure access to Amazon S3 and DynamoDB without depending on public internet connectivity. Configured Gateway VPC Endpoints and associated them with the private-subnet route tables, allowing application traffic to reach both AWS services through the AWS network.",
+    "results": [
+      "Designed compute capacity across two Availability Zones to reduce dependency on a single failure domain.",
+      "Enabled automatic health-based traffic routing and EC2 instance replacement through ALB and Auto Scaling.",
+      "Established private connectivity from application instances to Amazon S3 and DynamoDB using Gateway VPC Endpoints.",
+      "Strengthened practical knowledge of AWS availability, scaling, networking, security, and managed data services."
+    ],
+    "githubLink": "[ADD GITHUB URL]",
+    "liveLink": null,
+    "architecture": "graph TD\n    A[Internet] --> B[Internet Gateway]\n    B --> C[\"Application Load Balancer<br/>Public Subnets – AZ1 and AZ2\"]\n    C -->|Target Group / Health Checks| D[EC2 Auto Scaling Group]\n    D --> E[\"EC2 Web Server – \nPrivate Subnet AZ1\"]\n    D --> F[\"EC2 Web Server – \nPrivate Subnet AZ2\"]\n    E -->|DynamoDB Gateway Endpoint| G[Amazon DynamoDB]\n    F -->|DynamoDB Gateway Endpoint| G\n    E -->|S3 Gateway Endpoint| H[Amazon S3]\n    F -->|S3 Gateway Endpoint| H\n    A -.->|Public HTTP / HTTPS Traffic| SG1[ALB Security Group]\n    SG1 -.->|Allows Traffic Only From\nALB SG| SG2[EC2 Security Group]\n    SG2 -.->|Secures Instances| D"
+  }
+]

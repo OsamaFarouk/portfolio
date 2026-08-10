@@ -1,0 +1,21 @@
+{
+  "name": "Osama Farouk",
+  "title": "DevOps Engineer",
+  "avatarUrl": "/images/osama-pic2.png",
+  "roles": [
+    "DevOps Engineer",
+    "Cloud Infrastructure Engineer",
+    "Site Reliability Engineer",
+    "CI/CD Automation Engineer",
+    "Platform Engineer"
+  ],
+  "location": "Cairo, Egypt",
+  "timezone": "EET (UTC+2) / EEST (UTC+3)",
+  "availability": "Available for Select Roles / Freelance Consulting",
+  "email": "osama.faroukk97@gmail.com",
+  "phone": "+201000748445",
+  "summary": "DevOps and Cloud Infrastructure Engineer with 5+ years of experience supporting enterprise platforms and production environments. Skilled in building and optimizing CI/CD pipelines, deploying containerized applications, and automating infrastructure. With a strong focus on deployment reliability, observability, automation, and operational stability.",
+  "aboutStoryParagraph1": "Over the past 5+ years, I have built my career across infrastructure operations, application support, and DevOps engineering, working with complex enterprise systems in both on-premises and cloud environments. This background has given me a practical understanding of the complete service lifecycle—from infrastructure and incident resolution to CI/CD, container orchestration, automation, and observability.",
+  "aboutStoryParagraph2": "My approach combines operational discipline with continuous improvement. I collaborate with development, support, and infrastructure teams to simplify deployments, troubleshoot complex issues, reduce manual effort, and improve system reliability. I enjoy transforming repeatable operational work into automated, maintainable solutions while continuing to expand my cloud and platform engineering expertise.",
+  "aboutExtended": "Over the past 5+ years, I have built my career across infrastructure operations, application support, and DevOps engineering, working with complex enterprise systems in both on-premises and cloud environments. My approach combines operational discipline with continuous improvement to simplify deployments, reduce manual effort, and improve system reliability."
+}

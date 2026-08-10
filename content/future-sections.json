@@ -1,0 +1,53 @@
+{
+  "volunteering": {
+    "enabled": true,
+    "items": [
+      {
+        "role": "Team Member",
+        "organization": "Google Developer Groups (GDG) Delta",
+        "period": "2023 - Present",
+        "description": "Participate in technical events, meetups, and knowledge-sharing activities focused on cloud computing, DevOps, and modern software technologies."
+      }
+    ]
+  },
+  "languages": {
+    "enabled": true,
+    "items": [
+      {
+        "language": "Arabic",
+        "proficiency": "Native"
+      },
+      {
+        "language": "English",
+        "proficiency": "Professional Working Proficiency"
+      }
+    ]
+  },
+  "blog": {
+    "enabled": false,
+    "items": []
+  },
+  "testimonials": {
+    "enabled": false,
+    "items": []
+  },
+  "talks": {
+    "enabled": false,
+    "items": []
+  },
+  "services": {
+    "enabled": false,
+    "items": []
+  },
+  "awards": {
+    "enabled": true,
+    "items": [
+      {
+        "name": "First Place Award, Electronics and Embedded Systems",
+        "organization": "International Japan Africa Conference (JAC-ECC) - Egypt-Japan University of Science and Technology",
+        "year": "2019",
+        "description": "Awarded 1st place among international competitors for the innovative engineering and design of an IoT based 3D printer graduation project."
+      }
+    ]
+  }
+}

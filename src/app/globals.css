@@ -1,26 +1,174 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Dark Theme variables (default theme for operator console feel) */
+  --bg-primary: #0a0d16;
+  --bg-secondary: #111625;
+  --bg-tertiary: #171f32;
+  --border-color: rgba(6, 182, 212, 0.15); /* cyan glow border */
+  --border-muted: rgba(226, 232, 240, 0.1);
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  
+  --accent-cyan: #06b6d4;
+  --accent-cyan-glow: rgba(6, 182, 212, 0.4);
+  --accent-emerald: #10b981;
+  --accent-emerald-glow: rgba(16, 185, 129, 0.3);
+  --accent-orange: #f97316;
+  --accent-orange-glow: rgba(249, 115, 22, 0.3);
+
+  --terminal-bg: #05070c;
+  --terminal-text: #00ffcc;
+  --terminal-border: rgba(0, 255, 204, 0.2);
+
+  --scanline-opacity: 0.14;
+  --grid-color: rgba(6, 182, 212, 0.04);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+
+@theme {
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-bg-tertiary: var(--bg-tertiary);
+  --color-border-color: var(--border-color);
+  --color-border-muted: var(--border-muted);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  
+  --color-accent-cyan: var(--accent-cyan);
+  --color-accent-cyan-glow: var(--accent-cyan-glow);
+  --color-accent-emerald: var(--accent-emerald);
+  --color-accent-emerald-glow: var(--accent-emerald-glow);
+  --color-accent-orange: var(--accent-orange);
+  --color-accent-orange-glow: var(--accent-orange-glow);
+
+  --color-terminal-bg: var(--terminal-bg);
+  --color-terminal-text: var(--terminal-text);
+  --color-terminal-border: var(--terminal-border);
+  
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* Custom backgrounds */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: var(--font-sans);
+}
+
+/* Operator grid texture overlay */
+.ops-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
+}
+
+/* CRT Scanline Overlay & retro terminal effects */
+.scanlines {
+  position: relative;
+}
+
+/* 1. Bezel Vignette + Horizontal Grid Scanlines */
+.scanlines::before {
+  content: " ";
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: 
+    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.2) 50%),
+    radial-gradient(circle at center, transparent 40%, rgba(0, 0, 0, 0.35) 100%);
+  z-index: 9999;
+  background-size: 100% 5px, 100% 100%;
+  pointer-events: none;
+  opacity: var(--scanline-opacity);
+}
+
+/* 2. Scrolling CRT Screen Sweep / Refresh Bar */
+@keyframes crt-sweep {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+.scanlines::after {
+  content: " ";
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  background: linear-gradient(to bottom, transparent 0%, rgba(6, 182, 212, 0.05) 50%, transparent 100%);
+  z-index: 9998;
+  pointer-events: none;
+  animation: crt-sweep 8s linear infinite;
+  opacity: var(--scanline-opacity);
+}
+
+/* 3. Glowing retro-phosphor typography under CRT Mode */
+.scanlines .font-mono,
+.scanlines pre,
+.scanlines code,
+.scanlines input,
+.scanlines .terminal-text {
+  text-shadow: 0 0 3px rgba(6, 182, 212, 0.35);
+  transition: text-shadow 0.3s ease;
+}
+
+
+/* Custom terminal caret */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.cursor-blink::after {
+  content: '█';
+  animation: blink 1s step-end infinite;
+  color: var(--terminal-text);
+}
+
+/* Pipeline Connector Line Glows */
+.pipeline-glow-cyan {
+  box-shadow: 0 0 15px var(--accent-cyan-glow);
+}
+.pipeline-glow-emerald {
+  box-shadow: 0 0 15px var(--accent-emerald-glow);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--bg-tertiary);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-cyan-glow);
+}
+
+/* Accessibly respect user preference for reduced motions */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-delay: -1ms !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    background-attachment: initial !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+  }
+  .scanlines::before {
+    display: none !important;
+  }
 }
