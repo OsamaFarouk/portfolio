@@ -16,7 +16,6 @@ import {
   ShieldCheck,
   Search,
   RotateCcw,
-  Filter,
 } from "lucide-react";
 
 export default function CoursesPage() {
@@ -215,7 +214,7 @@ export default function CoursesPage() {
           {/* Page Header */}
           <div>
             <span className="font-mono text-xs text-accent-cyan uppercase tracking-wider block">
-              // TECHNICAL_TRAINING_MODULES
+              {"// TECHNICAL_TRAINING_MODULES"}
             </span>
             <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-text-primary mt-1">
               PROFESSIONAL COURSES

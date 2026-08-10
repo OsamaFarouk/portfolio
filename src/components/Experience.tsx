@@ -15,7 +15,7 @@ export default function Experience() {
     <section id="experience" className="py-12 border-t border-border-muted scroll-mt-16">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
         <div>
-          <h2 className="font-mono text-xs text-accent-cyan uppercase tracking-wider">// SYSTEM_HISTORY</h2>
+          <h2 className="font-mono text-xs text-accent-cyan uppercase tracking-wider">{"// SYSTEM_HISTORY"}</h2>
           <h3 className="text-2xl font-bold tracking-tight mt-1">Professional Experience</h3>
         </div>
         <div className="font-mono text-[11px] text-text-secondary bg-bg-secondary px-3 py-1.5 rounded border border-border-muted self-start">
@@ -24,7 +24,7 @@ export default function Experience() {
       </div>
 
       <div className="relative border-l border-border-color/30 ml-4 md:ml-6 space-y-6">
-        {experience.map((exp: ExpType, idx) => {
+        {experience.map((exp: ExpType, _idx) => {
           const isExpanded = expandedId === exp.id;
           
           return (
@@ -153,7 +153,7 @@ export default function Experience() {
                     {/* Stack Used */}
                     <div className="space-y-2 border-t border-border-muted pt-4">
                       <h4 className="font-mono text-xs text-text-secondary uppercase tracking-wider">
-                        // Deployment Stack
+                        {"// Deployment Stack"}
                       </h4>
                       <div className="flex flex-wrap gap-2">
                         {exp.technologies.map((tech) => (

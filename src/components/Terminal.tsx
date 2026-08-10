@@ -9,7 +9,7 @@ import {
   getInitialBanner,
   TerminalContext,
 } from "@/utils/terminalEngine";
-import { Terminal as TerminalIcon, RefreshCw, ShieldCheck, CheckCircle2, CornerDownLeft } from "lucide-react";
+import { Terminal as TerminalIcon, RefreshCw, ShieldCheck } from "lucide-react";
 
 interface LogLine {
   id: string;
@@ -30,7 +30,15 @@ export interface PendingConfirmationPayload {
 export default function Terminal() {
   const router = useRouter();
   const [context, setContext] = useState<TerminalContext>("main");
-  const [history, setHistory] = useState<LogLine[]>([]);
+  const [history, setHistory] = useState<LogLine[]>(() => [
+    {
+      id: "init-banner",
+      context: "main",
+      promptPath: "osama@control-plane:~$",
+      output: getInitialBanner(),
+      timestamp: new Date().toLocaleTimeString(),
+    },
+  ]);
   const [inputVal, setInputVal] = useState("");
   const [cmdHistory, setCmdHistory] = useState<string[]>([]);
   const [historyIdx, setHistoryIdx] = useState<number>(-1);
@@ -38,19 +46,6 @@ export default function Terminal() {
 
   const logsContainerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-
-  // Initial welcome banner
-  useEffect(() => {
-    setHistory([
-      {
-        id: "init-banner",
-        context: "main",
-        promptPath: "osama@control-plane:~$",
-        output: getInitialBanner(),
-        timestamp: new Date().toLocaleTimeString(),
-      },
-    ]);
-  }, []);
 
   // Auto scroll logs container on history update
   useEffect(() => {
@@ -355,7 +350,7 @@ export default function Terminal() {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
         <div>
           <h2 className="font-mono text-xs text-accent-cyan uppercase tracking-wider">
-            // CONTROL_PLANE
+            {"// CONTROL_PLANE"}
           </h2>
           <h3 className="text-2xl font-bold tracking-tight mt-1">
             Interactive System Terminal

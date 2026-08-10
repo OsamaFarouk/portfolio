@@ -13,7 +13,7 @@ import {
   getResumeVolunteering,
   getResumeLanguages,
 } from "@/utils/dataLoader";
-import { ArrowLeft, Printer, Download, Mail, Phone, MapPin, ExternalLink, Award as AwardIcon, BookOpen } from "lucide-react";
+import { ArrowLeft, Printer, Download, Mail, Phone, MapPin, Award as AwardIcon, BookOpen } from "lucide-react";
 import { Github, Linkedin } from "@/components/SocialIcons";
 import { ThemeProvider } from "@/components/ThemeContext";
 

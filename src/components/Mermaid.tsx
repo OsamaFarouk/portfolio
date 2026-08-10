@@ -2,10 +2,6 @@
 
 import React, { useEffect, useState, useRef } from "react";
 
-interface MermaidProps {
-  chart: string;
-}
-
 export default function Mermaid({ chart }: { chart: string }) {
   const [isClient, setIsClient] = useState(false);
   const elementRef = useRef<HTMLDivElement>(null);
@@ -63,7 +59,7 @@ export default function Mermaid({ chart }: { chart: string }) {
       className="w-full bg-bg-primary rounded border border-border-muted p-4 overflow-x-auto flex items-center justify-center min-h-[160px]"
     >
       <div className="font-mono text-[11px] text-text-secondary animate-pulse uppercase">
-        // LOADING_MERMAID_DIAGRAM...
+        {"// LOADING_MERMAID_DIAGRAM..."}
       </div>
     </div>
   );

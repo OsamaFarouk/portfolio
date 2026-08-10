@@ -2,7 +2,7 @@
 
 import React from "react";
 import { skills, SkillCategory, portfolioStats } from "@/utils/dataLoader";
-import { Wrench, ShieldCheck, Check } from "lucide-react";
+import { Wrench, ShieldCheck } from "lucide-react";
 
 export default function Skills() {
   // Get color depending on proficiency level
@@ -33,7 +33,7 @@ export default function Skills() {
     <section id="skills" className="py-12 border-t border-border-muted scroll-mt-16">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
         <div>
-          <h2 className="font-mono text-xs text-accent-cyan uppercase tracking-wider">// SYSTEM_STACK</h2>
+          <h2 className="font-mono text-xs text-accent-cyan uppercase tracking-wider">{"// SYSTEM_STACK"}</h2>
           <h3 className="text-2xl font-bold tracking-tight mt-1">Skills & Technologies</h3>
         </div>
         <div className="font-mono text-[11px] text-text-secondary bg-bg-secondary px-3 py-1.5 rounded border border-border-muted self-start flex items-center gap-2">
