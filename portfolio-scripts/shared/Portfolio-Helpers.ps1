@@ -4,9 +4,31 @@ $ErrorActionPreference = "Stop"
 function Assert-CommandExists {
     param([Parameter(Mandatory)][string]$Name)
 
+    if ($Name -eq "npm") {
+        Resolve-NpmCommand | Out-Null
+        return
+    }
+
     if (-not (Get-Command $Name -ErrorAction SilentlyContinue)) {
         throw "Required command '$Name' was not found in PATH."
     }
+}
+
+function Resolve-NpmCommand {
+    $candidates = @(
+        (Get-Command "npm.cmd" -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Source -First 1),
+        (Get-Command "npm" -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Source -First 1),
+        "D:\node-portable\node-v20.12.2-win-x64\npm.cmd",
+        "$env:ProgramFiles\nodejs\npm.cmd",
+        "$env:LOCALAPPDATA\Programs\nodejs\npm.cmd",
+        "$env:LOCALAPPDATA\Volta\bin\npm.cmd"
+    ) | Where-Object { -not [string]::IsNullOrWhiteSpace($_) }
+
+    foreach ($candidate in $candidates) {
+        if (Test-Path -LiteralPath $candidate -PathType Leaf) { return $candidate }
+    }
+
+    throw "npm was not found. Expected your portable npm at 'D:\node-portable\node-v20.12.2-win-x64\npm.cmd' or npm in PATH."
 }
 
 function Invoke-Git {
@@ -31,10 +53,46 @@ function Get-GitOutput {
 function Invoke-Npm {
     param([Parameter(Mandatory)][string[]]$Arguments)
 
-    & npm @Arguments
+    $npmCommand = Resolve-NpmCommand
+    & $npmCommand @Arguments
     if ($LASTEXITCODE -ne 0) {
         throw "npm $($Arguments -join ' ') failed with exit code $LASTEXITCODE."
     }
+}
+
+function Get-InProgressGitOperation {
+    $gitDirectory = Get-GitOutput -Arguments @("rev-parse", "--git-dir")
+    $checks = [ordered]@{
+        "Merge"       = @("MERGE_HEAD")
+        "Rebase"      = @("rebase-merge", "rebase-apply")
+        "Cherry-pick" = @("CHERRY_PICK_HEAD")
+        "Revert"      = @("REVERT_HEAD")
+        "Bisect"      = @("BISECT_LOG")
+    }
+
+    foreach ($operation in $checks.Keys) {
+        foreach ($marker in $checks[$operation]) {
+            if (Test-Path -LiteralPath (Join-Path $gitDirectory $marker)) { return $operation }
+        }
+    }
+    return $null
+}
+
+function Get-UnmergedFiles {
+    $output = Get-GitOutput -Arguments @("diff", "--name-only", "--diff-filter=U")
+    if ([string]::IsNullOrWhiteSpace($output)) { return @() }
+    return @(($output -split "`r?`n") | Where-Object { -not [string]::IsNullOrWhiteSpace($_) })
+}
+
+function Get-PackageVersionFromBranch {
+    param([Parameter(Mandatory)][string]$Branch)
+
+    $json = Get-GitOutput -Arguments @("show", "${Branch}:package.json")
+    $package = $json | ConvertFrom-Json
+    if ([string]::IsNullOrWhiteSpace([string]$package.version)) {
+        throw "package.json on '$Branch' does not contain a version."
+    }
+    return [string]$package.version
 }
 
 function Set-PortfolioLocation {
@@ -135,6 +193,19 @@ function Read-YesNo {
     }
 }
 
+function Read-Choice {
+    param(
+        [Parameter(Mandatory)][string]$Prompt,
+        [Parameter(Mandatory)][string[]]$Allowed
+    )
+
+    while ($true) {
+        $answer = (Read-Host "$Prompt [$($Allowed -join '/')]").Trim().ToUpperInvariant()
+        if ($answer -in $Allowed) { return $answer }
+        Write-Host "Please enter one of: $($Allowed -join ', ')." -ForegroundColor Yellow
+    }
+}
+
 function New-StageReport {
     param([Parameter(Mandatory)][string]$Stage)
 
@@ -183,4 +254,3 @@ function Show-StageReport {
     }
     Write-Host "================================================" -ForegroundColor Cyan
 }
-

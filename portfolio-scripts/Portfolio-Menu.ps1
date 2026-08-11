@@ -11,7 +11,7 @@ do {
     Write-Host "3. Prepare release"
     Write-Host "4. Run final tests"
     Write-Host "5. Publish to production"
-    Write-Host "0. Exit"
+    Write-Host "6. Exit"
     Write-Host ""
     $choice = (Read-Host "Choose a stage").Trim()
 
@@ -21,7 +21,7 @@ do {
         "3" { "03-prepare-release.ps1" }
         "4" { "04-final-testing.ps1" }
         "5" { "05-publish-production.ps1" }
-        "0" { $null }
+        "6" { $null }
         default { "INVALID" }
     }
 
@@ -29,11 +29,19 @@ do {
         Write-Host "Invalid choice." -ForegroundColor Yellow
         Read-Host "Press Enter to continue" | Out-Null
     } elseif ($scriptName) {
-        & (Join-Path $PSScriptRoot $scriptName) -PortfolioPath $PortfolioPath
+        $scriptPath = Join-Path $PSScriptRoot $scriptName
+        if (-not (Test-Path -LiteralPath $scriptPath -PathType Leaf)) {
+            Write-Host "Required stage file is missing: $scriptPath" -ForegroundColor Red
+            Write-Host "Replace the complete portfolio-scripts folder, not only Portfolio-Menu.ps1." -ForegroundColor Yellow
+            $runs.Add("$scriptName (missing)")
+            Read-Host "Press Enter to return to the menu" | Out-Null
+            continue
+        }
+        & $scriptPath -PortfolioPath $PortfolioPath
         $runs.Add("$scriptName (exit code: $LASTEXITCODE)")
         Read-Host "Press Enter to return to the menu" | Out-Null
     }
-} while ($choice -ne "0")
+} while ($choice -ne "6")
 
 Write-Host ""
 Write-Host "================ MENU SUMMARY =================" -ForegroundColor Cyan
@@ -45,4 +53,3 @@ if ($runs.Count -eq 0) {
     foreach ($run in $runs) { Write-Host "  - $run" }
 }
 Write-Host "================================================" -ForegroundColor Cyan
-
