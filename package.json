@@ -14,7 +14,8 @@
     "add:skill": "node scripts/add-content.js skill",
     "add:certification": "node scripts/add-content.js certification",
     "validate:content": "node scripts/validate-content.js",
-    "check:all": "npm run validate:content && npm run typecheck && npm run lint && npm test && npm run build"
+    "validate:tag": "node scripts/validate-release-tag.js",
+    "check:all": "npm run validate:content && npm run validate:tag && npm run typecheck && npm run lint && npm test && npm run build"
   },
   "dependencies": {
     "lucide-react": "^1.24.0",

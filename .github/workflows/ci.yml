@@ -27,6 +27,9 @@ jobs:
       - name: Validate Portfolio Content Schemas
         run: node scripts/validate-content.js
 
+      - name: Validate Release Tag Alignment
+        run: node scripts/validate-release-tag.js
+
       - name: Run TypeScript Type Check
         run: npx tsc --noEmit
 

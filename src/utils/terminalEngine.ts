@@ -91,6 +91,28 @@ export const getPromptPath = (context: TerminalContext): string => {
   }
 };
 
+export const getMobilePromptPath = (context: TerminalContext): string => {
+  switch (context) {
+    case "projects":
+      return "~/projects$";
+    case "certifications":
+      return "~/certifications$";
+    case "skills":
+      return "~/skills$";
+    case "experience":
+      return "~/experience$";
+    case "education":
+      return "~/education$";
+    case "courses":
+      return "~/courses$";
+    case "closed":
+      return "[DISCONNECTED]";
+    case "main":
+    default:
+      return "~$";
+  }
+};
+
 export const getVirtualPath = (context: TerminalContext): string => {
   switch (context) {
     case "projects":
@@ -113,8 +135,10 @@ export const getVirtualPath = (context: TerminalContext): string => {
   }
 };
 
+import { APP_VERSION } from "./version";
+
 export const getInitialBanner = (): string => {
-  return `OSAMA INFRASTRUCTURE CONTROL CONSOLE [v2.4.0-STABLE]
+  return `OSAMA INFRASTRUCTURE CONTROL CONSOLE [v${APP_VERSION}-STABLE]
 
 [OK] SECURE SHELL SESSION OPENED
 [OK] CLUSTER CONTEXT LOADED: PORTFOLIO-CLUSTER
