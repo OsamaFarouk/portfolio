@@ -5,11 +5,13 @@ import { useRouter } from "next/navigation";
 import {
   processTerminalCommand,
   getPromptPath,
+  getMobilePromptPath,
   getAutocompleteSuggestions,
   getInitialBanner,
   TerminalContext,
 } from "@/utils/terminalEngine";
 import { Terminal as TerminalIcon, RefreshCw, ShieldCheck } from "lucide-react";
+import { APP_VERSION } from "@/utils/version";
 
 interface LogLine {
   id: string;
@@ -336,6 +338,23 @@ export default function Terminal() {
       );
     }
 
+    // 7. Command Help List Lines (Command Name on left, Description on right)
+    const cmdHelpMatch = line.match(/^([a-z0-9_/<>\s\-]{1,18})\u00A0{2,}(.+)$/i);
+    if (cmdHelpMatch) {
+      const cmdName = cmdHelpMatch[1].trim();
+      const cmdDesc = cmdHelpMatch[2].trim();
+      return (
+        <div key={lineIdx} className="font-mono text-xs py-0.5 flex items-start">
+          <span className="w-28 sm:w-40 shrink-0 text-text-primary/90 font-mono">
+            {cmdName}
+          </span>
+          <span className="flex-1 min-w-0 text-text-primary/90 font-mono leading-relaxed break-words">
+            {cmdDesc}
+          </span>
+        </div>
+      );
+    }
+
     // Default Output Line
     return (
       <div key={lineIdx} className="font-mono text-xs text-text-primary/90 leading-relaxed break-words whitespace-pre-wrap">
@@ -368,11 +387,11 @@ export default function Terminal() {
       {/* Terminal Card Container */}
       <div className="bg-bg-secondary border border-border-muted rounded-lg shadow-xl overflow-hidden font-mono text-xs">
         {/* Terminal Header Bar */}
-        <div className="bg-bg-tertiary border-b border-border-muted px-4 py-2.5 flex items-center justify-between select-none">
-          <div className="flex items-center gap-2 overflow-hidden">
+        <div className="bg-bg-tertiary border-b border-border-muted px-3 sm:px-4 py-2.5 flex items-center justify-between gap-2 select-none">
+          <div className="flex items-center gap-2 min-w-0">
             <TerminalIcon size={15} className="text-accent-cyan shrink-0" />
-            <span className="font-bold text-accent-cyan truncate text-xs">
-              OSAMA INFRASTRUCTURE CONTROL CONSOLE [v2.4.0-STABLE]
+            <span className="font-bold text-accent-cyan text-xs leading-tight whitespace-normal sm:whitespace-nowrap sm:truncate break-words">
+              OSAMA INFRASTRUCTURE CONTROL CONSOLE [v{APP_VERSION}-STABLE]
             </span>
           </div>
 
@@ -397,7 +416,14 @@ export default function Terminal() {
             <div key={log.id} className="space-y-1">
               {log.input && (
                 <div className="flex items-center gap-2 text-text-secondary text-[11px]">
-                  <span className="text-accent-cyan font-bold">{log.promptPath}</span>
+                  <span className="text-accent-cyan font-bold">
+                    <span className="hidden sm:inline">{log.promptPath}</span>
+                    <span className="inline sm:hidden">
+                      {log.promptPath.startsWith("osama@control-plane:")
+                        ? log.promptPath.replace("osama@control-plane:", "")
+                        : log.promptPath}
+                    </span>
+                  </span>
                   <span className="text-text-primary font-semibold">{log.input}</span>
                 </div>
               )}
@@ -412,7 +438,8 @@ export default function Terminal() {
         <div className="p-3 bg-bg-secondary border-t border-border-muted">
           <form onSubmit={handleSubmit} className="flex items-center gap-2">
             <span className="text-accent-cyan font-bold font-mono text-xs shrink-0 select-none">
-              {getPromptPath(context)}
+              <span className="hidden sm:inline">{getPromptPath(context)}</span>
+              <span className="inline sm:hidden">{getMobilePromptPath(context)}</span>
             </span>
             <input
               ref={inputRef}
@@ -425,7 +452,7 @@ export default function Terminal() {
                   ? "Enter Y to confirm or N to cancel..."
                   : "Type 'help' to list commands..."
               }
-              className="flex-1 bg-transparent border-none outline-none font-mono text-xs text-text-primary placeholder:text-text-secondary/50 focus:ring-0"
+              className="flex-1 min-w-0 bg-transparent border-none outline-none font-mono text-xs text-text-primary placeholder:text-text-secondary/50 focus:ring-0"
               autoComplete="off"
               spellCheck="false"
             />

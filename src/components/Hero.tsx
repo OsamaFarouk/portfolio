@@ -226,61 +226,63 @@ export default function Hero() {
                 <span className="text-2xl font-bold text-text-primary mt-1">{portfolioStats.totalEmployers}</span>
               </div>
               <div className="flex justify-end mt-1">
-                <span className="text-text-secondary group-hover:text-accent-cyan group-hover:translate-x-1 transition-all duration-200 text-xs">
+        <span className="text-text-secondary group-hover:text-accent-cyan group-hover:translate-x-1 transition-all duration-200 text-xs">
                   →
                 </span>
               </div>
             </a>
           </div>
 
-          <div className="flex flex-wrap gap-4 mt-8 pt-6 border-t border-border-muted">
+          <div className="flex flex-wrap justify-center sm:justify-start items-center gap-3 sm:gap-4 mt-8 pt-6 border-t border-border-muted">
             <a
               href="#contact"
-              className="px-5 py-2.5 rounded bg-accent-cyan text-bg-primary font-mono text-xs font-bold hover:bg-accent-cyan/95 hover:shadow-[0_0_15px_rgba(6,182,212,0.4)] transition-all flex items-center gap-1.5"
+              className="px-5 py-2.5 rounded bg-accent-cyan text-bg-primary font-mono text-xs font-bold hover:bg-accent-cyan/95 hover:shadow-[0_0_15px_rgba(6,182,212,0.4)] transition-all flex items-center justify-center gap-1.5"
             >
               <span>CONTACT ME</span>
               <ChevronRight size={14} />
             </a>
             <a
               href="#projects"
-              className="px-5 py-2.5 rounded bg-bg-tertiary border border-border-muted font-mono text-xs text-text-primary hover:border-accent-cyan hover:text-accent-cyan transition-all"
+              className="px-5 py-2.5 rounded bg-bg-tertiary border border-border-muted font-mono text-xs text-text-primary hover:border-accent-cyan hover:text-accent-cyan transition-all flex items-center justify-center"
             >
               VIEW PROJECTS
             </a>
-            <a
-              href="/resume/Osama_Farouk_DevOps_Resume.pdf"
-              download="Osama_Farouk_DevOps_Resume.pdf"
-              className="px-5 py-2.5 rounded border font-bold bg-accent-emerald-glow/5 font-mono text-xs text-accent-emerald hover:bg-accent-emerald-glow/20 hover:border-accent-emerald transition-all flex items-center gap-1.5"
-            >
-              <Download size={14} />
-              <span>DOWNLOAD RESUME</span>
-            </a>
+            <div className="w-full sm:w-auto flex justify-center">
+              <a
+                href="/resume/Osama_Farouk_DevOps_Resume.pdf"
+                download="Osama_Farouk_DevOps_Resume.pdf"
+                className="px-5 py-2.5 rounded border font-bold bg-accent-emerald-glow/5 font-mono text-xs text-accent-emerald hover:bg-accent-emerald-glow/20 hover:border-accent-emerald transition-all flex items-center justify-center gap-1.5"
+              >
+                <Download size={14} />
+                <span>DOWNLOAD RESUME</span>
+              </a>
+            </div>
           </div>
         </div>
 
         {/* Real-time Cluster Node Visualizer Grid */}
         <div className="bg-bg-secondary border border-border-muted rounded-lg p-6 overflow-hidden">
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="font-mono text-xs text-accent-cyan uppercase tracking-wider mb-2">// PLATFORM_DELIVERY_LIFECYCLE</h2>
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:text-left gap-1.5 sm:gap-4 mb-6">
+            <h2 className="font-mono text-xs text-accent-cyan uppercase tracking-wider">{"// PLATFORM_DELIVERY_LIFECYCLE"}</h2>
             <span className="font-mono text-[11px] text-emerald-100 dark:text-accent-emerald font-bold animate-pulse">● PIPELINE_ONLINE: 05/05</span>
           </div>
 
           {/* 5-Column Responsive Grid Layout (Prevents Overflow) */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 py-2">
-                       {/* Stage 1 */}
-            <div className="bg-bg-tertiary border border-border-muted hover:border-accent-cyan hover:shadow-[0_0_15px_rgba(6,182,212,0.1)] rounded-lg p-4 transition-all duration-300 relative group flex flex-col justify-between min-h-[145px]">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5 sm:gap-4 py-2">
+            {/* Stage 1 */}
+            <div className="bg-bg-tertiary border border-border-muted hover:border-accent-cyan hover:shadow-[0_0_15px_rgba(6,182,212,0.1)] rounded-lg p-3 sm:p-4 transition-all duration-300 relative group flex flex-col justify-between min-h-0 sm:min-h-[145px]">
               <div className="absolute top-2 right-3 font-mono text-[11px] text-cyan-700 dark:text-accent-cyan/99 group-hover:text-accent-cyan font-bold transition-colors">
                 01/PLAN
               </div>
-              <div className="mt-2">
-                <div className="flex items-center gap-2 mb-3">
+              <div className="mt-0.5 sm:mt-2">
+                <div className="flex items-center gap-2 mb-2 sm:mb-3">
                   <div className="p-1.5 rounded bg-bg-primary text-accent-cyan border border-border-muted group-hover:border-accent-cyan/30 transition-colors">
                     <GitBranch size={14} className="group-hover:scale-110 transition-transform" />
                   </div>
                   <span className="font-bold text-[11px] tracking-wider text-slate-800 dark:text-slate-100 uppercase group-hover:text-accent-cyan transition-colors">PLAN & COLLAB</span>
                 </div>
               </div>
-              <div className="flex flex-wrap gap-1.5 mt-auto">
+              <div className="flex flex-wrap gap-1.5 mt-2 sm:mt-auto">
                 {["Git", "GitHub", "GitLab"].map((tech) => (
                   <span key={tech} className="px-2 py-0.5 rounded bg-bg-secondary border border-border-muted font-mono text-[9px] text-slate-700 dark:text-slate-300 font-bold">
                     {tech}
@@ -298,19 +300,19 @@ export default function Hero() {
             </div>
  
             {/* Stage 2 */}
-            <div className="bg-bg-tertiary border border-border-muted hover:border-accent-emerald hover:shadow-[0_0_15px_rgba(16,185,129,0.1)] rounded-lg p-4 transition-all duration-300 relative group flex flex-col justify-between min-h-[145px]">
+            <div className="bg-bg-tertiary border border-border-muted hover:border-accent-emerald hover:shadow-[0_0_15px_rgba(16,185,129,0.1)] rounded-lg p-3 sm:p-4 transition-all duration-300 relative group flex flex-col justify-between min-h-0 sm:min-h-[145px]">
               <div className="absolute top-2 right-3 font-mono text-[11px] text-emerald-700 dark:text-accent-emerald/99 group-hover:text-accent-emerald font-bold transition-colors">
                 02/BUILD
               </div>
-              <div className="mt-2">
-                <div className="flex items-center gap-2 mb-3">
+              <div className="mt-0.5 sm:mt-2">
+                <div className="flex items-center gap-2 mb-2 sm:mb-3">
                   <div className="p-1.5 rounded bg-bg-primary text-accent-emerald border border-border-muted group-hover:border-accent-emerald/30 transition-colors">
                     <Cpu size={14} className="group-hover:rotate-12 transition-transform" />
                   </div>
                   <span className="font-bold text-[11px] tracking-wider text-slate-800 dark:text-slate-100 uppercase group-hover:text-accent-emerald transition-colors">BUILD & VALIDATE</span>
                 </div>
               </div>
-              <div className="flex flex-wrap gap-1.5 mt-auto">
+              <div className="flex flex-wrap gap-1.5 mt-2 sm:mt-auto">
                 {["Jenkins", "GitLab CI", "SonarQube"].map((tech) => (
                   <span key={tech} className="px-2 py-0.5 rounded bg-bg-secondary border border-border-muted font-mono text-[9px] text-slate-700 dark:text-slate-300 font-bold">
                     {tech}
@@ -328,19 +330,19 @@ export default function Hero() {
             </div>
  
             {/* Stage 3 */}
-            <div className="bg-bg-tertiary border border-border-muted hover:border-accent-orange hover:shadow-[0_0_15px_rgba(249,115,22,0.1)] rounded-lg p-4 transition-all duration-300 relative group flex flex-col justify-between min-h-[145px]">
+            <div className="bg-bg-tertiary border border-border-muted hover:border-accent-orange hover:shadow-[0_0_15px_rgba(249,115,22,0.1)] rounded-lg p-3 sm:p-4 transition-all duration-300 relative group flex flex-col justify-between min-h-0 sm:min-h-[145px]">
               <div className="absolute top-2 right-3 font-mono text-[11px] text-orange-700 dark:text-accent-orange/99 group-hover:text-accent-orange font-bold transition-colors">
                 03/INFRA
               </div>
-              <div className="mt-2">
-                <div className="flex items-center gap-2 mb-3">
+              <div className="mt-0.5 sm:mt-2">
+                <div className="flex items-center gap-2 mb-2 sm:mb-3">
                   <div className="p-1.5 rounded bg-bg-primary text-accent-orange border border-border-muted group-hover:border-accent-orange/30 transition-colors">
                     <Cloud size={14} className="group-hover:scale-110 transition-transform" />
                   </div>
                   <span className="font-bold text-[11px] tracking-wider text-slate-800 dark:text-slate-100 uppercase group-hover:text-accent-orange transition-colors">PROVISION & CONF</span>
                 </div>
               </div>
-              <div className="flex flex-wrap gap-1.5 mt-auto">
+              <div className="flex flex-wrap gap-1.5 mt-2 sm:mt-auto">
                 {["Terraform", "Ansible", "Bash"].map((tech) => (
                   <span key={tech} className="px-2 py-0.5 rounded bg-bg-secondary border border-border-muted font-mono text-[9px] text-slate-700 dark:text-slate-300 font-bold">
                     {tech}
@@ -358,19 +360,19 @@ export default function Hero() {
             </div>
  
             {/* Stage 4 */}
-            <div className="bg-bg-tertiary border border-border-muted hover:border-accent-cyan hover:shadow-[0_0_15px_rgba(6,182,212,0.1)] rounded-lg p-4 transition-all duration-300 relative group flex flex-col justify-between min-h-[145px]">
+            <div className="bg-bg-tertiary border border-border-muted hover:border-accent-cyan hover:shadow-[0_0_15px_rgba(6,182,212,0.1)] rounded-lg p-3 sm:p-4 transition-all duration-300 relative group flex flex-col justify-between min-h-0 sm:min-h-[145px]">
               <div className="absolute top-2 right-3 font-mono text-[11px] text-cyan-700 dark:text-accent-cyan/99 group-hover:text-accent-cyan font-bold transition-colors">
                 04/DEPLOY
               </div>
-              <div className="mt-2">
-                <div className="flex items-center gap-2 mb-3">
+              <div className="mt-0.5 sm:mt-2">
+                <div className="flex items-center gap-2 mb-2 sm:mb-3">
                   <div className="p-1.5 rounded bg-bg-primary text-accent-cyan border border-border-muted group-hover:border-accent-cyan/30 transition-colors">
                     <Box size={14} className="group-hover:rotate-12 transition-transform" />
                   </div>
                   <span className="font-bold text-[11px] tracking-wider text-slate-800 dark:text-slate-100 uppercase group-hover:text-accent-cyan transition-colors">PACKAGE & DEPLOY</span>
                 </div>
               </div>
-              <div className="flex flex-wrap gap-1.5 mt-auto">
+              <div className="flex flex-wrap gap-1.5 mt-2 sm:mt-auto">
                 {["Docker", "Helm", "Kubernetes"].map((tech) => (
                   <span key={tech} className="px-2 py-0.5 rounded bg-bg-secondary border border-border-muted font-mono text-[9px] text-slate-700 dark:text-slate-300 font-bold">
                     {tech}
@@ -388,19 +390,19 @@ export default function Hero() {
             </div>
 
             {/* Stage 5 */}
-            <div className="bg-bg-tertiary border border-accent-cyan/30 rounded-lg p-4 transition-all duration-300 relative group flex flex-col justify-between min-h-[145px] pipeline-glow-cyan">
+            <div className="bg-bg-tertiary border border-accent-cyan/30 rounded-lg p-3 sm:p-4 transition-all duration-300 relative group flex flex-col justify-between min-h-0 sm:min-h-[145px] pipeline-glow-cyan">
               <div className="absolute top-2 right-3 font-mono text-[11px] text-accent-cyan/99 font-bold">
                 05/MONITOR
               </div>
-              <div className="mt-2">
-                <div className="flex items-center gap-2 mb-3">
+              <div className="mt-0.5 sm:mt-2">
+                <div className="flex items-center gap-2 mb-2 sm:mb-3">
                   <div className="p-1.5 rounded bg-bg-primary text-accent-cyan border border-accent-cyan/30">
                     <Activity size={14} className="animate-pulse" />
                   </div>
                   <span className="font-bold text-[11px] tracking-wider text-accent-cyan uppercase">OPERATE & OBSERVE</span>
                 </div>
               </div>
-              <div className="flex flex-wrap gap-1.5 mt-auto">
+              <div className="flex flex-wrap gap-1.5 mt-2 sm:mt-auto">
                 {["Prometheus", "Grafana", "ELK"].map((tech) => (
                   <span key={tech} className="px-2 py-0.5 rounded bg-bg-secondary border border-accent-cyan/20 font-mono text-[9px] text-accent-cyan font-bold">
                     {tech}

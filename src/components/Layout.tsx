@@ -6,6 +6,7 @@ import { useRouter, usePathname } from "next/navigation";
 import { Terminal as TerminalIcon, Menu, X, ArrowUp, ChevronDown, ExternalLink } from "lucide-react";
 import { profile } from "@/utils/dataLoader";
 import { scrollToSection } from "@/utils/scrollHelper";
+import { APP_VERSION } from "@/utils/version";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
@@ -15,10 +16,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   const [credentialsOpen, setCredentialsOpen] = useState(false);
   const [mobileCredentialsOpen, setMobileCredentialsOpen] = useState(true);
   const [showBackToTop, setShowBackToTop] = useState(false);
+  const [isFooterDocked, setIsFooterDocked] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("home");
 
   const dropdownRef = useRef<HTMLDivElement>(null);
   const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const dockingSentinelRef = useRef<HTMLDivElement>(null);
 
   // Centralized Navigation Handler for main-bar section links
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>, sectionId: string) => {
@@ -130,6 +133,28 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
       window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
+  // IntersectionObserver observing dedicated docking sentinel to dock mobile Top Up button before footer overlap
+  useEffect(() => {
+    if (typeof window === "undefined" || !dockingSentinelRef.current) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsFooterDocked(entry.isIntersecting);
+      },
+      {
+        root: null,
+        rootMargin: "0px 0px 80px 0px",
+        threshold: 0,
+      }
+    );
+
+    observer.observe(dockingSentinelRef.current);
+
+    return () => {
+      observer.disconnect();
     };
   }, []);
 
@@ -466,14 +491,27 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         {children}
       </main>
 
-      {/* Floating Back To Top Button */}
+      {/* Floating Mobile Back To Top Button (when NOT docked in footer) */}
+      {showBackToTop && !isFooterDocked && (
+        <button
+          type="button"
+          onClick={scrollToTop}
+          title="Back to top"
+          aria-label="Back to top"
+          className="flex sm:hidden fixed bottom-5 right-5 z-20 pb-[env(safe-area-inset-bottom)] w-12 h-12 rounded-lg bg-bg-secondary/90 backdrop-blur-md border border-accent-cyan/70 text-accent-cyan hover:border-accent-cyan hover:bg-bg-tertiary hover:shadow-[0_0_15px_rgba(6,182,212,0.35)] active:scale-95 transition-all duration-200 items-center justify-center cursor-pointer shadow-lg group"
+        >
+          <ArrowUp size={18} className="group-hover:-translate-y-0.5 transition-transform" />
+        </button>
+      )}
+
+      {/* Desktop Fixed Back To Top Button */}
       {showBackToTop && (
         <button
           type="button"
           onClick={scrollToTop}
           title="Back to top"
           aria-label="Back to top"
-          className="fixed bottom-5 right-5 sm:bottom-10 sm:right-10 z-20 w-12 h-12 rounded-lg bg-bg-secondary/90 backdrop-blur-md border border-accent-cyan/70 text-accent-cyan hover:border-accent-cyan hover:bg-bg-tertiary hover:shadow-[0_0_15px_rgba(6,182,212,0.35)] active:scale-95 transition-all duration-200 flex items-center justify-center cursor-pointer shadow-lg group"
+          className="hidden sm:flex fixed sm:bottom-10 sm:right-10 z-20 w-12 h-12 rounded-lg bg-bg-secondary/90 backdrop-blur-md border border-accent-cyan/70 text-accent-cyan hover:border-accent-cyan hover:bg-bg-tertiary hover:shadow-[0_0_15px_rgba(6,182,212,0.35)] active:scale-95 transition-all duration-200 items-center justify-center cursor-pointer shadow-lg group"
         >
           <ArrowUp size={18} className="group-hover:-translate-y-0.5 transition-transform" />
         </button>
@@ -481,13 +519,35 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
       {/* Footer */}
       <footer className="w-full border-t border-border-muted bg-bg-secondary/40 py-6 font-mono text-[11px] text-text-secondary">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div>
-            &copy; {new Date().getFullYear()} Osama Ahmed Farouk. All rights reserved.
-          </div>
-          <div className="flex items-center gap-6">
-            <span>SECURE CONSOLE V1.2.1</span>
-            <span className="text-accent-cyan animate-pulse">● PORTAL HEALTH: OK</span>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center gap-4">
+          {/* Docking Sentinel (Triggers docking 80px before floating button overlaps footer) */}
+          <div ref={dockingSentinelRef} className="w-full h-0 pointer-events-none" />
+
+          {/* Mobile Docked Top Up Button (when docking sentinel IS in viewport) */}
+          {showBackToTop && isFooterDocked && (
+            <div className="flex sm:hidden justify-center mb-1">
+              <button
+                type="button"
+                onClick={scrollToTop}
+                title="Back to top"
+                aria-label="Back to top"
+                className="w-12 h-12 rounded-lg bg-bg-secondary/90 backdrop-blur-md border border-accent-cyan/70 text-accent-cyan hover:border-accent-cyan hover:bg-bg-tertiary hover:shadow-[0_0_15px_rgba(6,182,212,0.35)] active:scale-95 transition-all duration-200 flex items-center justify-center cursor-pointer shadow-lg group"
+              >
+                <ArrowUp size={18} className="group-hover:-translate-y-0.5 transition-transform" />
+              </button>
+            </div>
+          )}
+
+          <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>
+              &copy; {new Date().getFullYear()} Osama Ahmed Farouk. All rights reserved.
+            </div>
+            <div className="flex items-center gap-6">
+              <span>SECURE CONSOLE V{APP_VERSION}</span>
+              <span>
+                <span className="text-[#32D74B] font-bold animate-pulse">● </span> PORTAL HEALTH: <span className="text-[#32D74B] font-bold animate-pulse">OK</span>
+              </span>
+            </div>
           </div>
         </div>
       </footer>
