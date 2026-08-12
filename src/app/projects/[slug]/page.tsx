@@ -4,6 +4,7 @@ import { allProjects } from "@/utils/dataLoader";
 import { ArrowLeft, Calendar, User, Landmark, ExternalLink, Cpu, Lightbulb, AlertTriangle } from "lucide-react";
 import Layout from "@/components/Layout";
 import { ThemeProvider } from "@/components/ThemeContext";
+import StickyBackButton from "@/components/StickyBackButton";
 import Mermaid from "@/components/Mermaid";
 import { Github } from "@/components/SocialIcons";
 
@@ -44,13 +45,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
         <div className="py-8 space-y-8 max-w-5xl mx-auto">
           {/* Top Bar Navigation & Actions */}
           <div className="flex items-center justify-between border-b border-border-muted pb-6">
-            <Link
-              href="/#projects"
-              className="inline-flex items-center gap-2 font-mono text-xs text-accent-cyan font-bold hover:underline group"
-            >
-              <ArrowLeft size={14} className="transition-transform group-hover:-translate-x-1" />
-              <span>BACK_TO_PROJECTS</span>
-            </Link>
+            <StickyBackButton href="/#projects" label="BACK_TO_PROJECTS" />
 
             <div className="font-mono text-xs text-text-secondary flex items-center gap-2">
               <span className="text-text-secondary/70">TYPE:</span>

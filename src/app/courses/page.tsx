@@ -4,6 +4,7 @@ import React, { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import { ThemeProvider } from "@/components/ThemeContext";
 import Layout from "@/components/Layout";
+import StickyBackButton from "@/components/StickyBackButton";
 import { courses, Course } from "@/utils/dataLoader";
 import {
   ArrowLeft,
@@ -195,13 +196,7 @@ export default function CoursesPage() {
         <div className="py-8 space-y-8 max-w-7xl mx-auto">
           {/* Top Bar: Back to Education & Counter */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border-muted pb-6">
-            <Link
-              href="/#education"
-              className="inline-flex items-center gap-2 font-mono text-xs text-accent-cyan font-bold hover:underline group cursor-pointer self-start"
-            >
-              <ArrowLeft size={14} className="transition-transform group-hover:-translate-x-1" />
-              <span>BACK_TO_EDUCATION</span>
-            </Link>
+            <StickyBackButton href="/#education" label="BACK_TO_EDUCATION" />
 
             <div className="font-mono text-[11px] text-text-secondary bg-bg-secondary px-3 py-1.5 rounded border border-border-muted self-start flex items-center gap-2">
               <ShieldCheck size={14} className="text-[#32D74B]" />
@@ -380,14 +375,14 @@ export default function CoursesPage() {
                       {course.certificateImage ? (
                         <div
                           onClick={() => setSelectedCertificate(course)}
-                          className="block h-48 sm:h-52 w-full flex items-center justify-center p-2 bg-bg-tertiary/70 rounded-md border border-border-muted mb-5 overflow-hidden group/img cursor-pointer relative"
+                          className="block h-52 sm:h-56 w-full flex items-center justify-center p-1 bg-bg-tertiary/70 rounded-md border border-border-muted mb-5 overflow-hidden group/img cursor-pointer relative"
                           title="Click to view full-screen certificate"
                         >
                           <img
                             src={course.certificateImage}
                             alt={`${course.title} Certificate - ${course.provider}`}
                             loading="lazy"
-                            className="max-h-full max-w-full object-contain transition-transform duration-300 group-hover/img:scale-105"
+                            className="w-full h-full object-contain transition-transform duration-300 group-hover/img:scale-105"
                           />
                           <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center gap-2 text-accent-cyan font-mono text-xs font-bold backdrop-blur-[2px]">
                             <Maximize2 size={16} />
