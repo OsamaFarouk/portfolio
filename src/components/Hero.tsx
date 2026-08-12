@@ -5,10 +5,18 @@ import Image from "next/image";
 import { profile, portfolioStats, socialLinks } from "@/utils/dataLoader";
 import { Download, Mail, FileText, MapPin, Clock, Calendar, ChevronRight, ChevronDown, GitBranch, Cpu, Cloud, Box, Activity } from "lucide-react";
 import { Github, Linkedin } from "@/components/SocialIcons";
+import { scrollToSection } from "@/utils/scrollHelper";
 
 export default function Hero() {
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
   const roles = profile.roles.filter((r) => r && r.trim() !== "");
+
+  const handleStatCardClick = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
+    if (typeof window !== "undefined" && window.location.pathname === "/") {
+      e.preventDefault();
+      scrollToSection(sectionId);
+    }
+  };
 
   useEffect(() => {
     if (roles.length <= 1) return;
@@ -167,6 +175,7 @@ export default function Hero() {
             {/* Stat 1: YEARS_EXPERIENCE -> Experience */}
             <a
               href="/#experience"
+              onClick={(e) => handleStatCardClick(e, "experience")}
               aria-label="View professional experience"
               className="bg-bg-tertiary border border-border-muted rounded p-3 flex flex-col justify-between group hover:border-accent-cyan hover:shadow-[0_0_15px_rgba(6,182,212,0.2)] hover:-translate-y-1 transition-all duration-200 cursor-pointer focus:outline-none focus-visible:ring-1 focus-visible:ring-accent-cyan"
             >
@@ -184,6 +193,7 @@ export default function Hero() {
             {/* Stat 2: CERTIFICATIONS -> Certifications */}
             <a
               href="/#certifications"
+              onClick={(e) => handleStatCardClick(e, "certifications")}
               aria-label="View certifications"
               className="bg-bg-tertiary border border-border-muted rounded p-3 flex flex-col justify-between group hover:border-accent-cyan hover:shadow-[0_0_15px_rgba(6,182,212,0.2)] hover:-translate-y-1 transition-all duration-200 cursor-pointer focus:outline-none focus-visible:ring-1 focus-visible:ring-accent-cyan"
             >
@@ -201,6 +211,7 @@ export default function Hero() {
             {/* Stat 3: PROJECTS -> Projects */}
             <a
               href="/#projects"
+              onClick={(e) => handleStatCardClick(e, "projects")}
               aria-label="View projects"
               className="bg-bg-tertiary border border-border-muted rounded p-3 flex flex-col justify-between group hover:border-accent-cyan hover:shadow-[0_0_15px_rgba(6,182,212,0.2)] hover:-translate-y-1 transition-all duration-200 cursor-pointer focus:outline-none focus-visible:ring-1 focus-visible:ring-accent-cyan"
             >
@@ -218,6 +229,7 @@ export default function Hero() {
             {/* Stat 4: ORGANIZATIONS -> Experience */}
             <a
               href="/#experience"
+              onClick={(e) => handleStatCardClick(e, "experience")}
               aria-label="View organizations and work experience"
               className="bg-bg-tertiary border border-border-muted rounded p-3 flex flex-col justify-between group hover:border-accent-cyan hover:shadow-[0_0_15px_rgba(6,182,212,0.2)] hover:-translate-y-1 transition-all duration-200 cursor-pointer focus:outline-none focus-visible:ring-1 focus-visible:ring-accent-cyan"
             >
@@ -226,7 +238,7 @@ export default function Hero() {
                 <span className="text-2xl font-bold text-text-primary mt-1">{portfolioStats.totalEmployers}</span>
               </div>
               <div className="flex justify-end mt-1">
-        <span className="text-text-secondary group-hover:text-accent-cyan group-hover:translate-x-1 transition-all duration-200 text-xs">
+                <span className="text-text-secondary group-hover:text-accent-cyan group-hover:translate-x-1 transition-all duration-200 text-xs">
                   →
                 </span>
               </div>
@@ -270,19 +282,19 @@ export default function Hero() {
           {/* 5-Column Responsive Grid Layout (Prevents Overflow) */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5 sm:gap-4 py-2">
             {/* Stage 1 */}
-            <div className="bg-bg-tertiary border border-border-muted hover:border-accent-cyan hover:shadow-[0_0_15px_rgba(6,182,212,0.1)] rounded-lg p-3 sm:p-4 transition-all duration-300 relative group flex flex-col justify-between min-h-0 sm:min-h-[145px]">
+            <div className="bg-bg-tertiary border border-border-muted hover:border-accent-cyan hover:shadow-[0_0_15px_rgba(6,182,212,0.1)] rounded-lg p-3 sm:p-4 transition-all duration-300 relative group flex flex-col justify-between min-h-0 lg:min-h-[145px]">
               <div className="absolute top-2 right-3 font-mono text-[11px] text-cyan-700 dark:text-accent-cyan/99 group-hover:text-accent-cyan font-bold transition-colors">
                 01/PLAN
               </div>
               <div className="mt-0.5 sm:mt-2">
-                <div className="flex items-center gap-2 mb-2 sm:mb-3">
+                <div className="flex items-center gap-2 mb-2 lg:mb-3">
                   <div className="p-1.5 rounded bg-bg-primary text-accent-cyan border border-border-muted group-hover:border-accent-cyan/30 transition-colors">
                     <GitBranch size={14} className="group-hover:scale-110 transition-transform" />
                   </div>
                   <span className="font-bold text-[11px] tracking-wider text-slate-800 dark:text-slate-100 uppercase group-hover:text-accent-cyan transition-colors">PLAN & COLLAB</span>
                 </div>
               </div>
-              <div className="flex flex-wrap gap-1.5 mt-2 sm:mt-auto">
+              <div className="flex flex-wrap gap-1.5 mt-2.5 lg:mt-auto">
                 {["Git", "GitHub", "GitLab"].map((tech) => (
                   <span key={tech} className="px-2 py-0.5 rounded bg-bg-secondary border border-border-muted font-mono text-[9px] text-slate-700 dark:text-slate-300 font-bold">
                     {tech}
@@ -298,21 +310,21 @@ export default function Hero() {
                 <ChevronDown size={16} />
               </div>
             </div>
- 
+
             {/* Stage 2 */}
-            <div className="bg-bg-tertiary border border-border-muted hover:border-accent-emerald hover:shadow-[0_0_15px_rgba(16,185,129,0.1)] rounded-lg p-3 sm:p-4 transition-all duration-300 relative group flex flex-col justify-between min-h-0 sm:min-h-[145px]">
+            <div className="bg-bg-tertiary border border-border-muted hover:border-accent-emerald hover:shadow-[0_0_15px_rgba(16,185,129,0.1)] rounded-lg p-3 sm:p-4 transition-all duration-300 relative group flex flex-col justify-between min-h-0 lg:min-h-[145px]">
               <div className="absolute top-2 right-3 font-mono text-[11px] text-emerald-700 dark:text-accent-emerald/99 group-hover:text-accent-emerald font-bold transition-colors">
                 02/BUILD
               </div>
               <div className="mt-0.5 sm:mt-2">
-                <div className="flex items-center gap-2 mb-2 sm:mb-3">
+                <div className="flex items-center gap-2 mb-2 lg:mb-3">
                   <div className="p-1.5 rounded bg-bg-primary text-accent-emerald border border-border-muted group-hover:border-accent-emerald/30 transition-colors">
                     <Cpu size={14} className="group-hover:rotate-12 transition-transform" />
                   </div>
                   <span className="font-bold text-[11px] tracking-wider text-slate-800 dark:text-slate-100 uppercase group-hover:text-accent-emerald transition-colors">BUILD & VALIDATE</span>
                 </div>
               </div>
-              <div className="flex flex-wrap gap-1.5 mt-2 sm:mt-auto">
+              <div className="flex flex-wrap gap-1.5 mt-2.5 lg:mt-auto">
                 {["Jenkins", "GitLab CI", "SonarQube"].map((tech) => (
                   <span key={tech} className="px-2 py-0.5 rounded bg-bg-secondary border border-border-muted font-mono text-[9px] text-slate-700 dark:text-slate-300 font-bold">
                     {tech}
@@ -328,21 +340,21 @@ export default function Hero() {
                 <ChevronDown size={16} />
               </div>
             </div>
- 
+
             {/* Stage 3 */}
-            <div className="bg-bg-tertiary border border-border-muted hover:border-accent-orange hover:shadow-[0_0_15px_rgba(249,115,22,0.1)] rounded-lg p-3 sm:p-4 transition-all duration-300 relative group flex flex-col justify-between min-h-0 sm:min-h-[145px]">
+            <div className="bg-bg-tertiary border border-border-muted hover:border-accent-orange hover:shadow-[0_0_15px_rgba(249,115,22,0.1)] rounded-lg p-3 sm:p-4 transition-all duration-300 relative group flex flex-col justify-between min-h-0 lg:min-h-[145px]">
               <div className="absolute top-2 right-3 font-mono text-[11px] text-orange-700 dark:text-accent-orange/99 group-hover:text-accent-orange font-bold transition-colors">
                 03/INFRA
               </div>
               <div className="mt-0.5 sm:mt-2">
-                <div className="flex items-center gap-2 mb-2 sm:mb-3">
+                <div className="flex items-center gap-2 mb-2 lg:mb-3">
                   <div className="p-1.5 rounded bg-bg-primary text-accent-orange border border-border-muted group-hover:border-accent-orange/30 transition-colors">
                     <Cloud size={14} className="group-hover:scale-110 transition-transform" />
                   </div>
                   <span className="font-bold text-[11px] tracking-wider text-slate-800 dark:text-slate-100 uppercase group-hover:text-accent-orange transition-colors">PROVISION & CONF</span>
                 </div>
               </div>
-              <div className="flex flex-wrap gap-1.5 mt-2 sm:mt-auto">
+              <div className="flex flex-wrap gap-1.5 mt-2.5 lg:mt-auto">
                 {["Terraform", "Ansible", "Bash"].map((tech) => (
                   <span key={tech} className="px-2 py-0.5 rounded bg-bg-secondary border border-border-muted font-mono text-[9px] text-slate-700 dark:text-slate-300 font-bold">
                     {tech}
@@ -358,21 +370,21 @@ export default function Hero() {
                 <ChevronDown size={16} />
               </div>
             </div>
- 
+
             {/* Stage 4 */}
-            <div className="bg-bg-tertiary border border-border-muted hover:border-accent-cyan hover:shadow-[0_0_15px_rgba(6,182,212,0.1)] rounded-lg p-3 sm:p-4 transition-all duration-300 relative group flex flex-col justify-between min-h-0 sm:min-h-[145px]">
+            <div className="bg-bg-tertiary border border-border-muted hover:border-accent-cyan hover:shadow-[0_0_15px_rgba(6,182,212,0.1)] rounded-lg p-3 sm:p-4 transition-all duration-300 relative group flex flex-col justify-between min-h-0 lg:min-h-[145px]">
               <div className="absolute top-2 right-3 font-mono text-[11px] text-cyan-700 dark:text-accent-cyan/99 group-hover:text-accent-cyan font-bold transition-colors">
                 04/DEPLOY
               </div>
               <div className="mt-0.5 sm:mt-2">
-                <div className="flex items-center gap-2 mb-2 sm:mb-3">
+                <div className="flex items-center gap-2 mb-2 lg:mb-3">
                   <div className="p-1.5 rounded bg-bg-primary text-accent-cyan border border-border-muted group-hover:border-accent-cyan/30 transition-colors">
                     <Box size={14} className="group-hover:rotate-12 transition-transform" />
                   </div>
                   <span className="font-bold text-[11px] tracking-wider text-slate-800 dark:text-slate-100 uppercase group-hover:text-accent-cyan transition-colors">PACKAGE & DEPLOY</span>
                 </div>
               </div>
-              <div className="flex flex-wrap gap-1.5 mt-2 sm:mt-auto">
+              <div className="flex flex-wrap gap-1.5 mt-2.5 lg:mt-auto">
                 {["Docker", "Helm", "Kubernetes"].map((tech) => (
                   <span key={tech} className="px-2 py-0.5 rounded bg-bg-secondary border border-border-muted font-mono text-[9px] text-slate-700 dark:text-slate-300 font-bold">
                     {tech}
@@ -390,19 +402,19 @@ export default function Hero() {
             </div>
 
             {/* Stage 5 */}
-            <div className="bg-bg-tertiary border border-accent-cyan/30 rounded-lg p-3 sm:p-4 transition-all duration-300 relative group flex flex-col justify-between min-h-0 sm:min-h-[145px] pipeline-glow-cyan">
+            <div className="bg-bg-tertiary border border-accent-cyan/30 rounded-lg p-3 sm:p-4 transition-all duration-300 relative group flex flex-col justify-between min-h-0 lg:min-h-[145px] pipeline-glow-cyan">
               <div className="absolute top-2 right-3 font-mono text-[11px] text-accent-cyan/99 font-bold">
                 05/MONITOR
               </div>
               <div className="mt-0.5 sm:mt-2">
-                <div className="flex items-center gap-2 mb-2 sm:mb-3">
+                <div className="flex items-center gap-2 mb-2 lg:mb-3">
                   <div className="p-1.5 rounded bg-bg-primary text-accent-cyan border border-accent-cyan/30">
                     <Activity size={14} className="animate-pulse" />
                   </div>
                   <span className="font-bold text-[11px] tracking-wider text-accent-cyan uppercase">OPERATE & OBSERVE</span>
                 </div>
               </div>
-              <div className="flex flex-wrap gap-1.5 mt-2 sm:mt-auto">
+              <div className="flex flex-wrap gap-1.5 mt-2.5 lg:mt-auto">
                 {["Prometheus", "Grafana", "ELK"].map((tech) => (
                   <span key={tech} className="px-2 py-0.5 rounded bg-bg-secondary border border-accent-cyan/20 font-mono text-[9px] text-accent-cyan font-bold">
                     {tech}
@@ -410,7 +422,6 @@ export default function Hero() {
                 ))}
               </div>
             </div>
-
           </div>
         </div>
       </div>

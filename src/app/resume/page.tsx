@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import {
   getResumeProfile,
@@ -19,6 +19,7 @@ import { ThemeProvider } from "@/components/ThemeContext";
 
 export default function ResumePage() {
   const [activeTab, setActiveTab] = useState("all");
+  const [showFloatingReturn, setShowFloatingReturn] = useState(false);
 
   const resumeProfile = getResumeProfile();
   const resumeExperience = getResumeExperience();
@@ -30,12 +31,42 @@ export default function ResumePage() {
   const resumeVolunteering = getResumeVolunteering();
   const resumeLanguages = getResumeLanguages();
 
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const handleScroll = () => {
+      if (window.scrollY > 300) {
+        setShowFloatingReturn(true);
+      } else {
+        setShowFloatingReturn(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const printResume = () => {
     window.print();
   };
 
   return (
     <ThemeProvider>
+      {/* Floating Return To Console Button - Appears after 300px scroll, hidden in print */}
+      {showFloatingReturn && (
+        <div className="fixed top-6 left-4 sm:left-8 lg:left-16 z-30 transition-all duration-300 print:hidden">
+          <Link
+            href="/"
+            title="Return to main portfolio console"
+            aria-label="Return to main portfolio console"
+            className="inline-flex items-center gap-2 font-mono text-xs text-accent-cyan font-bold bg-bg-secondary/95 backdrop-blur-md px-3.5 py-2 rounded-md border border-border-muted hover:border-accent-cyan hover:bg-bg-tertiary hover:shadow-[0_0_15px_rgba(6,182,212,0.35)] transition-all duration-300 cursor-pointer focus:outline-none focus-visible:ring-1 focus-visible:ring-accent-cyan group"
+          >
+            <ArrowLeft size={14} className="transition-transform group-hover:-translate-x-1" />
+            <span>RETURN_TO_CONSOLE</span>
+          </Link>
+        </div>
+      )}
+
       <div className="min-h-screen bg-bg-primary text-text-primary py-8 px-4 sm:px-6 lg:px-8 font-sans print:bg-white print:text-black print:py-0 print:px-0">
         {/* Navigation Action Header - Hidden during print */}
         <div className="max-w-4xl mx-auto mb-8 flex flex-col sm:flex-row items-center justify-between gap-4 print:hidden">
