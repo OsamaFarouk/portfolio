@@ -195,8 +195,8 @@ export default function Projects() {
                     <p className="text-xs text-text-secondary font-mono mb-4">{project.tagline}</p>
                     {/* Summary outcome / results */}
                     <div className="bg-bg-primary/40 border border-border-muted/30 rounded p-3 mb-4 text-xs">
-                      <span className="font-mono text-[11px] text-accent-cyan font-bold block mb-1.5">OUTCOME_METRICS:</span>
-                      <ul className="space-y-1 text-text-secondary leading-relaxed font-mono text-[11px] list-none">
+                      <span className="font-mono text-[11.5px] text-accent-cyan font-bold block mb-1.5">OUTCOME_METRICS:</span>
+                      <ul className="space-y-1 text-text-secondary leading-relaxed font-mono text-[11.5px] list-none">
                         {project.results.map((res, idx) => (
                           <li key={idx} className="flex items-start gap-1">
                             <span className="text-accent-cyan shrink-0">•</span>
@@ -243,3 +243,7 @@ export default function Projects() {
     </section>
   );
 }
+
+
+
+

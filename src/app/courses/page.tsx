@@ -263,7 +263,7 @@ export default function CoursesPage() {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 border-t border-border-muted/60">
               {/* Provider Filter */}
               <div className="space-y-1">
-                <label className="font-mono text-[10px] text-text-secondary uppercase font-semibold block">
+                <label className="font-mono text-[11px] text-text-secondary uppercase font-semibold block">
                   Provider:
                 </label>
                 <select
@@ -282,7 +282,7 @@ export default function CoursesPage() {
 
               {/* Year Filter */}
               <div className="space-y-1">
-                <label className="font-mono text-[10px] text-text-secondary uppercase font-semibold block">
+                <label className="font-mono text-[11px] text-text-secondary uppercase font-semibold block">
                   Year:
                 </label>
                 <select
@@ -301,7 +301,7 @@ export default function CoursesPage() {
 
               {/* Technology / Topic Filter */}
               <div className="space-y-1">
-                <label className="font-mono text-[10px] text-text-secondary uppercase font-semibold block">
+                <label className="font-mono text-[11px] text-text-secondary uppercase font-semibold block">
                   Topic / Stack:
                 </label>
                 <select
@@ -396,7 +396,7 @@ export default function CoursesPage() {
                           <span className="font-mono text-xs font-bold text-text-secondary/70 tracking-wider">
                             CERTIFICATE NOT AVAILABLE
                           </span>
-                          <span className="font-mono text-[10px] text-text-secondary/40 mt-1">
+                          <span className="font-mono text-[11px] text-text-secondary/40 mt-1">
                             Verified completion on file
                           </span>
                         </div>
@@ -405,10 +405,10 @@ export default function CoursesPage() {
                       {/* Course Title, Provider & Year */}
                       <div className="space-y-1.5 mb-4">
                         <div className="flex items-center justify-between gap-2">
-                          <span className="font-mono text-[10px] text-accent-cyan font-semibold">
+                          <span className="font-mono text-[11px] text-accent-cyan font-semibold">
                             {course.provider}
                           </span>
-                          <span className="font-mono text-[10px] text-text-secondary bg-bg-tertiary px-2 py-0.5 rounded border border-border-muted">
+                          <span className="font-mono text-[11px] text-text-secondary bg-bg-tertiary px-2 py-0.5 rounded border border-border-muted">
                             {course.year}
                           </span>
                         </div>
