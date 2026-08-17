@@ -54,7 +54,7 @@ export default function Certifications() {
         </div>
         <div className="font-mono text-[11px] text-text-secondary bg-bg-secondary px-3 py-1.5 rounded border border-border-muted self-start flex items-center gap-1.5">
           <ShieldCheck size={14} className="text-[#32D74B]" />
-          <span>VERIFIED CREDENTIALS: {certifications.length}</span>
+          <span>VERIFIED_CREDENTIALS: {certifications.length}</span>
         </div>
       </div>
 

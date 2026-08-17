@@ -498,7 +498,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           onClick={scrollToTop}
           title="Back to top"
           aria-label="Back to top"
-          className="flex sm:hidden fixed bottom-5 right-5 z-20 pb-[env(safe-area-inset-bottom)] w-12 h-12 rounded-lg bg-bg-secondary/90 backdrop-blur-md border border-accent-cyan/70 text-accent-cyan hover:border-accent-cyan hover:bg-bg-tertiary hover:shadow-[0_0_15px_rgba(6,182,212,0.35)] active:scale-95 transition-all duration-200 items-center justify-center cursor-pointer shadow-lg group"
+          className="flex sm:hidden fixed bottom-5 right-5 z-20 w-12 h-12 rounded-lg bg-bg-secondary/90 backdrop-blur-md border border-accent-cyan/70 text-accent-cyan hover:border-accent-cyan hover:bg-bg-tertiary hover:shadow-[0_0_15px_rgba(6,182,212,0.35)] active:scale-95 transition-all duration-200 items-center justify-center cursor-pointer shadow-lg group mb-[env(safe-area-inset-bottom)] sm:mb-0"
         >
           <ArrowUp size={18} className="group-hover:-translate-y-0.5 transition-transform" />
         </button>

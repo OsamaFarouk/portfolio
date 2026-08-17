@@ -36,7 +36,7 @@ export default function Education() {
                   <GraduationCap size={22} />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <span className="font-mono text-[11px] text-accent-cyan uppercase tracking-wider block">BACHELOR’S DEGREE</span>
+                  <span className="font-mono text-[11px] text-accent-cyan uppercase tracking-wider block">BACHELOR’S_DEGREE</span>
                   <h4 className="font-mono text-base font-bold text-text-primary mt-0.5">{deg.degree}</h4>
                   <p className="text-xs text-text-secondary mt-1 font-medium">{deg.institution}</p>
                   

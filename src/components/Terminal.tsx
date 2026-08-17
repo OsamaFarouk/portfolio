@@ -380,7 +380,7 @@ export default function Terminal() {
         </div>
         <div className="font-mono text-[11px] text-text-secondary bg-bg-secondary px-3 py-1.5 rounded border border-border-muted self-start flex items-center gap-1.5">
           <ShieldCheck size={14} className="text-[#32D74B]" />
-          <span>CLUSTER STATUS: OPERATIONAL</span>
+          <span>CLUSTER_STATUS: OPERATIONAL</span>
         </div>
       </div>
 
@@ -391,7 +391,7 @@ export default function Terminal() {
           <div className="flex items-center gap-2 min-w-0">
             <TerminalIcon size={15} className="text-accent-cyan shrink-0" />
             <span className="font-bold text-accent-cyan text-xs leading-tight whitespace-normal sm:whitespace-nowrap sm:truncate break-words">
-              OSAMA INFRASTRUCTURE CONTROL CONSOLE [v{APP_VERSION}-STABLE]
+              OSAMA INFRASTRUCTURE CONTROL CONSOLE [v{APP_VERSION}-STABLE] 
             </span>
           </div>
 
