@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import React from "react";
 import Link from "next/link";
 import { allProjects } from "@/utils/dataLoader";
@@ -17,6 +18,50 @@ export async function generateStaticParams() {
 
 interface PageProps {
   params: Promise<{ slug: string }>;
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const project = allProjects.find((p) => p.slug === slug);
+
+  if (!project) {
+    return {
+      title: "Project Not Found | Osama Farouk",
+      description: "The requested project case study could not be found.",
+    };
+  }
+
+  const title = `${project.title} | Osama Farouk`;
+  const description = project.tagline || `Technical case study detailing ${project.title} architecture, implementation, and metrics.`;
+  const canonicalUrl = `https://osamafarouk.com/projects/${slug}`;
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    openGraph: {
+      title,
+      description,
+      url: canonicalUrl,
+      type: "article",
+      images: [
+        {
+          url: "https://osamafarouk.com/og-image.png",
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: ["https://osamafarouk.com/og-image.png"],
+    },
+  };
 }
 
 export default async function ProjectDetailPage({ params }: PageProps) {

@@ -171,7 +171,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   };
 
   const scrollToTop = () => {
-    scrollToSection("home");
+    if (typeof window === "undefined") return;
+    if (pathname === "/") {
+      scrollToSection("home", { updateHash: false });
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   };
 
   return (
