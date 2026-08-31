@@ -248,6 +248,7 @@ export default function Hero() {
           <div className="flex flex-wrap justify-center sm:justify-start items-center gap-3 sm:gap-4 mt-8 pt-6 border-t border-border-muted">
             <a
               href="#contact"
+              onClick={(e) => handleStatCardClick(e, "contact")}
               className="px-5 py-2.5 rounded bg-accent-cyan text-bg-primary font-mono text-xs font-bold hover:bg-accent-cyan/95 hover:shadow-[0_0_15px_rgba(6,182,212,0.4)] transition-all flex items-center justify-center gap-1.5"
             >
               <span>CONTACT ME</span>
@@ -255,6 +256,7 @@ export default function Hero() {
             </a>
             <a
               href="#projects"
+              onClick={(e) => handleStatCardClick(e, "projects")}
               className="px-5 py-2.5 rounded bg-bg-tertiary border border-border-muted font-mono text-xs text-text-primary hover:border-accent-cyan hover:text-accent-cyan transition-all flex items-center justify-center"
             >
               VIEW PROJECTS
