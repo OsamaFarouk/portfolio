@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://osamafarouk.com"),
   title: "Osama Farouk | DevOps & Cloud Infrastructure Engineer",
   description:
-    "Certified DevOps and Cloud Infrastructure Engineer with 5+ years of experience in AWS, Kubernetes, CI/CD, automation, observability, and production infrastructure.",
+    "Explore my experience, projects, and certifications in AWS, Kubernetes, CI/CD, infrastructure automation, and observability.",
   keywords: [
     "Osama Farouk",
     "DevOps Engineer",
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Osama Farouk | DevOps & Cloud Infrastructure Engineer",
     description:
-      "Certified DevOps and Cloud Infrastructure Engineer with 5+ years of experience in AWS, Kubernetes, CI/CD, automation, observability, and production infrastructure.",
+      "Explore my experience, projects, and certifications in AWS, Kubernetes, CI/CD, infrastructure automation, and observability.",
     type: "website",
     locale: "en_US",
     url: "https://osamafarouk.com",
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
         width: 1200,
         height: 630,
         type: "image/png",
-        alt: "Osama Farouk | DevOps & Cloud Infrastructure Engineer",
+        alt: "Osama Farouk — DevOps and Cloud Infrastructure Engineer",
       },
     ],
   },
@@ -68,7 +68,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Osama Farouk | DevOps & Cloud Infrastructure Engineer",
     description:
-      "Certified DevOps and Cloud Infrastructure Engineer with 5+ years of experience in AWS, Kubernetes, CI/CD, automation, observability, and production infrastructure.",
+      "Explore my experience, projects, and certifications in AWS, Kubernetes, CI/CD, infrastructure automation, and observability.",
     images: ["https://osamafarouk.com/og-image.png"],
   },
   robots: {
