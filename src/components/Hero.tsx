@@ -34,7 +34,7 @@ export default function Hero() {
         <div className="bg-bg-tertiary px-4 py-2 border-b border-border-color flex items-center justify-between font-mono text-[11px] text-text-secondary">
           <div className="flex items-center gap-1.5">
             <span className="w-2.5 h-2.5 rounded-full bg-accent-cyan animate-pulse"></span>
-            <span>SYSTEM_NODE: ONLINE</span>
+            <span >SYSTEM_NODE:</span><span className="text-[#32D74B]"> ONLINE</span>
           </div>
           <span>ID: OS-DEVOPS</span>
         </div>
@@ -274,8 +274,8 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Real-time Cluster Node Visualizer Grid */}
-        <div className="bg-bg-secondary border border-border-muted rounded-lg p-6 overflow-hidden">
+        {/* Real-time Cluster Node Visualizer Grid (Hidden on mobile, visible on desktop) */}
+        <div className="hidden md:block bg-bg-secondary border border-border-muted rounded-lg p-6 overflow-hidden">
           <div className="flex flex-col sm:flex-row sm:justify-between sm:text-left gap-1.5 sm:gap-4 mb-6">
             <h2 className="font-mono text-xs text-accent-cyan uppercase tracking-wider">{"// PLATFORM_DELIVERY_LIFECYCLE"}</h2>
             <span className="font-mono text-[11px] text-emerald-100 dark:text-accent-emerald font-bold animate-pulse">● PIPELINE_ONLINE: 05/05</span>
