@@ -6,12 +6,7 @@ import { Calendar, MapPin, Briefcase, ChevronDown, ChevronUp, Star } from "lucid
 
 export default function Experience() {
   // Collapse current role by default on mobile screens (< 768px), expand on desktop (>= 768px)
-  const [expandedId, setExpandedId] = useState<string | null>(() => {
-    if (typeof window !== "undefined" && window.innerWidth < 768) {
-      return null;
-    }
-    return experience[0]?.id || null;
-  });
+  const [expandedId, setExpandedId] = useState<string | null>(experience[0]?.id || null);
 
   useEffect(() => {
     if (typeof window !== "undefined" && window.innerWidth < 768) {

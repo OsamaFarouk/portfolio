@@ -193,18 +193,6 @@ export default function Projects() {
                       </h4>
                     </div>
                     <p className="text-xs text-text-secondary font-mono mb-4">{project.tagline}</p>
-                    {/* Summary outcome / results (Hidden on mobile, visible on desktop) */}
-                    <div className="hidden md:block bg-bg-primary/40 border border-border-muted/30 rounded p-3 mb-4 text-xs">
-                      <span className="font-mono text-[11.5px] text-accent-cyan font-bold block mb-1.5">OUTCOME_METRICS:</span>
-                      <ul className="space-y-1 text-text-secondary leading-relaxed font-mono text-[11.5px] list-none">
-                        {project.results.map((res, idx) => (
-                          <li key={idx} className="flex items-start gap-1">
-                            <span className="text-accent-cyan shrink-0">•</span>
-                            <span>{res}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
                   </div>
 
                   {/* Footer and tags */}
