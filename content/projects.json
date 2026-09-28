@@ -88,7 +88,7 @@
       "Collected cluster and workload metrics through Prometheus, kube-state-metrics, and node-exporter.",
       "Integrated Loki and Promtail to centralize container logs and make them searchable through Grafana.",
       "Created Grafana dashboards for Kubernetes resource usage, workload health, and log exploration.",
-      "Configured Prometheus alert rules and Alertmanager notification routing, if actually implemented.",
+      "Configured Prometheus alert rules and Alertmanager notification routing.",
       "Tuned metric scraping and log-processing configurations to control unnecessary ingestion and resource consumption.",
       "Validated the platform by inspecting workload metrics, querying application logs, and testing alert conditions."
     ],
@@ -97,7 +97,7 @@
       "Established centralized visibility into Kubernetes node, workload, and application health.",
       "Combined Prometheus metrics and Loki logs within Grafana for easier operational investigation.",
       "Implemented repeatable Helm-based installation and configuration of the monitoring stack.",
-      "Validated alert generation and notification routing for selected Kubernetes failure conditions, if tested.",
+      "Validated alert generation and notification routing for selected Kubernetes failure conditions.",
       "Improved practical understanding of Kubernetes-native metrics, log aggregation, dashboards, and alert management."
     ],
     "githubLink": "[ADD GITHUB URL]",

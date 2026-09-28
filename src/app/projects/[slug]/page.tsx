@@ -231,7 +231,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                   ) : (
                     <div className="w-full py-2 rounded bg-bg-tertiary/20 border border-border-muted/40 text-text-secondary/40 flex items-center justify-center gap-1.5 text-[11px] cursor-not-allowed">
                       <Github size={12} />
-                      <span>SOURCE: CONFIDENTIAL</span>
+                      <span>SOURCE: PRIVATE_REPOSITORY</span>
                     </div>
                   )}
 

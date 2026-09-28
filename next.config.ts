@@ -1,16 +1,18 @@
 import type { NextConfig } from "next";
 
+const isDev = process.env.NODE_ENV === "development";
+
 const cspHeader = `
   default-src 'self';
-  script-src 'self' 'unsafe-eval' 'unsafe-inline';
-  style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
-  img-src 'self' data: blob: https:;
-  font-src 'self' https://fonts.gstatic.com data:;
+  script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""};
+  style-src 'self' 'unsafe-inline';
+  img-src 'self' data: blob:;
+  font-src 'self' data:;
   object-src 'none';
   base-uri 'self';
   form-action 'self';
   frame-ancestors 'none';
-  connect-src 'self' https:;
+  connect-src 'self' https://formspree.io;
   upgrade-insecure-requests;
 `.replace(/\s{2,}/g, " ").trim();
 
