@@ -29,13 +29,13 @@
     "role": "DevOps Engineer",
     "location": "Kuwait City, Kuwait (Remote/Hybrid)",
     "startDate": "May 2025",
-    "endDate": "July 2026",
+    "endDate": "Jun 2026",
     "employmentType": "Full-time",
     "summary": "Supporting Boubyan Bank’s PayHub environments through CI/CD management, Kubernetes deployments, release testing, and troubleshooting, with a focus on reliable delivery and stable system performance.",
     "responsibilities": [
-      "Manage and optimize GitLab CI/CD pipelines and deploy services to Kubernetes across local and Boubyan Bank UAT environments.",
-      "Support testing, upgrades, configuration, and troubleshooting for the PayHub platform, including ACH and DMS systems, in alignment with Central Bank of Kuwait requirements.",
-      "Collaborate with development and support teams to investigate deployment issues, coordinate releases, and maintain stable application performance."
+      "Managed and optimized GitLab CI/CD pipelines and deployed services to Kubernetes across local and Boubyan Bank UAT environments.",
+      "Supported testing, upgrades, configuration, and troubleshooting for the PayHub platform, including ACH and DMS systems, in alignment with Central Bank of Kuwait requirements.",
+      "Collaborated with development and support teams to investigate deployment issues, coordinate releases, and maintain stable application performance."
     ],
     "achievements": [
       "Contributed to successful PayHub ACH and DMS deployments across local and Boubyan Bank testing environments.",

@@ -19,7 +19,7 @@ export default function Mermaid({ chart }: { chart: string }) {
         mermaid.initialize({
           startOnLoad: false,
           theme: "dark",
-          securityLevel: "loose",
+          securityLevel: "strict",
           themeVariables: {
             fontFamily: "var(--font-mono)",
             fontSize: "11px",
