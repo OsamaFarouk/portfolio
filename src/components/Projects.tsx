@@ -166,7 +166,8 @@ export default function Projects() {
               <Link
                 key={project.slug}
                 href={`/projects/${project.slug}`}
-                className={`flex flex-col bg-bg-secondary border rounded-lg overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-accent-cyan/80 hover:shadow-[0_4px_25px_rgba(6,182,212,0.08)] group focus-within:ring-2 focus-within:ring-accent-cyan focus-within:ring-offset-2 focus-within:ring-offset-bg-primary outline-none ${
+                prefetch={true}
+                className={`flex flex-col bg-bg-secondary border rounded-lg overflow-hidden transition-all duration-300 sm:hover:-translate-y-1 hover:border-accent-cyan/80 hover:shadow-[0_4px_25px_rgba(6,182,212,0.08)] group focus:ring-2 focus:ring-accent-cyan focus:ring-offset-2 focus:ring-offset-bg-primary outline-none cursor-pointer touch-manipulation ${
                   project.featured ? "border-accent-cyan/60" : "border-border-muted"
                 }`}
               >
