@@ -63,6 +63,7 @@ export interface Project {
   liveLink: string | null;
   architecture: string | null;
   architectureImage?: string | null;
+  architecturePreviewImage?: string | null;
 }
 
 export interface CertificationRef {

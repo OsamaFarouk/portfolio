@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 import React from "react";
 import Link from "next/link";
 import { allProjects } from "@/utils/dataLoader";
-import { ArrowLeft, Calendar, User, Landmark, ExternalLink, Cpu, Lightbulb, AlertTriangle } from "lucide-react";
+import { Calendar, User, Landmark, ExternalLink, Cpu, Lightbulb, AlertTriangle } from "lucide-react";
 import Layout from "@/components/Layout";
 import { ThemeProvider } from "@/components/ThemeContext";
 import StickyBackButton from "@/components/StickyBackButton";
 import Mermaid from "@/components/Mermaid";
+import ArchitectureImage from "@/components/ArchitectureImage";
 import { Github } from "@/components/SocialIcons";
 
 // Generate static parameters for static site generation support
@@ -135,34 +136,23 @@ export default async function ProjectDetailPage({ params }: PageProps) {
           </header>
 
           {/* Dynamic Architecture Diagram (Image or Mermaid) */}
-          {(project.architectureImage || project.architecture) && (
+          {(project.architecturePreviewImage || project.architectureImage || project.architecture) && (
             <section className="bg-bg-secondary border border-border-muted rounded-lg p-6">
-              <div className="flex items-center justify-between mb-4">
-                <h2 className="font-mono text-xs text-accent-cyan uppercase tracking-wider">{"// ARCHITECTURE_TOPOLOGY"}</h2>
-                {project.architectureImage && (
-                  <a
-                    href={project.architectureImage}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-mono text-[11px] text-accent-cyan hover:underline flex items-center gap-1"
-                  >
-                    <span>FULL_RESOLUTION ↗</span>
-                  </a>
-                )}
-              </div>
-              {project.architectureImage ? (
-                <div className="w-full bg-bg-primary rounded border border-border-muted p-2 md:p-4 overflow-hidden flex items-center justify-center">
-                  <a href={project.architectureImage} target="_blank" rel="noopener noreferrer" className="w-full flex justify-center">
-                    <img
-                      src={project.architectureImage}
-                      alt={`${project.title} Architecture Topology`}
-                      className="w-full h-auto max-w-full rounded object-contain transition-opacity hover:opacity-95"
-                      loading="eager"
-                    />
-                  </a>
-                </div>
+              {project.architecturePreviewImage || project.architectureImage ? (
+                <ArchitectureImage
+                  src={project.architecturePreviewImage || project.architectureImage || ""}
+                  alt={`${project.title} Architecture Topology`}
+                  fullResUrl={project.architectureImage || project.architecturePreviewImage}
+                  showFullResLink={true}
+                  isFullResPage={false}
+                />
               ) : project.architecture ? (
-                <Mermaid chart={project.architecture} />
+                <>
+                  <div className="flex items-center justify-between mb-4">
+                    <h2 className="font-mono text-xs text-accent-cyan uppercase tracking-wider">{"// ARCHITECTURE_TOPOLOGY"}</h2>
+                  </div>
+                  <Mermaid chart={project.architecture} />
+                </>
               ) : null}
             </section>
           )}
