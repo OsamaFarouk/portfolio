@@ -34,6 +34,11 @@ export default function ResumePage() {
   useEffect(() => {
     if (typeof window === "undefined") return;
 
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+    window.scrollTo(0, 0);
+
     const handleScroll = () => {
       if (window.scrollY > 300) {
         setShowFloatingReturn(true);

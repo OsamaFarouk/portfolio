@@ -40,16 +40,26 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     scrollToSection(sectionId);
   };
 
-  // Check initial hash on load or cross-route navigation (e.g., coming from /courses to /#experience)
+  // Check hash on load or route transition, and reset scroll position to top on page change
   useEffect(() => {
-    if (typeof window === "undefined" || pathname !== "/") return;
+    if (typeof window === "undefined") return;
+
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
 
     const hash = window.location.hash;
-    if (hash) {
+    if (hash && pathname === "/") {
       const targetId = hash.replace(/^#/, "");
       const timer = setTimeout(() => {
         scrollToSection(targetId, { updateHash: false });
-      }, 200);
+      }, 100);
+      return () => clearTimeout(timer);
+    } else {
+      window.scrollTo(0, 0);
+      const timer = setTimeout(() => {
+        window.scrollTo(0, 0);
+      }, 0);
       return () => clearTimeout(timer);
     }
   }, [pathname]);
