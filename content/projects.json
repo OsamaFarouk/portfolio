@@ -32,7 +32,8 @@
     ],
     "githubLink": "[ADD GITHUB URL]",
     "liveLink": null,
-    "architecture": "graph TD\n    A[Developer] -->|Build and Tag Image| B[Docker Image]\n    B -->|Push| C[Amazon ECR]\n    C -->|Image Reference| D[ECS Task Definition]\n    D -->|Used By| E[Amazon ECS Service]\n    E -->|Launches and Maintains| F[AWS Fargate Tasks]\n    U[User Traffic] -->|HTTP| ALB[Application Load Balancer]\n    ALB -->|Listener| TG[Target Group]\n    TG -->|Health-Checked Traffic| F\n    IAM[IAM Task Execution Role] -.->|Authorizes ECR Image Pull| F\n    VPC[VPC / Subnets / Security Groups] -.->|Network Boundary for ALB & \nFargate Tasks| ALB\n    VPC -.-> F"
+    "architecture": "graph TD\n    A[Developer] -->|Build and Tag Image| B[Docker Image]\n    B -->|Push| C[Amazon ECR]\n    C -->|Image Reference| D[ECS Task Definition]\n    D -->|Used By| E[Amazon ECS Service]\n    E -->|Launches and Maintains| F[AWS Fargate Tasks]\n    U[User Traffic] -->|HTTP| ALB[Application Load Balancer]\n    ALB -->|Listener| TG[Target Group]\n    TG -->|Health-Checked Traffic| F\n    IAM[IAM Task Execution Role] -.->|Authorizes ECR Image Pull| F\n    VPC[VPC / Subnets / Security Groups] -.->|Network Boundary for ALB & \nFargate Tasks| ALB\n    VPC -.-> F",
+    "architectureImage": "/assets/projects/aws-ecs-fargate-architecture.png"
   },
   {
     "slug": "payhub-release-operations",
@@ -65,7 +66,8 @@
     ],
     "githubLink": "[ADD GITHUB URL]",
     "liveLink": null,
-    "architecture": "graph TD\n    A[GitLab Repository] --> B[GitLab CI/CD Pipeline]\n    B --> C[Package Application]\n    C --> D[Build & Version \n Container Image]\n    D --> E[Push to Private \n Container Registry]\n   F --> G[Local Kubernetes Cluster]\n    F --> H[Boubyan Bank UAT]\n    G --> I[Local Validation]\n    H --> J[UAT Validation]\n    E -.->|Pull Versioned Image| G\n  E --> F[Helm Deploy / Upgrade]\n   E -.->|Pull Versioned Image| H\n    style D font-size:12px\n    style E font-size:12px"
+    "architecture": "graph TD\n    A[GitLab Repository] --> B[GitLab CI/CD Pipeline]\n    B --> C[Package Application]\n    C --> D[Build & Version \n Container Image]\n    D --> E[Push to Private \n Container Registry]\n   F --> G[Local Kubernetes Cluster]\n    F --> H[Boubyan Bank UAT]\n    G --> I[Local Validation]\n    H --> J[UAT Validation]\n    E -.->|Pull Versioned Image| G\n  E --> F[Helm Deploy / Upgrade]\n   E -.->|Pull Versioned Image| H\n    style D font-size:12px\n    style E font-size:12px",
+    "architectureImage": "/assets/projects/PayHub_Architecture.png"
   },
   {
     "slug": "kubernetes-observability-platform",
@@ -102,7 +104,8 @@
     ],
     "githubLink": "[ADD GITHUB URL]",
     "liveLink": null,
-    "architecture": "graph TD\n    A[Kubernetes Nodes & Workloads] -->|Node Metrics| B[node-exporter]\n    A -->|Object State| C[kube-state-metrics]\n    A -->|Application Metrics| D[Prometheus Server]\n    B --> D\n    C --> D\n    D -->|Metrics| E[Grafana]\n    D -->|Alerts| F[Alertmanager]\n    F --> G[Slack]\n    A -->|Container Logs| H[Promtail]\n    H --> I[Loki]\n    I --> E\n    PO[Prometheus Operator] -.->|Manages Prometheus, alert rules, ServiceMonitors & PodMonitors| D"
+    "architecture": "graph TD\n    A[Kubernetes Nodes & Workloads] -->|Node Metrics| B[node-exporter]\n    A -->|Object State| C[kube-state-metrics]\n    A -->|Application Metrics| D[Prometheus Server]\n    B --> D\n    C --> D\n    D -->|Metrics| E[Grafana]\n    D -->|Alerts| F[Alertmanager]\n    F --> G[Slack]\n    A -->|Container Logs| H[Promtail]\n    H --> I[Loki]\n    I --> E\n    PO[Prometheus Operator] -.->|Manages Prometheus, alert rules, ServiceMonitors & PodMonitors| D",
+    "architectureImage": "/assets/projects/Kubernetes_Observability_Architecture.png"
   },
 
   {
@@ -139,7 +142,8 @@
     ],
     "githubLink": "[ADD GITHUB URL]",
     "liveLink": null,
-    "architecture": "graph TD\n    A[Developer] -->|Push| B[GitLab Repository]\n    B -->|Trigger| C[GitLab CI/CD Pipeline]\n    C -->|Execute| D[Local GitLab Shell Runner]\n    D --> E[Maven Package]\n    E --> F[Build & Tag Docker Image]\n    F -->|Push yymmdd-shortSHA| G[Docker Hub]\n    G -->|Image Tag Passed to Deployment| I[Helm Upgrade / Install]\n    H[Custom Helm Chart] --> I\n    I --> J[Local Minikube Cluster]\n    J --> K[Application Pods & Service]\n    K --> L[NGINX Ingress]\n    L --> M[app.local]\n    G -.->|Pull Versioned Image| K"
+    "architecture": "graph TD\n    A[Developer] -->|Push| B[GitLab Repository]\n    B -->|Trigger| C[GitLab CI/CD Pipeline]\n    C -->|Execute| D[Local GitLab Shell Runner]\n    D --> E[Maven Package]\n    E --> F[Build & Tag Docker Image]\n    F -->|Push yymmdd-shortSHA| G[Docker Hub]\n    G -->|Image Tag Passed to Deployment| I[Helm Upgrade / Install]\n    H[Custom Helm Chart] --> I\n    I --> J[Local Minikube Cluster]\n    J --> K[Application Pods & Service]\n    K --> L[NGINX Ingress]\n    L --> M[app.local]\n    G -.->|Pull Versioned Image| K",
+    "architectureImage": "/assets/projects/Minikube_CICD_Architecture.png"
   },
   
   {
@@ -172,7 +176,8 @@
     ],
     "githubLink": "[ADD GITHUB URL]",
     "liveLink": null,
-    "architecture": "graph TD\n    A[Developer] -->|Push| B[GitLab Repository]\n    B -->|Webhook| C[Jenkins CI/CD Pipeline]\n    C --> D[Build & Package \nContainer Image]\n    C -->|Deploy with Kustomize| G[Local Kubernetes Cluster]\n    D --> E[Local Container Registry]\n    E -.->|Pull Image| G\n    G -->|Metrics| H[Prometheus]\n    H -->|Query| I[Grafana]\n    H -->|Alerts| J[Alertmanager]\n    J --> K[Slack]"
+    "architecture": "graph TD\n    A[Developer] -->|Push| B[GitLab Repository]\n    B -->|Webhook| C[Jenkins CI/CD Pipeline]\n    C --> D[Build & Package \nContainer Image]\n    C -->|Deploy with Kustomize| G[Local Kubernetes Cluster]\n    D --> E[Local Container Registry]\n    E -.->|Pull Image| G\n    G -->|Metrics| H[Prometheus]\n    H -->|Query| I[Grafana]\n    H -->|Alerts| J[Alertmanager]\n    J --> K[Slack]",
+    "architectureImage": "/assets/projects/Jenkins_Deployment_Monitoring.png"
   },
   
   
@@ -209,6 +214,7 @@
     ],
     "githubLink": "[ADD GITHUB URL]",
     "liveLink": null,
-    "architecture": "graph TD\n    A[Internet] --> B[Internet Gateway]\n    B --> C[\"Application Load Balancer<br/>Public Subnets – AZ1 and AZ2\"]\n    C -->|Target Group / Health Checks| D[EC2 Auto Scaling Group]\n    D --> E[\"EC2 Web Server – \nPrivate Subnet AZ1\"]\n    D --> F[\"EC2 Web Server – \nPrivate Subnet AZ2\"]\n    E -->|DynamoDB Gateway Endpoint| G[Amazon DynamoDB]\n    F -->|DynamoDB Gateway Endpoint| G\n    E -->|S3 Gateway Endpoint| H[Amazon S3]\n    F -->|S3 Gateway Endpoint| H\n    A -.->|Public HTTP / HTTPS Traffic| SG1[ALB Security Group]\n    SG1 -.->|Allows Traffic Only From\nALB SG| SG2[EC2 Security Group]\n    SG2 -.->|Secures Instances| D"
+    "architecture": "graph TD\n    A[Internet] --> B[Internet Gateway]\n    B --> C[\"Application Load Balancer<br/>Public Subnets – AZ1 and AZ2\"]\n    C -->|Target Group / Health Checks| D[EC2 Auto Scaling Group]\n    D --> E[\"EC2 Web Server – \nPrivate Subnet AZ1\"]\n    D --> F[\"EC2 Web Server – \nPrivate Subnet AZ2\"]\n    E -->|DynamoDB Gateway Endpoint| G[Amazon DynamoDB]\n    F -->|DynamoDB Gateway Endpoint| G\n    E -->|S3 Gateway Endpoint| H[Amazon S3]\n    F -->|S3 Gateway Endpoint| H\n    A -.->|Public HTTP / HTTPS Traffic| SG1[ALB Security Group]\n    SG1 -.->|Allows Traffic Only From\nALB SG| SG2[EC2 Security Group]\n    SG2 -.->|Secures Instances| D",
+    "architectureImage": "/assets/projects/AWS_MultiAZ_Architecture.png"
   }
 ]

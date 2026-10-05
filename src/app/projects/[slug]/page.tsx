@@ -134,11 +134,36 @@ export default async function ProjectDetailPage({ params }: PageProps) {
             </div>
           </header>
 
-          {/* Dynamic Architecture Diagram (Mermaid) */}
-          {project.architecture && (
+          {/* Dynamic Architecture Diagram (Image or Mermaid) */}
+          {(project.architectureImage || project.architecture) && (
             <section className="bg-bg-secondary border border-border-muted rounded-lg p-6">
-              <h2 className="font-mono text-xs text-accent-cyan uppercase tracking-wider mb-4">{"// ARCHITECTURE_TOPOLOGY"}</h2>
-              <Mermaid chart={project.architecture} />
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="font-mono text-xs text-accent-cyan uppercase tracking-wider">{"// ARCHITECTURE_TOPOLOGY"}</h2>
+                {project.architectureImage && (
+                  <a
+                    href={project.architectureImage}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-mono text-[11px] text-accent-cyan hover:underline flex items-center gap-1"
+                  >
+                    <span>FULL_RESOLUTION ↗</span>
+                  </a>
+                )}
+              </div>
+              {project.architectureImage ? (
+                <div className="w-full bg-bg-primary rounded border border-border-muted p-2 md:p-4 overflow-hidden flex items-center justify-center">
+                  <a href={project.architectureImage} target="_blank" rel="noopener noreferrer" className="w-full flex justify-center">
+                    <img
+                      src={project.architectureImage}
+                      alt={`${project.title} Architecture Topology`}
+                      className="w-full h-auto max-w-full rounded object-contain transition-opacity hover:opacity-95"
+                      loading="eager"
+                    />
+                  </a>
+                </div>
+              ) : project.architecture ? (
+                <Mermaid chart={project.architecture} />
+              ) : null}
             </section>
           )}
 
