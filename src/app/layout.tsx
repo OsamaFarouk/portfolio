@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import ConsoleCursor from "@/components/ConsoleCursor";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -147,11 +148,17 @@ export default function RootLayout({
     >
       <head>
         <script
+          dangerouslySetInnerHTML={{
+            __html: "document.documentElement.classList.add('js-active');",
+          }}
+        />
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
       <body className="min-h-full flex flex-col bg-bg-primary text-text-primary antialiased" suppressHydrationWarning>
+        <ConsoleCursor />
         {children}
         <SpeedInsights />
       </body>

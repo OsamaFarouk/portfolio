@@ -18,10 +18,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [isFooterDocked, setIsFooterDocked] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("home");
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   const dropdownRef = useRef<HTMLDivElement>(null);
   const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const dockingSentinelRef = useRef<HTMLDivElement>(null);
+  const isPopStateRef = useRef(false);
 
   // Centralized Navigation Handler for main-bar section links
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>, sectionId: string) => {
@@ -36,19 +38,42 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       return;
     }
 
-    // Perform slow, smooth cubic-eased scroll animation on current page
+    // Perform smooth cubic-eased scroll animation on current page
     scrollToSection(sectionId);
   };
 
-  // Check hash on load or route transition, and reset scroll position to top on page change
+  // Listen for browser Back/Forward (popstate) navigation to restore previous scroll position
   useEffect(() => {
     if (typeof window === "undefined") return;
 
+    const handlePopState = () => {
+      isPopStateRef.current = true;
+    };
+
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, []);
+
+  // Check hash on load or route transition, opening new pages at top and restoring Back navigation
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const hash = window.location.hash;
+
+    if (isPopStateRef.current) {
+      // Browser Back / Forward navigation: allow native restoration of previous position
+      isPopStateRef.current = false;
+      if ("scrollRestoration" in window.history) {
+        window.history.scrollRestoration = "auto";
+      }
+      return;
+    }
+
+    // New navigation: scroll to top or hash target
     if ("scrollRestoration" in window.history) {
       window.history.scrollRestoration = "manual";
     }
 
-    const hash = window.location.hash;
     if (hash && pathname === "/") {
       const targetId = hash.replace(/^#/, "");
       const timer = setTimeout(() => {
@@ -62,6 +87,39 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       }, 0);
       return () => clearTimeout(timer);
     }
+  }, [pathname]);
+
+  // Real-time Reading Progress calculation
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    let ticking = false;
+    const updateProgress = () => {
+      const scrollTotal = document.documentElement.scrollHeight - window.innerHeight;
+      if (scrollTotal > 0) {
+        const progress = (window.scrollY / scrollTotal) * 100;
+        setScrollProgress(Math.min(100, Math.max(0, progress)));
+      } else {
+        setScrollProgress(0);
+      }
+      ticking = false;
+    };
+
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateProgress);
+        ticking = true;
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll, { passive: true });
+    updateProgress();
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
   }, [pathname]);
 
   // Scroll listener for Back To Top button and ScrollSpy active section tracking
@@ -192,7 +250,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen bg-bg-primary text-text-primary flex flex-col font-sans">
       {/* Navigation Header */}
-      <header className="sticky top-0 z-30 bg-bg-primary/90 backdrop-blur-md border-b border-border-muted">
+      <header className="sticky top-0 z-30 bg-bg-primary/90 backdrop-blur-md border-b border-border-muted relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
           {/* Logo / Operator Identity */}
           <a
@@ -364,6 +422,22 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             >
               {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
+          </div>
+        </div>
+
+        {/* Console Reading Progress Indicator - Positioned neatly at sticky header's bottom border */}
+        <div
+          className="absolute -bottom-[1px] left-0 right-0 h-[2px] bg-transparent pointer-events-none overflow-visible"
+          aria-hidden="true"
+        >
+          <div
+            className="h-full bg-accent-cyan shadow-[0_0_8px_rgba(6,182,212,0.7)] relative transition-[width] duration-75 ease-out"
+            style={{ width: `${scrollProgress}%` }}
+          >
+            {/* Micro Console Glow Lead Pip */}
+            {scrollProgress > 0 && (
+              <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-[#00ffcc] shadow-[0_0_8px_#00ffcc]" />
+            )}
           </div>
         </div>
       </header>

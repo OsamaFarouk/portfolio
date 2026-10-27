@@ -3,6 +3,8 @@
 import React, { useState, useEffect } from "react";
 import { experience, Experience as ExpType } from "@/utils/dataLoader";
 import { Calendar, MapPin, Briefcase, ChevronDown, ChevronUp, Star } from "lucide-react";
+import ConsoleSection from "@/components/ConsoleSection";
+import SectionHeader from "@/components/SectionHeader";
 
 export default function Experience() {
   // Collapse current role by default on mobile screens (< 768px), expand on desktop (>= 768px)
@@ -19,23 +21,23 @@ export default function Experience() {
   };
 
   return (
-    <section id="experience" className="py-12 border-t border-border-muted scroll-mt-16">
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
-        <div>
-          <h2 className="font-mono text-xs text-accent-cyan uppercase tracking-wider">{"// SYSTEM_HISTORY"}</h2>
-          <h3 className="text-2xl font-bold tracking-tight mt-1">Professional Experience</h3>
-        </div>
-        <div className="font-mono text-[11px] text-text-secondary bg-bg-secondary px-3 py-1.5 rounded border border-border-muted self-start">
-          TIMELINE_ENTRIES: 0{experience.length}
-        </div>
-      </div>
+    <ConsoleSection id="experience" className="py-12 border-t border-border-muted scroll-mt-16">
+      <SectionHeader
+        systemTag="// SYSTEM_HISTORY"
+        title="Professional Experience"
+        badge={
+          <div className="font-mono text-[11px] text-text-secondary bg-bg-secondary px-3 py-1.5 rounded border border-border-muted self-start">
+            TIMELINE_ENTRIES: 0{experience.length}
+          </div>
+        }
+      />
 
       <div className="relative border-l border-border-color/30 ml-4 md:ml-6 space-y-6">
         {experience.map((exp: ExpType, _idx) => {
           const isExpanded = expandedId === exp.id;
           
           return (
-            <div key={exp.id} className="relative pl-8 md:pl-10 group">
+            <div key={exp.id} data-stagger-item style={{ transitionDelay: `${Math.min(_idx * 45, 180)}ms` }} className="relative pl-8 md:pl-10 group">
               {/* Timeline dot */}
               <div 
                 className={`absolute -left-[9px] top-1.5 w-4 h-4 rounded-full border-2 transition-all duration-300 flex items-center justify-center ${
@@ -260,6 +262,6 @@ export default function Experience() {
           );
         })}
       </div>
-    </section>
+    </ConsoleSection>
   );
 }

@@ -3,6 +3,8 @@
 import React, { useState } from "react";
 import { profile, futureSections } from "@/utils/dataLoader";
 import { User, Globe, Shield, Terminal, Landmark, Activity, GitBranch, Zap, ChevronDown, ChevronUp } from "lucide-react";
+import ConsoleSection from "@/components/ConsoleSection";
+import SectionHeader from "@/components/SectionHeader";
 
 export default function About() {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -15,23 +17,23 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="py-6 md:py-12 border-t border-border-muted scroll-mt-16">
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4 md:mb-8">
-        <div>
-          <h2 className="font-mono text-xs text-accent-cyan uppercase tracking-wider">{"// SYSTEM_PROFILE"}</h2>
-          <h3 className="text-2xl font-bold tracking-tight mt-1">About Operator</h3>
-        </div>
-        <div className="font-mono text-[11px] text-text-secondary bg-bg-secondary px-3 py-1.5 rounded border border-border-muted self-start flex items-center gap-1.5">
-          <User size={12} className="text-accent-cyan" />
-          <span>NODE: PROFILE_INFO_LOADED</span>
-        </div>
-      </div>
+    <ConsoleSection id="about" className="py-6 md:py-12 border-t border-border-muted scroll-mt-16">
+      <SectionHeader
+        systemTag="// SYSTEM_PROFILE"
+        title="About Operator"
+        badge={
+          <div className="font-mono text-[11px] text-text-secondary bg-bg-secondary px-3 py-1.5 rounded border border-border-muted self-start flex items-center gap-1.5">
+            <User size={12} className="text-accent-cyan" />
+            <span>NODE: PROFILE_INFO_LOADED</span>
+          </div>
+        }
+      />
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-8">
         {/* Biography & Specs - Left (7 Cols) */}
         <div className="lg:col-span-7 space-y-4 md:space-y-6">
           {/* Professional Story Card */}
-          <div className="bg-bg-secondary border border-border-muted rounded-lg p-4 md:p-6">
+          <div className="bg-bg-secondary border border-border-muted rounded-lg p-4 md:p-6" data-stagger-item style={{ transitionDelay: "0ms" }}>
             <h4 className="font-mono text-xs text-accent-cyan uppercase tracking-wider mb-3">{"// PROFESSIONAL_STORY"}</h4>
             
             {/* Desktop / Tablet full view */}
@@ -75,7 +77,12 @@ export default function About() {
               {specs.map((item, idx) => {
                 const IconComponent = item.icon;
                 return (
-                  <div key={idx} className="bg-bg-secondary border border-border-muted rounded-lg p-3 md:p-4 flex flex-col md:flex-row items-center md:items-start justify-center md:justify-start text-center md:text-left gap-2 md:gap-4 hover:border-accent-cyan/60 transition-colors">
+                  <div
+                    key={idx}
+                    data-stagger-item
+                    style={{ transitionDelay: `${Math.min(idx * 40, 160)}ms` }}
+                    className="bg-bg-secondary border border-border-muted rounded-lg p-3 md:p-4 flex flex-col md:flex-row items-center md:items-start justify-center md:justify-start text-center md:text-left gap-2 md:gap-4 hover:border-accent-cyan/60 transition-colors"
+                  >
                     <div className="p-1.5 md:p-2 rounded bg-bg-tertiary border border-border-muted text-accent-cyan shrink-0 flex items-center justify-center">
                       <IconComponent size={14} className="md:w-4 md:h-4" />
                     </div>
@@ -93,7 +100,7 @@ export default function About() {
         {/* Highlights, Volunteering, Awards, Languages - Right (5 Cols) */}
         <div className="lg:col-span-5 space-y-4 md:space-y-6">
           {/* Target Industries */}
-          <div className="bg-bg-secondary border border-border-muted rounded-lg p-4 md:p-6">
+          <div className="bg-bg-secondary border border-border-muted rounded-lg p-4 md:p-6" data-stagger-item style={{ transitionDelay: "40ms" }}>
             <h4 className="font-mono text-xs text-accent-cyan uppercase tracking-wider mb-2.5 md:mb-4">{"// INDUSTRY_EXPERIENCE"}</h4>
             <div className="space-y-2 md:space-y-3 font-mono text-xs text-text-secondary">
               
@@ -129,7 +136,7 @@ export default function About() {
 
           {/* Community Involvement */}
           {futureSections.volunteering.enabled && futureSections.volunteering.items.length > 0 && (
-            <div className="bg-bg-secondary border border-border-muted rounded-lg p-4 md:p-6">
+            <div className="bg-bg-secondary border border-border-muted rounded-lg p-4 md:p-6" data-stagger-item style={{ transitionDelay: "80ms" }}>
               <h4 className="font-mono text-xs text-accent-emerald uppercase tracking-wider mb-2.5 md:mb-4">// COMMUNITY_INVOLVEMENT</h4>
               {futureSections.volunteering.items.map((vol, idx) => (
                 <div key={idx} className="space-y-1 font-mono text-xs">
@@ -148,7 +155,7 @@ export default function About() {
 
           {/* Language Proficiency */}
           {futureSections.languages.enabled && futureSections.languages.items.length > 0 && (
-            <div className="bg-bg-secondary border border-border-muted rounded-lg p-4 md:p-6">
+            <div className="bg-bg-secondary border border-border-muted rounded-lg p-4 md:p-6" data-stagger-item style={{ transitionDelay: "120ms" }}>
               <h4 className="font-mono text-xs text-accent-orange uppercase tracking-wider mb-2.5 md:mb-4">// LANGUAGE_PROFICIENCY</h4>
               <div className="grid grid-cols-2 gap-3 md:gap-4">
                 {futureSections.languages.items.map((lang, idx) => (
@@ -162,6 +169,6 @@ export default function About() {
           )}
         </div>
       </div>
-    </section>
+    </ConsoleSection>
   );
 }
