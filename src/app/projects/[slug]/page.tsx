@@ -141,6 +141,9 @@ export default async function ProjectDetailPage({ params }: PageProps) {
               {project.architecturePreviewImage || project.architectureImage ? (
                 <ArchitectureImage
                   src={project.architecturePreviewImage || project.architectureImage || ""}
+                  srcMobile={project.architecturePreviewMobileImage}
+                  width={project.architectureWidth}
+                  height={project.architectureHeight}
                   alt={`${project.title} Architecture Topology`}
                   fullResUrl={project.architectureImage || project.architecturePreviewImage}
                   showFullResLink={true}

@@ -354,7 +354,7 @@ export default function CoursesPage() {
           ) : (
             /* Courses Responsive Grid: 3 cols desktop, 2 cols tablet, 1 col mobile */
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredCourses.map((course) => {
+              {filteredCourses.map((course, idx) => {
                 const hasCertificate = !!(course.certificateImage || course.certificateUrl);
                 const hasVerification = !!course.verificationUrl;
                 const hasNeither = !hasCertificate && !hasVerification;
@@ -381,7 +381,10 @@ export default function CoursesPage() {
                           <img
                             src={course.certificateImage}
                             alt={`${course.title} Certificate - ${course.provider}`}
-                            loading="lazy"
+                            width={400}
+                            height={280}
+                            loading={idx < 6 ? "eager" : "lazy"}
+                            decoding="async"
                             className="w-full h-full object-contain transition-transform duration-300 group-hover/img:scale-105"
                           />
                           <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center gap-2 text-accent-cyan font-mono text-xs font-bold backdrop-blur-[2px]">
@@ -525,6 +528,8 @@ export default function CoursesPage() {
                 <img
                   src={selectedCertificate.certificateImage}
                   alt={`${selectedCertificate.title} Certificate`}
+                  loading="eager"
+                  decoding="async"
                   className="max-w-full max-h-[75vh] object-contain rounded border border-border-muted shadow-lg"
                 />
               </div>

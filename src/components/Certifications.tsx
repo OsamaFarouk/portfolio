@@ -85,7 +85,10 @@ export default function Certifications() {
                 <img
                   src={awsCcp.badgeUrl || ""}
                   alt={`${awsCcp.name} Badge`}
+                  width={200}
+                  height={200}
                   loading="lazy"
+                  decoding="async"
                   className="max-h-full max-w-full object-contain transition-transform duration-300 group-hover:scale-105"
                 />
               </a>
@@ -135,7 +138,10 @@ export default function Certifications() {
                 <img
                   src={awsSaa.badgeUrl || ""}
                   alt={`${awsSaa.name} Badge`}
+                  width={200}
+                  height={200}
                   loading="lazy"
+                  decoding="async"
                   className="max-h-full max-w-full object-contain transition-transform duration-300 group-hover:scale-105"
                 />
               </a>
@@ -185,7 +191,10 @@ export default function Certifications() {
                 <img
                   src={cka.badgeUrl || ""}
                   alt={`${cka.name} Badge`}
+                  width={200}
+                  height={200}
                   loading="lazy"
+                  decoding="async"
                   className="max-h-full max-w-full object-contain transition-transform duration-300 group-hover:scale-105"
                 />
               </a>
@@ -235,7 +244,10 @@ export default function Certifications() {
                 <img
                   src={rhcsa.badgeUrl || ""}
                   alt={`${rhcsa.name} Badge`}
+                  width={200}
+                  height={200}
                   loading="lazy"
+                  decoding="async"
                   className="max-h-full max-w-full object-contain transition-transform duration-300 group-hover:scale-105"
                 />
               </a>
@@ -285,7 +297,10 @@ export default function Certifications() {
                 <img
                   src={hcia.badgeUrl || ""}
                   alt={`${hcia.name} Badge`}
+                  width={200}
+                  height={200}
                   loading="lazy"
+                  decoding="async"
                   className="max-h-full max-w-full object-contain transition-transform duration-300 group-hover:scale-105"
                 />
               </a>

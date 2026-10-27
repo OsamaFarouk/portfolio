@@ -64,6 +64,9 @@ export interface Project {
   architecture: string | null;
   architectureImage?: string | null;
   architecturePreviewImage?: string | null;
+  architecturePreviewMobileImage?: string | null;
+  architectureWidth?: number;
+  architectureHeight?: number;
 }
 
 export interface CertificationRef {

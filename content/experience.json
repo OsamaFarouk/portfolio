@@ -18,8 +18,15 @@
       "Supporting the establishment of standardized AWS infrastructure and DevOps delivery practices for the BAS environment.",
       "Contributing to automation, deployment reliability, infrastructure monitoring, and technical documentation across the delivery lifecycle."
     ],
-    "technologies": ["AWS", "CodePipeline", "CloudFormation", "Docker", "Kubernetes", "Linux"],
-    "logo": "/assets/logos/zaintech.png",
+    "technologies": [
+      "AWS",
+      "CodePipeline",
+      "CloudFormation",
+      "Docker",
+      "Kubernetes",
+      "Linux"
+    ],
+    "logo": "/assets/logos/zaintech.webp",
     "current": true
   },
   {
@@ -41,8 +48,14 @@
       "Contributed to successful PayHub ACH and DMS deployments across local and Boubyan Bank testing environments.",
       "Resolved Kubernetes and Helm deployment issues involving container images, configuration values, jobs, and application startup."
     ],
-    "technologies": ["GitLab CI/CD", "Kubernetes", "Docker", "Helm", "PayHub (ACH/DMS)"],
-    "logo": "/assets/logos/progresssoft.png",
+    "technologies": [
+      "GitLab CI/CD",
+      "Kubernetes",
+      "Docker",
+      "Helm",
+      "PayHub (ACH/DMS)"
+    ],
+    "logo": "/assets/logos/progresssoft.webp",
     "current": false
   },
   {
@@ -65,8 +78,16 @@
       "Improved system visibility and operational response through Prometheus and Grafana monitoring with Slack alert notifications.",
       "Supported team onboarding and knowledge transfer through standardized technical documentation and reporting processes."
     ],
-    "technologies": ["Jenkins", "Kubernetes", "Docker", "Prometheus", "Grafana", "Linux", "API Observability"],
-    "logo": "/assets/logos/qeema.png",
+    "technologies": [
+      "Jenkins",
+      "Kubernetes",
+      "Docker",
+      "Prometheus",
+      "Grafana",
+      "Linux",
+      "API Observability"
+    ],
+    "logo": "/assets/logos/qeema.webp",
     "current": false
   },
   {
@@ -88,8 +109,21 @@
       "Built a multibranch Jenkins CI/CD pipeline using Docker and Kubernetes to automate the build, testing, containerization, and deployment of a web application.",
       "Created reusable Terraform configurations to provision consistent development and testing environments."
     ],
-    "technologies": ["Jenkins", "Docker", "Kubernetes", "Git", "AWS", "Microsoft Azure", "Terraform", "Red Hat Linux", "Bash", "Python", "Windows Server", "Ansible"],
-    "logo": "/assets/logos/iti.png",
+    "technologies": [
+      "Jenkins",
+      "Docker",
+      "Kubernetes",
+      "Git",
+      "AWS",
+      "Microsoft Azure",
+      "Terraform",
+      "Red Hat Linux",
+      "Bash",
+      "Python",
+      "Windows Server",
+      "Ansible"
+    ],
+    "logo": "/assets/logos/iti.webp",
     "current": false
   },
   {
@@ -102,7 +136,7 @@
     "endDate": "Feb 2024",
     "employmentType": "Training Program",
     "summary": "Completed an intensive AWS Cloud Computing scholarship program covering cloud fundamentals, networking, compute, storage, databases, security, monitoring, automatic scaling, automation, and highly available architecture design.",
-    "responsibilities": [  
+    "responsibilities": [
       "Studied AWS cloud architecture across networking, compute, storage, database, security, monitoring, and automatic scaling layers.",
       "Designed cloud solutions using AWS architecture principles for availability, scalability, security, and fault tolerance.",
       "Explored decoupled, microservices, serverless, caching, and disaster recovery architectures through guided learning and practical exercises."
@@ -111,7 +145,17 @@
       "Designed a Multi-AZ AWS architecture using an Application Load Balancer and Auto Scaling Group to distribute traffic and support availability and scalability.",
       "Built storage and database layers using Amazon S3 and DynamoDB while applying decoupled architecture principles."
     ],
-    "technologies": ["AWS", "Amazon VPC", "Amazon EC2", "AWS IAM", "Elastic Load Balancing", "Auto Scaling", "Amazon CloudWatch", "Amazon S3", "Amazon DynamoDB"],
+    "technologies": [
+      "AWS",
+      "Amazon VPC",
+      "Amazon EC2",
+      "AWS IAM",
+      "Elastic Load Balancing",
+      "Auto Scaling",
+      "Amazon CloudWatch",
+      "Amazon S3",
+      "Amazon DynamoDB"
+    ],
     "logo": "/assets/logos/alx.webp",
     "current": false
   },
@@ -136,7 +180,14 @@
       "Improved shift consistency through technical guidance, knowledge sharing, and standardized monitoring and reporting practices.",
       "Trained and mentored 15+ new team members through structured shadowing and reverse-shadowing phases, monitored their progress, provided practical feedback, and ensured they met all operational requirements before independently managing shifts."
     ],
-    "technologies": ["U2020 Tool", "NOC Operations", "Network Monitoring", "SLA Management", "Incident Response", "KPI Reporting"],
+    "technologies": [
+      "U2020 Tool",
+      "NOC Operations",
+      "Network Monitoring",
+      "SLA Management",
+      "Incident Response",
+      "KPI Reporting"
+    ],
     "logo": "/assets/logos/huawei.png",
     "current": false
   },
@@ -159,7 +210,14 @@
     "achievements": [
       "Promoted to Shift Leader after demonstrating strong performance in network monitoring, incident coordination, escalation management, and shift operations."
     ],
-    "technologies": ["OWS", "U2020 Tool", "Telecom Infrastructure", "Alarm Triage", "Incident Management", "Vendor Coordination"],
+    "technologies": [
+      "OWS",
+      "U2020 Tool",
+      "Telecom Infrastructure",
+      "Alarm Triage",
+      "Incident Management",
+      "Vendor Coordination"
+    ],
     "logo": "/assets/logos/huawei.png",
     "current": false
   }

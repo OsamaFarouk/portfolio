@@ -13,7 +13,7 @@
     "title": "Ultimate Elasticsearch 8, Kibana, Logstash, Beats: ELK Stack",
     "provider": "Udemy",
     "year": 2024,
-    "certificateImage": "/assets/course-certificates/elk-stack-udemy.jpg",
+    "certificateImage": "/assets/course-certificates/elk-stack-udemy.webp",
     "certificateUrl": null,
     "verificationUrl": "https://www.udemy.com/certificate/UC-5f143bc5-6573-4aa5-b812-c16372ebd02d/"
   },
@@ -22,7 +22,7 @@
     "title": "VMware vSphere: Install, Configure, Manage",
     "provider": "VMware IT Academy",
     "year": 2024,
-    "certificateImage": "/assets/course-certificates/vmware-vsphere-icm.jpg",
+    "certificateImage": "/assets/course-certificates/vmware-vsphere-icm.webp",
     "certificateUrl": "https://drive.google.com/file/d/1TKJ2Bhayw5TWbju6TRHEbuVXd942dsKi/view?usp=sharing",
     "verificationUrl": null
   },
@@ -31,7 +31,7 @@
     "title": "VMware vSphere: Operate, Scale and Secure",
     "provider": "VMware IT Academy",
     "year": 2024,
-    "certificateImage": "/assets/course-certificates/vmware-vsphere-oss.jpg",
+    "certificateImage": "/assets/course-certificates/vmware-vsphere-oss.webp",
     "certificateUrl": "https://drive.google.com/file/d/1pV4EeQAwgpLUVY2RJOr62A4UeU0suYek/view?usp=sharing",
     "verificationUrl": null
   },
@@ -40,7 +40,7 @@
     "title": "Red Hat System Administration I",
     "provider": "Red Hat Academy",
     "year": 2024,
-    "certificateImage": "/assets/course-certificates/redhat-system-administration-1.jpg",
+    "certificateImage": "/assets/course-certificates/redhat-system-administration-1.webp",
     "certificateUrl": "https://drive.google.com/file/d/1rY6T77NwckGnhe8i5pEZHXhPCa45n2e8/view?usp=sharing",
     "verificationUrl": null
   },
@@ -49,7 +49,7 @@
     "title": "Red Hat System Administration II",
     "provider": "Red Hat Academy",
     "year": 2024,
-    "certificateImage": "/assets/course-certificates/redhat-system-administration-2.jpg",
+    "certificateImage": "/assets/course-certificates/redhat-system-administration-2.webp",
     "certificateUrl": "https://drive.google.com/file/d/1lcg0oAioBNpKlAY6b7xl7HQhQusGYVrW/view?usp=sharing",
     "verificationUrl": null
   },
@@ -103,7 +103,7 @@
     "title": "Database Fundamentals",
     "provider": "Mahara-Tech",
     "year": 2023,
-    "certificateImage": "/assets/course-certificates/database-fundamentals-mahara-tech.jpg",
+    "certificateImage": "/assets/course-certificates/database-fundamentals-mahara-tech.webp",
     "certificateUrl": null,
     "verificationUrl": "https://maharatech.gov.eg/mod/customcert/verify_certificate.php?contextid=162686&code=n8gBJTHDdV"
   },
@@ -130,7 +130,7 @@
     "title": "Flutter and Dart Development",
     "provider": "Udemy",
     "year": 2021,
-    "certificateImage": "/assets/course-certificates/flutter-dart-udemy.jpg",
+    "certificateImage": "/assets/course-certificates/flutter-dart-udemy.webp",
     "certificateUrl": "https://drive.google.com/file/d/1pUw4jx6upDbpyRqgVYjEAhJvgenopAA5/view?usp=sharing",
     "verificationUrl": null
   },
