@@ -9,6 +9,9 @@ interface ArchitectureImageProps {
   fullResUrl?: string | null;
   showFullResLink?: boolean;
   isFullResPage?: boolean;
+  srcMobile?: string | null;
+  width?: number;
+  height?: number;
 }
 
 export default function ArchitectureImage({
@@ -17,6 +20,9 @@ export default function ArchitectureImage({
   fullResUrl,
   showFullResLink = true,
   isFullResPage = false,
+  srcMobile,
+  width,
+  height,
 }: ArchitectureImageProps) {
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
@@ -56,7 +62,21 @@ export default function ArchitectureImage({
     setRetryKey((prev) => prev + 1);
   };
 
-  const currentSrc = retryKey > 0 ? `${src}${src.includes("?") ? "&" : "?"}retry=${retryKey}` : src;
+  // Derive mobile preview source if not explicitly passed
+  const resolvedMobileSrc =
+    srcMobile ||
+    (src.endsWith(".webp") && !src.includes("-800.")
+      ? src.replace(/\.webp$/, "-800.webp")
+      : null);
+
+  const addRetry = (url: string) => `${url}${url.includes("?") ? "&" : "?"}retry=${retryKey}`;
+  const currentSrc = retryKey > 0 ? addRetry(src) : src;
+  const currentMobileSrc = resolvedMobileSrc
+    ? retryKey > 0
+      ? addRetry(resolvedMobileSrc)
+      : resolvedMobileSrc
+    : null;
+
   const targetFullRes = fullResUrl || src;
 
   return (
@@ -114,18 +134,40 @@ export default function ArchitectureImage({
           className="w-full flex justify-center cursor-zoom-in"
           title="Click to view full resolution image"
         >
-          <img
-            ref={imgRef}
-            key={currentSrc}
-            src={currentSrc}
-            alt={alt}
-            onLoad={handleLoad}
-            onError={handleError}
-            className={`w-full h-auto max-w-full rounded object-contain transition-opacity duration-300 hover:opacity-95 ${
-              isLoading || hasError ? "opacity-0 invisible" : "opacity-100 visible"
-            }`}
-            loading="eager"
-          />
+          <picture className="w-full flex justify-center">
+            {currentMobileSrc && (
+              <source
+                media="(max-width: 767px)"
+                srcSet={currentMobileSrc}
+                type="image/webp"
+              />
+            )}
+            <source
+              media="(min-width: 768px)"
+              srcSet={currentSrc}
+              type="image/webp"
+            />
+            <img
+              ref={imgRef}
+              key={currentSrc}
+              src={currentSrc}
+              alt={alt}
+              width={width || 1500}
+              height={height || 1000}
+              onLoad={handleLoad}
+              onError={handleError}
+              className={`w-full h-auto max-w-full rounded object-contain transition-opacity duration-300 hover:opacity-95 ${
+                isLoading || hasError ? "opacity-0 invisible" : "opacity-100 visible"
+              }`}
+              style={
+                width && height
+                  ? { aspectRatio: `${width} / ${height}` }
+                  : undefined
+              }
+              loading="eager"
+              decoding="async"
+            />
+          </picture>
         </a>
       </div>
     </div>

@@ -68,7 +68,10 @@ export default function Experience() {
                           <img
                             src={exp.logo}
                             alt={`${exp.company} Logo`}
+                            width={140}
+                            height={40}
                             loading="lazy"
+                            decoding="async"
                             className="max-w-full max-h-full object-contain"
                           />
                         </div>
@@ -129,7 +132,10 @@ export default function Experience() {
                         <img
                           src={exp.logo}
                           alt={`${exp.company} Logo`}
-                          loading="lazy"
+                          width={140}
+                            height={40}
+                            loading="lazy"
+                            decoding="async"
                           className="max-w-full max-h-full object-contain"
                         />
                       </div>
