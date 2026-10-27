@@ -3,6 +3,8 @@
 import React, { useState } from "react";
 import { Mail, Phone, MapPin, Send, CheckCircle2, AlertCircle, ChevronDown, Copy, Check } from "lucide-react";
 import { Github, Linkedin } from "@/components/SocialIcons";
+import ConsoleSection from "@/components/ConsoleSection";
+import SectionHeader from "@/components/SectionHeader";
 
 interface MessageSignature {
   name: string;
@@ -165,7 +167,7 @@ export default function Contact() {
       } else {
         setSubmitStatus("error");
       }
-    } catch (_err) {
+    } catch {
       setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
@@ -173,20 +175,20 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-12 border-t border-border-muted scroll-mt-16">
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
-        <div>
-          <h2 className="font-mono text-xs text-accent-cyan uppercase tracking-wider">{"// COMM_LINK"}</h2>
-          <h3 className="text-2xl font-bold tracking-tight mt-1">Connect with Operator</h3>
-        </div>
-        <div className="font-mono text-[11px] font-bold text-text-secondary bg-bg-secondary px-3 py-1.5 rounded border border-border-muted self-start flex items-center gap-1.5">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#32D74B] animate-pulse"></span>
-          <span>STATUS: <span className="text-[#32D74B]">READY</span></span>
-        </div>
-      </div>
+    <ConsoleSection id="contact" className="py-12 border-t border-border-muted scroll-mt-16">
+      <SectionHeader
+        systemTag="// COMM_LINK"
+        title="Connect with Operator"
+        badge={
+          <div className="font-mono text-[11px] font-bold text-text-secondary bg-bg-secondary px-3 py-1.5 rounded border border-border-muted self-start flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#32D74B] animate-pulse"></span>
+            <span>STATUS: <span className="text-[#32D74B]">READY</span></span>
+          </div>
+        }
+      />
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        <div className="lg:col-span-5 space-y-6">
+        <div className="lg:col-span-5 space-y-6" data-stagger-item style={{ transitionDelay: "0ms" }}>
           <div className="bg-bg-secondary border border-border-muted rounded-lg p-6">
             <h4 className="font-mono text-xs text-accent-cyan uppercase tracking-wider mb-4">{"// OPERATOR_ENDPOINTS"}</h4>
             
@@ -267,7 +269,7 @@ export default function Contact() {
           </div>
         </div>
 
-        <div className="lg:col-span-7 bg-bg-secondary border border-border-color rounded-lg overflow-hidden shadow-[0_4px_20px_rgba(6,182,212,0.04)]">
+        <div className="lg:col-span-7 bg-bg-secondary border border-border-color rounded-lg overflow-hidden shadow-[0_4px_20px_rgba(6,182,212,0.04)]" data-stagger-item style={{ transitionDelay: "50ms" }}>
           <div className="bg-bg-tertiary px-4 py-2 border-b border-border-color flex items-center justify-between font-mono text-[11px] text-text-secondary">
             <span>CHANNEL: SECURE_INBOUND</span>
             <span>ENCRYPTED_POST</span>
@@ -440,6 +442,6 @@ export default function Contact() {
           </form>
         </div>
       </div>
-    </section>
+    </ConsoleSection>
   );
 }

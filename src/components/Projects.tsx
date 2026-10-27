@@ -4,6 +4,8 @@ import React, { useState, useMemo } from "react";
 import Link from "next/link";
 import { projects, Project } from "@/utils/dataLoader";
 import { Search, SlidersHorizontal, ArrowRight, Cpu, Cloud, Box, GitBranch } from "lucide-react";
+import ConsoleSection from "@/components/ConsoleSection";
+import SectionHeader from "@/components/SectionHeader";
 
 export default function Projects() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -103,16 +105,16 @@ export default function Projects() {
   };
 
   return (
-    <section id="projects" className="py-12 border-t border-border-muted scroll-mt-16">
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
-        <div>
-          <h2 className="font-mono text-xs text-accent-cyan uppercase tracking-wider">// PROJECT_INVENTORY</h2>
-          <h3 className="text-2xl font-bold tracking-tight mt-1">Projects & Labs</h3>
-        </div>
-        <div className="font-mono text-[11px] text-text-secondary bg-bg-secondary px-3 py-1.5 rounded border border-border-muted self-start">
-          INVENTORY_NODES: {filteredProjects.length} / {projects.length} MATCHED
-        </div>
-      </div>
+    <ConsoleSection id="projects" className="py-12 border-t border-border-muted scroll-mt-16">
+      <SectionHeader
+        systemTag="// PROJECT_INVENTORY"
+        title="Projects & Labs"
+        badge={
+          <div className="font-mono text-[11px] text-text-secondary bg-bg-secondary px-3 py-1.5 rounded border border-border-muted self-start">
+            INVENTORY_NODES: {filteredProjects.length} / {projects.length} MATCHED
+          </div>
+        }
+      />
 
       {/* Search & Filters Controls */}
       <div className="space-y-4 mb-8 font-mono">
@@ -157,7 +159,7 @@ export default function Projects() {
       {/* Grid of Projects */}
       {filteredProjects.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {filteredProjects.map((project: Project) => {
+          {filteredProjects.map((project: Project, idx: number) => {
             const Classification = getProjectClassification(project);
             const classStyles = getClassificationStyles(Classification);
             const IconComponent = getCategoryIcon(project);
@@ -167,6 +169,8 @@ export default function Projects() {
                 key={project.slug}
                 href={`/projects/${project.slug}`}
                 prefetch={true}
+                data-stagger-item
+                style={{ transitionDelay: `${Math.min(idx * 40, 160)}ms` }}
                 className={`flex flex-col bg-bg-secondary border rounded-lg overflow-hidden transition-all duration-300 sm:hover:-translate-y-1 hover:border-accent-cyan/80 hover:shadow-[0_4px_25px_rgba(6,182,212,0.08)] group focus:ring-2 focus:ring-accent-cyan focus:ring-offset-2 focus:ring-offset-bg-primary outline-none cursor-pointer touch-manipulation ${
                   project.featured ? "border-accent-cyan/60" : "border-border-muted"
                 }`}
@@ -229,7 +233,7 @@ export default function Projects() {
           No records match active filters in the deployment database.
         </div>
       )}
-    </section>
+    </ConsoleSection>
   );
 }
 

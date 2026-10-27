@@ -6,6 +6,7 @@ import { profile, portfolioStats, socialLinks } from "@/utils/dataLoader";
 import { Download, Mail, FileText, MapPin, Clock, Calendar, ChevronRight, ChevronDown, GitBranch, Cpu, Cloud, Box, Activity } from "lucide-react";
 import { Github, Linkedin } from "@/components/SocialIcons";
 import { scrollToSection } from "@/utils/scrollHelper";
+import ConsoleSection from "@/components/ConsoleSection";
 
 export default function Hero() {
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
@@ -27,7 +28,7 @@ export default function Hero() {
   }, [roles.length]);
 
   return (
-    <section id="home" className="pt-4 pb-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+    <ConsoleSection id="home" className="pt-4 pb-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
       {/* Profile Card & Info - Left (4 Cols) */}
       <div className="lg:col-span-4 bg-bg-secondary border border-border-color rounded-lg overflow-hidden shadow-[0_4px_20px_rgba(6,182,212,0.05)]">
         {/* Console Header Bar */}
@@ -427,6 +428,6 @@ export default function Hero() {
           </div>
         </div>
       </div>
-    </section>
+    </ConsoleSection>
   );
 }

@@ -12,6 +12,8 @@ import {
 } from "@/utils/terminalEngine";
 import { Terminal as TerminalIcon, RefreshCw, ShieldCheck } from "lucide-react";
 import { APP_VERSION } from "@/utils/version";
+import ConsoleSection from "@/components/ConsoleSection";
+import SectionHeader from "@/components/SectionHeader";
 
 interface LogLine {
   id: string;
@@ -364,25 +366,19 @@ export default function Terminal() {
   };
 
   return (
-    <section id="terminal" className="py-12 border-t border-border-muted scroll-mt-16">
+    <ConsoleSection id="terminal" className="py-12 border-t border-border-muted scroll-mt-16">
       {/* Section Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
-        <div>
-          <h2 className="font-mono text-xs text-accent-cyan uppercase tracking-wider">
-            {"// CONTROL_PLANE"}
-          </h2>
-          <h3 className="text-2xl font-bold tracking-tight mt-1">
-            Interactive System Terminal
-          </h3>
-          <p className="font-mono text-xs text-text-secondary mt-1">
-            Execute commands, inspect system logs, and query portfolio records.
-          </p>
-        </div>
-        <div className="font-mono text-[11px] text-text-secondary bg-bg-secondary px-3 py-1.5 rounded border border-border-muted self-start flex items-center gap-1.5">
-          <ShieldCheck size={14} className="text-[#32D74B]" />
-          <span>CLUSTER_STATUS: OPERATIONAL</span>
-        </div>
-      </div>
+      <SectionHeader
+        systemTag="// CONTROL_PLANE"
+        title="Interactive System Terminal"
+        subtitle="Execute commands, inspect system logs, and query portfolio records."
+        badge={
+          <div className="font-mono text-[11px] text-text-secondary bg-bg-secondary px-3 py-1.5 rounded border border-border-muted self-start flex items-center gap-1.5">
+            <ShieldCheck size={14} className="text-[#32D74B]" />
+            <span>CLUSTER_STATUS: OPERATIONAL</span>
+          </div>
+        }
+      />
 
       {/* Terminal Card Container */}
       <div className="bg-bg-secondary border border-border-muted rounded-lg shadow-xl overflow-hidden font-mono text-xs">
@@ -398,48 +394,57 @@ export default function Terminal() {
           <div className="flex items-center gap-2 shrink-0">
             <button
               onClick={() => setHistory([])}
-              className="p-1 rounded text-text-secondary hover:text-accent-cyan transition-colors cursor-pointer"
-              title="Clear Terminal Output (Ctrl + L)"
-              aria-label="Clear Output"
+              className="p-1 hover:text-accent-cyan text-text-secondary transition-colors"
+              title="Clear terminal screen"
+              aria-label="Clear terminal screen"
             >
               <RefreshCw size={13} />
             </button>
+            <div className="flex items-center gap-1.5 ml-1">
+              <span className="w-2.5 h-2.5 rounded-full bg-red-500/80 inline-block"></span>
+              <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80 inline-block"></span>
+              <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80 inline-block"></span>
+            </div>
           </div>
         </div>
 
-        {/* Terminal Log Output Area */}
+        {/* Scrollable Output Logs Container */}
         <div
           ref={logsContainerRef}
-          className="h-72 sm:h-80 p-4 overflow-y-auto space-y-3 bg-bg-primary/95 leading-relaxed selection:bg-accent-cyan selection:text-bg-primary"
+          tabIndex={0}
+          aria-label="Terminal output scrollable area"
+          className="p-4 sm:p-5 h-[340px] sm:h-[380px] overflow-y-auto space-y-3 font-mono text-xs focus:outline-none focus-visible:ring-1 focus-visible:ring-accent-cyan/50"
         >
           {history.map((log) => (
             <div key={log.id} className="space-y-1">
-              {log.input && (
-                <div className="flex items-center gap-2 text-text-secondary text-[11px]">
-                  <span className="text-accent-cyan font-bold">
-                    <span className="hidden sm:inline">{log.promptPath}</span>
-                    <span className="inline sm:hidden">
-                      {log.promptPath.startsWith("osama@control-plane:")
-                        ? log.promptPath.replace("osama@control-plane:", "")
-                        : log.promptPath}
-                    </span>
+              {log.input !== undefined && (
+                <div className="flex items-center gap-2 text-text-secondary select-none">
+                  {/* Prompt path with responsive truncation */}
+                  <span className="text-accent-cyan font-bold hidden sm:inline">{log.promptPath}</span>
+                  <span className="text-accent-cyan font-bold sm:hidden">{getMobilePromptPath(log.context)}</span>
+                  <span className="text-text-primary font-bold">{log.input}</span>
+                  <span className="text-[10px] text-text-secondary/40 ml-auto hidden sm:inline">
+                    {log.timestamp}
                   </span>
-                  <span className="text-text-primary font-semibold">{log.input}</span>
                 </div>
               )}
+
+              {/* Render Structured Output */}
               <div className="space-y-0.5">
-                {log.output.split("\n").map((line, idx) => renderOutputLine(line, idx))}
+                {log.output.split("\n").map((line, lineIdx) => renderOutputLine(line, lineIdx))}
               </div>
             </div>
           ))}
         </div>
 
-        {/* Terminal Prompt Input Line */}
-        <div className="p-3 bg-bg-secondary border-t border-border-muted">
+        {/* Input Control Prompt Line */}
+        <div className="p-3 bg-bg-tertiary/70 border-t border-border-muted">
           <form onSubmit={handleSubmit} className="flex items-center gap-2">
-            <span className="text-accent-cyan font-bold font-mono text-xs shrink-0 select-none">
-              <span className="hidden sm:inline">{getPromptPath(context)}</span>
-              <span className="inline sm:hidden">{getMobilePromptPath(context)}</span>
+            <span className="text-accent-cyan font-bold hidden sm:inline shrink-0 select-none">
+              {getPromptPath(context)}
+            </span>
+            <span className="text-accent-cyan font-bold sm:hidden shrink-0 select-none">
+              {getMobilePromptPath(context)}
             </span>
             <input
               ref={inputRef}
@@ -465,6 +470,6 @@ export default function Terminal() {
           </form>
         </div>
       </div>
-    </section>
+    </ConsoleSection>
   );
 }

@@ -3,6 +3,8 @@
 import React, { useState, useEffect } from "react";
 import { certifications } from "@/utils/dataLoader";
 import { ExternalLink, ShieldCheck } from "lucide-react";
+import ConsoleSection from "@/components/ConsoleSection";
+import SectionHeader from "@/components/SectionHeader";
 
 export default function Certifications() {
   const [highlightedId, setHighlightedId] = useState<string | null>(null);
@@ -42,21 +44,19 @@ export default function Certifications() {
   }, []);
 
   return (
-    <section id="certifications" className="py-12 border-t border-border-muted scroll-mt-16">
+    <ConsoleSection id="certifications" className="py-12 border-t border-border-muted scroll-mt-16">
       {/* Section Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
-        <div>
-          <h2 className="font-mono text-xs text-accent-cyan uppercase tracking-wider">{"// CREDENTIALS"}</h2>
-          <h3 className="text-2xl font-bold tracking-tight mt-1">Certifications</h3>
-          <p className="font-mono text-xs text-text-secondary mt-1">
-            Verified professional credentials and technical certifications.
-          </p>
-        </div>
-        <div className="font-mono text-[11px] text-text-secondary bg-bg-secondary px-3 py-1.5 rounded border border-border-muted self-start flex items-center gap-1.5">
-          <ShieldCheck size={14} className="text-[#32D74B]" />
-          <span>VERIFIED_CREDENTIALS: {certifications.length}</span>
-        </div>
-      </div>
+      <SectionHeader
+        systemTag="// CREDENTIALS"
+        title="Certifications"
+        subtitle="Verified professional credentials and technical certifications."
+        badge={
+          <div className="font-mono text-[11px] text-text-secondary bg-bg-secondary px-3 py-1.5 rounded border border-border-muted self-start flex items-center gap-1.5">
+            <ShieldCheck size={14} className="text-[#32D74B]" />
+            <span>VERIFIED_CREDENTIALS: {certifications.length}</span>
+          </div>
+        }
+      />
 
       {/* Grid Layout: Desktop (3 cols), Tablet (2 cols), Mobile (1 col) */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -65,6 +65,8 @@ export default function Certifications() {
         {awsCcp && (
           <div
             id="aws-certified-cloud-practitioner"
+            data-stagger-item
+            style={{ transitionDelay: "0ms" }}
             className={`bg-bg-secondary border rounded-lg p-6 flex flex-col justify-between transition-all duration-500 scroll-mt-24 sm:scroll-mt-28 group focus-within:ring-1 focus-within:ring-accent-cyan ${
               highlightedId === "aws-certified-cloud-practitioner" || highlightedId === "aws-cloud-practitioner" || highlightedId === "aws-ccp"
                 ? "border-accent-cyan shadow-[0_0_25px_rgba(6,182,212,0.4)] scale-[1.02]"
@@ -112,9 +114,11 @@ export default function Certifications() {
         {/* 2. AWS Certified Solutions Architect – Associate */}
         {awsSaa && (
           <div
-            id="aws-solutions-architect-associate"
+            id="aws-certified-solutions-architect-associate"
+            data-stagger-item
+            style={{ transitionDelay: "40ms" }}
             className={`bg-bg-secondary border rounded-lg p-6 flex flex-col justify-between transition-all duration-500 scroll-mt-24 sm:scroll-mt-28 group focus-within:ring-1 focus-within:ring-accent-cyan ${
-              highlightedId === "aws-solutions-architect-associate" || highlightedId === "aws-saa"
+              highlightedId === "aws-certified-solutions-architect-associate" || highlightedId === "aws-solutions-architect" || highlightedId === "aws-saa"
                 ? "border-accent-cyan shadow-[0_0_25px_rgba(6,182,212,0.4)] scale-[1.02]"
                 : "border-border-color hover:border-accent-cyan hover:shadow-[0_0_20px_rgba(6,182,212,0.15)] hover:-translate-y-1"
             }`}
@@ -157,10 +161,12 @@ export default function Certifications() {
           </div>
         )}
 
-        {/* 3. CKA: Certified Kubernetes Administrator */}
+        {/* 3. Certified Kubernetes Administrator (CKA) */}
         {cka && (
           <div
             id="certified-kubernetes-administrator"
+            data-stagger-item
+            style={{ transitionDelay: "80ms" }}
             className={`bg-bg-secondary border rounded-lg p-6 flex flex-col justify-between transition-all duration-500 scroll-mt-24 sm:scroll-mt-28 group focus-within:ring-1 focus-within:ring-accent-cyan ${
               highlightedId === "certified-kubernetes-administrator" || highlightedId === "cka"
                 ? "border-accent-cyan shadow-[0_0_25px_rgba(6,182,212,0.4)] scale-[1.02]"
@@ -174,7 +180,7 @@ export default function Certifications() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`Verify ${cka.name} credential`}
-                className="block h-48 sm:h-52 flex items-center justify-center p-0 bg-bg-tertiary/60 rounded-md border border-border-muted mb-5 overflow-hidden focus:outline-none cursor-pointer"
+                className="block h-48 sm:h-52 flex items-center justify-center p-1 bg-bg-tertiary/60 rounded-md border border-border-muted mb-5 overflow-hidden focus:outline-none cursor-pointer"
               >
                 <img
                   src={cka.badgeUrl || ""}
@@ -209,6 +215,8 @@ export default function Certifications() {
         {rhcsa && (
           <div
             id="red-hat-certified-system-administrator"
+            data-stagger-item
+            style={{ transitionDelay: "120ms" }}
             className={`bg-bg-secondary border rounded-lg p-6 flex flex-col justify-between transition-all duration-500 scroll-mt-24 sm:scroll-mt-28 group focus-within:ring-1 focus-within:ring-accent-cyan ${
               highlightedId === "red-hat-certified-system-administrator" || highlightedId === "rhcsa"
                 ? "border-accent-cyan shadow-[0_0_25px_rgba(6,182,212,0.4)] scale-[1.02]"
@@ -216,19 +224,19 @@ export default function Certifications() {
             }`}
           >
             <div>
-              {/* Badge Container 4: Red Hat RHCSA */}
+              {/* Badge Container 4: RHCSA */}
               <a
                 href={rhcsa.verificationLink || "#"}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`Verify ${rhcsa.name} credential`}
-                className="block h-48 sm:h-52 flex items-center justify-center p-0 bg-bg-tertiary/60 rounded-md border border-border-muted mb-5 overflow-hidden focus:outline-none cursor-pointer"
+                className="block h-48 sm:h-52 flex items-center justify-center p-1 bg-bg-tertiary/60 rounded-md border border-border-muted mb-5 overflow-hidden focus:outline-none cursor-pointer"
               >
                 <img
                   src={rhcsa.badgeUrl || ""}
                   alt={`${rhcsa.name} Badge`}
                   loading="lazy"
-                  className="w-full h-full object-contain scale-125 transition-transform duration-300 group-hover:scale-135"
+                  className="max-h-full max-w-full object-contain transition-transform duration-300 group-hover:scale-105"
                 />
               </a>
 
@@ -253,30 +261,32 @@ export default function Certifications() {
           </div>
         )}
 
-        {/* 5. HCIA – Datacom, Huawei Certified (Routing & Switching) */}
+        {/* 5. Huawei HCIA-Datacom */}
         {hcia && (
           <div
-            id="huawei-hcia-datacom"
+            id="huawei-certified-ict-associate-datacom"
+            data-stagger-item
+            style={{ transitionDelay: "160ms" }}
             className={`bg-bg-secondary border rounded-lg p-6 flex flex-col justify-between transition-all duration-500 scroll-mt-24 sm:scroll-mt-28 group focus-within:ring-1 focus-within:ring-accent-cyan ${
-              highlightedId === "huawei-hcia-datacom" || highlightedId === "hcia-datacom"
+              highlightedId === "huawei-certified-ict-associate-datacom" || highlightedId === "hcia" || highlightedId === "hcia-datacom"
                 ? "border-accent-cyan shadow-[0_0_25px_rgba(6,182,212,0.4)] scale-[1.02]"
                 : "border-border-color hover:border-accent-cyan hover:shadow-[0_0_20px_rgba(6,182,212,0.15)] hover:-translate-y-1"
             }`}
           >
             <div>
-              {/* Badge Container 5: Huawei HCIA Datacom (High-Resolution Expanded Container) */}
+              {/* Badge Container 5: HCIA-Datacom */}
               <a
                 href={hcia.verificationLink || "#"}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`Verify ${hcia.name} credential`}
-                className="block h-48 sm:h-52 flex items-center justify-center p-0 bg-white rounded-md border border-border-muted mb-5 overflow-hidden focus:outline-none cursor-pointer group/huawei shadow-md"
+                className="block h-48 sm:h-52 flex items-center justify-center p-1 bg-bg-tertiary/60 rounded-md border border-border-muted mb-5 overflow-hidden focus:outline-none cursor-pointer"
               >
                 <img
                   src={hcia.badgeUrl || ""}
                   alt={`${hcia.name} Badge`}
                   loading="lazy"
-                  className="w-full h-full object-contain p-0 max-h-full max-w-full scale-105 transition-transform duration-300 group-hover/huawei:scale-110"
+                  className="max-h-full max-w-full object-contain transition-transform duration-300 group-hover:scale-105"
                 />
               </a>
 
@@ -302,6 +312,6 @@ export default function Certifications() {
         )}
 
       </div>
-    </section>
+    </ConsoleSection>
   );
 }

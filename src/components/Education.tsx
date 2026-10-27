@@ -4,33 +4,38 @@ import React from "react";
 import Link from "next/link";
 import { education, courses } from "@/utils/dataLoader";
 import { GraduationCap, BookOpen, Calendar, MapPin, Trophy, ArrowRight } from "lucide-react";
+import ConsoleSection from "@/components/ConsoleSection";
+import SectionHeader from "@/components/SectionHeader";
 
 export default function Education() {
   const { degrees, awards } = education;
 
   return (
-    <section id="education" className="py-12 border-t border-border-muted scroll-mt-16">
+    <ConsoleSection id="education" className="py-12 border-t border-border-muted scroll-mt-16">
       {/* Section Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
-        <div>
-          <h2 className="font-mono text-xs text-accent-cyan uppercase tracking-wider">// ACADEMIC_RECORD</h2>
-          <h3 className="text-2xl font-bold tracking-tight mt-1">Education &amp; Training</h3>
-          <p className="font-mono text-xs text-text-secondary mt-1">
-            Academic qualifications, specialized technical courses, and engineering honors.
-          </p>
-        </div>
-        <div className="font-mono text-[11px] text-text-secondary bg-bg-secondary px-3 py-1.5 rounded border border-border-muted self-start flex items-center gap-1.5">
-          <GraduationCap size={14} className="text-accent-cyan" />
-          <span>DEGREE: BACHELOR OF ENGINEERING</span>
-        </div>
-      </div>
+      <SectionHeader
+        systemTag="// ACADEMIC_RECORD"
+        title="Education & Training"
+        subtitle="Academic qualifications, specialized technical courses, and engineering honors."
+        badge={
+          <div className="font-mono text-[11px] text-text-secondary bg-bg-secondary px-3 py-1.5 rounded border border-border-muted self-start flex items-center gap-1.5">
+            <GraduationCap size={14} className="text-accent-cyan" />
+            <span>DEGREE: BACHELOR OF ENGINEERING</span>
+          </div>
+        }
+      />
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         {/* Degree & Honors - Left (7 Cols) */}
         <div className="lg:col-span-7 space-y-6">
           {/* Main Degree */}
           {degrees.map((deg) => (
-            <div key={deg.id} className="bg-bg-secondary border border-border-color rounded-lg p-6 hover:border-accent-cyan transition-colors">
+            <div
+              key={deg.id}
+              data-stagger-item
+              style={{ transitionDelay: "0ms" }}
+              className="bg-bg-secondary border border-border-color rounded-lg p-6 hover:border-accent-cyan transition-colors"
+            >
               <div className="flex items-start gap-4">
                 <div className="p-3 rounded-lg bg-bg-tertiary border border-border-muted text-accent-cyan shrink-0 mt-1">
                   <GraduationCap size={22} />
@@ -68,7 +73,11 @@ export default function Education() {
 
           {/* Awards & Honors */}
           {awards && awards.length > 0 && (
-            <div className="bg-bg-secondary border border-border-color rounded-lg p-6 hover:border-[#32D74B] transition-colors">
+            <div
+              data-stagger-item
+              style={{ transitionDelay: "45ms" }}
+              className="bg-bg-secondary border border-border-color rounded-lg p-6 hover:border-[#32D74B] transition-colors"
+            >
               <h4 className="font-mono text-xs text-[#32D74B] uppercase tracking-wider mb-4 flex items-center gap-2">
                 <Trophy size={14} />
                 <span>// HONORS_AND_AWARDS</span>
@@ -93,7 +102,7 @@ export default function Education() {
         </div>
 
         {/* Technical Courses & Training - Right (5 Cols) */}
-        <div className="lg:col-span-5 space-y-6">
+        <div className="lg:col-span-5 space-y-6" data-stagger-item style={{ transitionDelay: "90ms" }}>
           <div className="bg-bg-secondary border border-border-color rounded-lg p-6 flex flex-col justify-between h-full">
             <div>
               <div className="flex items-center justify-between gap-2 mb-4">
@@ -139,6 +148,6 @@ export default function Education() {
           </div>
         </div>
       </div>
-    </section>
+    </ConsoleSection>
   );
 }

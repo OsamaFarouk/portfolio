@@ -3,6 +3,8 @@
 import React from "react";
 import { skills, SkillCategory, portfolioStats } from "@/utils/dataLoader";
 import { Wrench, ShieldCheck } from "lucide-react";
+import ConsoleSection from "@/components/ConsoleSection";
+import SectionHeader from "@/components/SectionHeader";
 
 export default function Skills() {
   // Get color depending on proficiency level
@@ -30,17 +32,17 @@ export default function Skills() {
   };
 
   return (
-    <section id="skills" className="py-12 border-t border-border-muted scroll-mt-16">
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
-        <div>
-          <h2 className="font-mono text-xs text-accent-cyan uppercase tracking-wider">{"// SYSTEM_STACK"}</h2>
-          <h3 className="text-2xl font-bold tracking-tight mt-1">Skills & Technologies</h3>
-        </div>
-        <div className="font-mono text-[11px] text-text-secondary bg-bg-secondary px-3 py-1.5 rounded border border-border-muted self-start flex items-center gap-2">
-          <Wrench size={10} />
-          <span>INVENTORY_TOTAL: {portfolioStats.totalSkillsCount} SKILLS LOADED</span>
-        </div>
-      </div>
+    <ConsoleSection id="skills" className="py-12 border-t border-border-muted scroll-mt-16">
+      <SectionHeader
+        systemTag="// SYSTEM_STACK"
+        title="Skills & Technologies"
+        badge={
+          <div className="font-mono text-[11px] text-text-secondary bg-bg-secondary px-3 py-1.5 rounded border border-border-muted self-start flex items-center gap-2">
+            <Wrench size={10} />
+            <span>INVENTORY_TOTAL: {portfolioStats.totalSkillsCount} SKILLS LOADED</span>
+          </div>
+        }
+      />
 
       {/* Legend / Key */}
       <div className="flex flex-wrap gap-4 mb-6 font-mono text-[11px] text-text-secondary">
@@ -52,14 +54,15 @@ export default function Skills() {
           <span className="w-2 h-2 rounded-full bg-accent-cyan"></span>
           <span>ADVANCED (2+ YRS) - EXTENSIVE HANDS-ON EXPERIENCE</span>
         </span>
-        
       </div>
 
       {/* Categories Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {skills.map((cat: SkillCategory) => (
+        {skills.map((cat: SkillCategory, idx: number) => (
           <div 
             key={cat.category}
+            data-stagger-item
+            style={{ transitionDelay: `${Math.min(idx * 40, 160)}ms` }}
             className="bg-bg-secondary border border-border-muted rounded-lg overflow-hidden flex flex-col justify-between"
           >
             {/* Header */}
@@ -123,6 +126,6 @@ export default function Skills() {
           </div>
         ))}
       </div>
-    </section>
+    </ConsoleSection>
   );
 }
