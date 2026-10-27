@@ -7,6 +7,7 @@ import { Terminal as TerminalIcon, Menu, X, ArrowUp, ChevronDown, ExternalLink }
 import { profile } from "@/utils/dataLoader";
 import { scrollToSection } from "@/utils/scrollHelper";
 import { APP_VERSION } from "@/utils/version";
+import ReadingProgressBar from "@/components/ReadingProgressBar";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
@@ -18,7 +19,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [isFooterDocked, setIsFooterDocked] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("home");
-  const [scrollProgress, setScrollProgress] = useState(0);
 
   const dropdownRef = useRef<HTMLDivElement>(null);
   const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -89,38 +89,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     }
   }, [pathname]);
 
-  // Real-time Reading Progress calculation
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    let ticking = false;
-    const updateProgress = () => {
-      const scrollTotal = document.documentElement.scrollHeight - window.innerHeight;
-      if (scrollTotal > 0) {
-        const progress = (window.scrollY / scrollTotal) * 100;
-        setScrollProgress(Math.min(100, Math.max(0, progress)));
-      } else {
-        setScrollProgress(0);
-      }
-      ticking = false;
-    };
-
-    const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(updateProgress);
-        ticking = true;
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    window.addEventListener("resize", handleScroll, { passive: true });
-    updateProgress();
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleScroll);
-    };
-  }, [pathname]);
+  
 
   // Scroll listener for Back To Top button and ScrollSpy active section tracking
   useEffect(() => {
@@ -426,20 +395,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         </div>
 
         {/* Console Reading Progress Indicator - Positioned neatly at sticky header's bottom border */}
-        <div
-          className="absolute -bottom-[1px] left-0 right-0 h-[2px] bg-transparent pointer-events-none overflow-visible"
-          aria-hidden="true"
-        >
-          <div
-            className="h-full bg-accent-cyan shadow-[0_0_8px_rgba(6,182,212,0.7)] relative transition-[width] duration-75 ease-out"
-            style={{ width: `${scrollProgress}%` }}
-          >
-            {/* Micro Console Glow Lead Pip */}
-            {scrollProgress > 0 && (
-              <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-[#00ffcc] shadow-[0_0_8px_#00ffcc]" />
-            )}
-          </div>
-        </div>
+        <ReadingProgressBar />
       </header>
 
       {/* Mobile Navigation Drawer */}
