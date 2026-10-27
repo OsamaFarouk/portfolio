@@ -16,11 +16,11 @@ import {
 import { ArrowLeft, Printer, Download, Mail, Phone, MapPin, Award as AwardIcon, BookOpen } from "lucide-react";
 import { Github, Linkedin } from "@/components/SocialIcons";
 import { ThemeProvider } from "@/components/ThemeContext";
+import ReadingProgressBar from "@/components/ReadingProgressBar";
 
 export default function ResumePage() {
   const [activeTab, setActiveTab] = useState("all");
   const [showFloatingReturn, setShowFloatingReturn] = useState(false);
-  const [scrollProgress, setScrollProgress] = useState(0);
   const isPopStateRef = useRef(false);
 
   const resumeProfile = getResumeProfile();
@@ -65,12 +65,6 @@ export default function ResumePage() {
         setShowFloatingReturn(false);
       }
 
-      const scrollTotal = document.documentElement.scrollHeight - window.innerHeight;
-      if (scrollTotal > 0) {
-        setScrollProgress(Math.min(100, Math.max(0, (window.scrollY / scrollTotal) * 100)));
-      } else {
-        setScrollProgress(0);
-      }
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -85,13 +79,7 @@ export default function ResumePage() {
   return (
     <ThemeProvider>
       {/* Reading Progress Indicator */}
-      <div className="fixed top-0 left-0 right-0 h-[2px] bg-transparent pointer-events-none z-50 print:hidden overflow-visible" aria-hidden="true">
-        <div className="h-full bg-accent-cyan shadow-[0_0_8px_rgba(6,182,212,0.8)] relative transition-[width] duration-75 ease-out" style={{ width: `${scrollProgress}%` }}>
-          {scrollProgress > 0 && (
-            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-[#00ffcc] shadow-[0_0_8px_#00ffcc]" />
-          )}
-        </div>
-      </div>
+      <ReadingProgressBar isFixed={true} />
       {/* Floating Return To Console Button - Appears after 300px scroll, hidden in print */}
       {showFloatingReturn && (
         <div className="fixed top-6 left-4 sm:left-8 lg:left-16 z-30 transition-all duration-300 print:hidden">

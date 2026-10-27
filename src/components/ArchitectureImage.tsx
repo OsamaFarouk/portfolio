@@ -78,7 +78,7 @@ export default function ArchitectureImage({
         )}
       </div>
 
-      <div className="relative w-full min-h-[220px] sm:min-h-[300px] md:min-h-[400px] bg-bg-primary rounded border border-border-muted p-2 md:p-4 overflow-hidden flex items-center justify-center">
+      <div className="relative w-full md:w-[80%] mx-auto min-h-[200px] sm:min-h-[260px] md:min-h-[300px] bg-bg-primary rounded border border-border-muted p-2 md:p-3 overflow-hidden flex items-center justify-center">
         {/* Loading Spinner */}
         {isLoading && !hasError && (
           <div className="absolute inset-0 flex flex-col items-center justify-center bg-bg-primary z-10 space-y-3 font-mono text-xs text-accent-cyan">
