@@ -4,15 +4,15 @@ const isDev = process.env.NODE_ENV === "development";
 
 const cspHeader = `
   default-src 'self';
-  script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""};
+  script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""} https://www.googletagmanager.com https://www.clarity.ms;
   style-src 'self' 'unsafe-inline';
-  img-src 'self' data: blob:;
+  img-src 'self' data: blob: https://www.google-analytics.com;
   font-src 'self' data:;
   object-src 'none';
   base-uri 'self';
   form-action 'self';
   frame-ancestors 'none';
-  connect-src 'self' https://formspree.io;
+  connect-src 'self' https://formspree.io https://www.google-analytics.com https://analytics.google.com https://www.clarity.ms https://c.bing.com https://vitals.vercel-insights.com;
   upgrade-insecure-requests;
 `.replace(/\s{2,}/g, " ").trim();
 

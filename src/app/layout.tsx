@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import Analytics from "@/components/Analytics";
+import WebVitalsReporter from "@/components/WebVitalsReporter";
 import ConsoleCursor from "@/components/ConsoleCursor";
 import "./globals.css";
 
@@ -160,6 +162,8 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-bg-primary text-text-primary antialiased" suppressHydrationWarning>
         <ConsoleCursor />
         {children}
+        <Analytics />
+        <WebVitalsReporter />
         <SpeedInsights />
       </body>
     </html>
