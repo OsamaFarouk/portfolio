@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
@@ -7,6 +7,7 @@ import { Download, Mail, FileText, MapPin, Clock, Calendar, ChevronRight, Chevro
 import { Github, Linkedin } from "@/components/SocialIcons";
 import { scrollToSection } from "@/utils/scrollHelper";
 import ConsoleSection from "@/components/ConsoleSection";
+import { analytics } from "@/utils/analytics";
 
 export default function Hero() {
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
@@ -122,6 +123,7 @@ export default function Hero() {
               href={socialLinks.linkedin}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => analytics.linkedinClick("hero_social_icons")}
               className="p-2 rounded-md bg-bg-tertiary border border-border-muted hover:border-accent-cyan hover:text-accent-cyan transition-all relative group"
               title="Visit LinkedIn"
               aria-label="Visit LinkedIn"
@@ -137,6 +139,7 @@ export default function Hero() {
               href={socialLinks.github}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => analytics.githubClick("hero_social_icons")}
               className="p-2 rounded-md bg-bg-tertiary border border-border-muted hover:border-accent-cyan hover:text-accent-cyan transition-all relative group"
               title="Visit GitHub"
               aria-label="Visit GitHub"
@@ -186,7 +189,7 @@ export default function Hero() {
               </div>
               <div className="flex justify-end mt-1">
                 <span className="text-text-secondary group-hover:text-accent-cyan group-hover:translate-x-1 transition-all duration-200 text-xs">
-                  →
+                  â†’
                 </span>
               </div>
             </a>
@@ -204,7 +207,7 @@ export default function Hero() {
               </div>
               <div className="flex justify-end mt-1">
                 <span className="text-text-secondary group-hover:text-accent-cyan group-hover:translate-x-1 transition-all duration-200 text-xs">
-                  →
+                  â†’
                 </span>
               </div>
             </a>
@@ -222,7 +225,7 @@ export default function Hero() {
               </div>
               <div className="flex justify-end mt-1">
                 <span className="text-text-secondary group-hover:text-accent-cyan group-hover:translate-x-1 transition-all duration-200 text-xs">
-                  →
+                  â†’
                 </span>
               </div>
             </a>
@@ -240,7 +243,7 @@ export default function Hero() {
               </div>
               <div className="flex justify-end mt-1">
                 <span className="text-text-secondary group-hover:text-accent-cyan group-hover:translate-x-1 transition-all duration-200 text-xs">
-                  →
+                  â†’
                 </span>
               </div>
             </a>
@@ -264,6 +267,7 @@ export default function Hero() {
             </a>
             <div className="w-full sm:w-auto flex justify-center">
               <a
+                onClick={() => analytics.resumeDownload("Osama_Farouk_DevOps_Resume.pdf")}
                 href="/resume/Osama_Farouk_DevOps_Resume.pdf"
                 download="Osama_Farouk_DevOps_Resume.pdf"
                 className="px-5 py-2.5 rounded border font-bold bg-accent-emerald-glow/5 font-mono text-xs text-accent-emerald hover:bg-accent-emerald-glow/20 hover:border-accent-emerald transition-all flex items-center justify-center gap-1.5"
@@ -279,7 +283,7 @@ export default function Hero() {
         <div className="hidden md:block bg-bg-secondary border border-border-muted rounded-lg p-6 overflow-hidden">
           <div className="flex flex-col sm:flex-row sm:justify-between sm:text-left gap-1.5 sm:gap-4 mb-6">
             <h2 className="font-mono text-xs text-accent-cyan uppercase tracking-wider">{"// PLATFORM_DELIVERY_LIFECYCLE"}</h2>
-            <span className="font-mono text-[11px] text-emerald-100 dark:text-accent-emerald font-bold animate-pulse">● PIPELINE_ONLINE: 05/05</span>
+            <span className="font-mono text-[11px] text-emerald-100 dark:text-accent-emerald font-bold animate-pulse">â— PIPELINE_ONLINE: 05/05</span>
           </div>
 
           {/* 5-Column Responsive Grid Layout (Prevents Overflow) */}
