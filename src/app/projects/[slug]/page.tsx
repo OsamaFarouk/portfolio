@@ -9,6 +9,7 @@ import StickyBackButton from "@/components/StickyBackButton";
 import Mermaid from "@/components/Mermaid";
 import ArchitectureImage from "@/components/ArchitectureImage";
 import { Github } from "@/components/SocialIcons";
+import ProjectAnalyticsTracker from "@/components/ProjectAnalyticsTracker";
 
 // Generate static parameters for static site generation support
 export async function generateStaticParams() {
@@ -89,6 +90,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
     <ThemeProvider>
       <Layout>
         <div className="py-8 space-y-8 max-w-5xl mx-auto">
+          <ProjectAnalyticsTracker projectName={project.title} projectSlug={project.slug} />
           {/* Top Bar Navigation & Actions */}
           <div className="flex items-center justify-between border-b border-border-muted pb-6">
             <StickyBackButton href="/#projects" label="BACK_TO_PROJECTS" />
@@ -148,6 +150,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                   fullResUrl={project.architectureImage || project.architecturePreviewImage}
                   showFullResLink={true}
                   isFullResPage={false}
+                  projectName={project.title}
                 />
               ) : project.architecture ? (
                 <>
@@ -241,6 +244,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                       href={project.githubLink}
                       target="_blank" 
                       rel="noopener noreferrer"
+                      onClick={() => { if (typeof window !== 'undefined' && typeof window.gtag === 'function') window.gtag('event', 'github_click', { link_location: 'project_detail_page', project_name: project.title }); }}
                       className="w-full py-2 rounded bg-bg-tertiary border border-border-muted hover:border-accent-cyan hover:text-accent-cyan flex items-center justify-center gap-1.5 transition-all text-[11px]"
                     >
                       <Github size={12} />

@@ -1,10 +1,11 @@
-"use client";
+﻿"use client";
 
 import React, { useState } from "react";
 import { Mail, Phone, MapPin, Send, CheckCircle2, AlertCircle, ChevronDown, Copy, Check } from "lucide-react";
 import { Github, Linkedin } from "@/components/SocialIcons";
 import ConsoleSection from "@/components/ConsoleSection";
 import SectionHeader from "@/components/SectionHeader";
+import { analytics } from "@/utils/analytics";
 
 interface MessageSignature {
   name: string;
@@ -160,6 +161,7 @@ export default function Contact() {
       if (response.ok) {
         setLastSubmittedSignature(currentSignature);
         setSubmitStatus("success");
+        analytics.contactClick("form_submit");
         setFormData({ name: "", email: "", inquiry_type: "General Inquiry", subject: "", message: "" });
         setErrors({});
       } else if (response.status === 429) {
@@ -203,7 +205,7 @@ export default function Contact() {
                     </a>
                     <button
                       type="button"
-                      onClick={() => handleCopy("osama.faroukk97@gmail.com", "email")}
+                      onClick={() => { handleCopy("osama.faroukk97@gmail.com", "email"); analytics.contactClick("email_copy"); }}
                       className="p-1 text-text-secondary hover:text-accent-cyan transition-colors"
                       title="Copy Email to Clipboard"
                     >
@@ -217,7 +219,7 @@ export default function Contact() {
                 <Linkedin size={16} className="text-accent-cyan mt-0.5 shrink-0" />
                 <div>
                   <span className="block text-[11px] uppercase text-text-secondary/50">LINKEDIN_PROFILE</span>
-                  <a href="https://linkedin.com/in/osamafaroukk" target="_blank" rel="noopener noreferrer" className="text-text-primary hover:text-accent-cyan">
+                  <a href="https://linkedin.com/in/osamafaroukk" target="_blank" rel="noopener noreferrer" onClick={() => analytics.linkedinClick("contact_section")} className="text-text-primary hover:text-accent-cyan">
                     linkedin.com/in/osamafaroukk
                   </a>
                 </div>
@@ -227,7 +229,7 @@ export default function Contact() {
                 <Github size={16} className="text-accent-cyan mt-0.5 shrink-0" />
                 <div>
                   <span className="block text-[11px] uppercase text-text-secondary/50">GITHUB_REGISTRY</span>
-                  <a href="https://github.com/OsamaFarouk" target="_blank" rel="noopener noreferrer" className="text-text-primary hover:text-accent-cyan">
+                  <a href="https://github.com/OsamaFarouk" target="_blank" rel="noopener noreferrer" onClick={() => analytics.githubClick("contact_section")} className="text-text-primary hover:text-accent-cyan">
                     github.com/OsamaFarouk
                   </a>
                 </div>
@@ -243,7 +245,7 @@ export default function Contact() {
                     </a>
                     <button
                       type="button"
-                      onClick={() => handleCopy("+20 100 074 8445", "phone")}
+                      onClick={() => { handleCopy("+20 100 074 8445", "phone"); analytics.contactClick("phone_copy"); }}
                       className="p-1 text-text-secondary hover:text-accent-cyan transition-colors"
                       title="Copy Phone Number to Clipboard"
                     >
@@ -257,7 +259,7 @@ export default function Contact() {
                 <MapPin size={16} className="text-accent-cyan mt-0.5 shrink-0" />
                 <div>
                   <span className="block text-[11px] uppercase text-text-secondary/50">REGION</span>
-                  <span className="text-text-primary">Cairo, Egypt · UTC+3</span>
+                  <span className="text-text-primary">Cairo, Egypt Â· UTC+3</span>
                 </div>
               </div>
             </div>
@@ -297,21 +299,21 @@ export default function Contact() {
             {submitStatus === "duplicate" && (
               <div className="p-4 rounded bg-amber-500/10 border border-amber-500/40 font-mono text-xs text-amber-400 flex items-center gap-2 animate-fadeIn">
                 <AlertCircle size={16} className="shrink-0" />
-                <span>DUPLICATE MESSAGE DETECTED — THIS EXACT MESSAGE HAS ALREADY BEEN TRANSMITTED</span>
+                <span>DUPLICATE MESSAGE DETECTED â€” THIS EXACT MESSAGE HAS ALREADY BEEN TRANSMITTED</span>
               </div>
             )}
 
             {submitStatus === "rate_limit" && (
               <div className="p-4 rounded bg-amber-500/10 border border-amber-500/40 font-mono text-xs text-amber-400 flex items-center gap-2 animate-fadeIn">
                 <AlertCircle size={16} className="shrink-0" />
-                <span>TRANSMISSION LIMIT REACHED — PLEASE TRY AGAIN LATER</span>
+                <span>TRANSMISSION LIMIT REACHED â€” PLEASE TRY AGAIN LATER</span>
               </div>
             )}
 
             {submitStatus === "error" && (
               <div className="p-4 rounded bg-red-500/10 border border-red-500/40 font-mono text-xs text-red-400 flex items-center gap-2 animate-fadeIn">
                 <AlertCircle size={16} className="shrink-0" />
-                <span>TRANSMISSION FAILED — PLEASE TRY AGAIN</span>
+                <span>TRANSMISSION FAILED â€” PLEASE TRY AGAIN</span>
               </div>
             )}
 

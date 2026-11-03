@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
+import { analytics } from "@/utils/analytics";
 import { Loader2, RefreshCw, AlertCircle } from "lucide-react";
 
 interface ArchitectureImageProps {
@@ -12,6 +13,8 @@ interface ArchitectureImageProps {
   srcMobile?: string | null;
   width?: number;
   height?: number;
+  /** Project name passed to GA4 architecture_view event. */
+  projectName?: string;
 }
 
 export default function ArchitectureImage({
@@ -23,6 +26,7 @@ export default function ArchitectureImage({
   srcMobile,
   width,
   height,
+  projectName,
 }: ArchitectureImageProps) {
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
@@ -91,6 +95,7 @@ export default function ArchitectureImage({
             href={targetFullRes}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => analytics.architectureView(projectName ?? alt)}
             className="font-mono text-[11px] text-accent-cyan hover:underline flex items-center gap-1 cursor-pointer"
           >
             <span>FULL_RESOLUTION ↗</span>
@@ -131,6 +136,7 @@ export default function ArchitectureImage({
           href={targetFullRes}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => analytics.architectureView(projectName ?? alt)}
           className="w-full flex justify-center cursor-zoom-in"
           title="Click to view full resolution image"
         >

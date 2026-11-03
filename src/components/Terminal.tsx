@@ -14,6 +14,7 @@ import { Terminal as TerminalIcon, RefreshCw, ShieldCheck } from "lucide-react";
 import { APP_VERSION } from "@/utils/version";
 import ConsoleSection from "@/components/ConsoleSection";
 import SectionHeader from "@/components/SectionHeader";
+import { analytics } from "@/utils/analytics";
 
 interface LogLine {
   id: string;
@@ -138,6 +139,17 @@ export default function Terminal() {
     // Process command with full history log passed
     const result = processTerminalCommand(rawCmd, context, updatedCmdHistory);
 
+    // Track terminal interaction — sanitise to command category only, never raw input
+    {
+      let actionType = "run_command";
+      if (result.action === "clear") actionType = "clear_terminal";
+      else if (result.action === "exit") actionType = "exit_terminal";
+      else if (result.action === "open_link") actionType = "navigate_link";
+      else if (result.pendingConfirmation) actionType = "navigate_confirm";
+      else if (result.nextContext && result.nextContext !== context) actionType = `navigate_${result.nextContext}`;
+      analytics.terminalInteraction(actionType);
+    }
+
     if (result.action === "clear") {
       setHistory([]);
       if (result.nextContext) setContext(result.nextContext);
@@ -218,6 +230,7 @@ export default function Terminal() {
     } else if (e.key === "Tab") {
       e.preventDefault();
       const suggestions = getAutocompleteSuggestions(inputVal, context);
+      analytics.terminalInteraction("autocomplete");
       if (suggestions.length === 1) {
         setInputVal(suggestions[0]);
       } else if (suggestions.length > 1) {
