@@ -12,7 +12,7 @@ const cspHeader = `
   base-uri 'self';
   form-action 'self';
   frame-ancestors 'none';
-  connect-src 'self' https://formspree.io https://www.google-analytics.com https://analytics.google.com https://www.clarity.ms https://c.bing.com https://vitals.vercel-insights.com;
+  connect-src 'self' https://formspree.io https://www.google-analytics.com https://analytics.google.com https://www.clarity.ms https://i.clarity.ms https://c.bing.com https://vitals.vercel-insights.com;
   upgrade-insecure-requests;
 `.replace(/\s{2,}/g, " ").trim();
 
