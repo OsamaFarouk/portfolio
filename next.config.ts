@@ -4,7 +4,7 @@ const isDev = process.env.NODE_ENV === "development";
 
 const cspHeader = `
   default-src 'self';
-  script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""} https://www.googletagmanager.com https://www.clarity.ms;
+  script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""} https://www.googletagmanager.com https://www.clarity.ms https://scripts.clarity.ms;
   style-src 'self' 'unsafe-inline';
   img-src 'self' data: blob: https://www.google-analytics.com;
   font-src 'self' data:;

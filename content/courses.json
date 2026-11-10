@@ -1,5 +1,36 @@
 [
   {
+    "id": "aws-cloudformation-master-class-udemy",
+    "title": "AWS CloudFormation Master Class v2",
+    "provider": "Udemy",
+    "year": 2026,
+    "certificateImage": "/assets/course-certificates/aws-cloudformation-master-class-udemy.webp",
+    "certificateUrl": "https://www.udemy.com/certificate/UC-ced393f9-7c40-49db-86af-5880e3ff807c/",
+    "verificationUrl": "https://www.udemy.com/certificate/UC-ced393f9-7c40-49db-86af-5880e3ff807c/",
+    "courseUrl": "https://www.udemy.com/course/aws-cloudformation-master-class/",
+    "completionDate": "Nov. 10, 2026"
+  },
+  {
+    "id": "aws-digital-sovereignty-technical",
+    "title": "AWS Partner: Digital Sovereignty on AWS (Technical)",
+    "provider": "Amazon Web Services (AWS)",
+    "year": 2026,
+    "certificateImage": "/assets/course-certificates/aws-digital-sovereignty-technical.png",
+    "certificateUrl": null,
+    "verificationUrl": "https://www.credly.com/badges/d5353567-effa-4049-a317-895b1ae5dce9/public_url",
+    "courseUrl": null
+  },
+  {
+    "id": "aws-digital-sovereignty-essentials",
+    "title": "AWS Partner: Digital Sovereignty Essentials",
+    "provider": "Amazon Web Services (AWS)",
+    "year": 2026,
+    "certificateImage": "/assets/course-certificates/aws-digital-sovereignty-essentials.png",
+    "certificateUrl": null,
+    "verificationUrl": "https://www.credly.com/badges/54a11463-83b7-4b33-ae33-c0a135dfc8bf/public_url",
+    "courseUrl": null
+  },
+  {
     "id": "cka-course-kodekloud",
     "title": "Certified Kubernetes Administrator (CKA) Course",
     "provider": "KodeKloud",

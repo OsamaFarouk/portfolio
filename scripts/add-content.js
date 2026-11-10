@@ -4,8 +4,8 @@ const readline = require("readline");
 
 const type = process.argv[2];
 
-if (!["project", "experience", "skill", "certification"].includes(type)) {
-  console.error("Usage: node add-content.js <project|experience|skill|certification>");
+if (!["project", "experience", "skill", "certification", "course"].includes(type)) {
+  console.error("Usage: node add-content.js <project|experience|skill|certification|course>");
   process.exit(1);
 }
 
@@ -19,7 +19,22 @@ const askQuestion = (query) => {
 };
 
 const getFilePath = (fileType) => {
-  return path.join(__dirname, "..", "content", `${fileType === "skill" ? "skills" : fileType === "project" ? "projects" : fileType === "experience" ? "experience" : "certifications"}.json`);
+  return path.join(
+    __dirname,
+    "..",
+    "content",
+    `${
+      fileType === "skill"
+        ? "skills"
+        : fileType === "project"
+        ? "projects"
+        : fileType === "experience"
+        ? "experience"
+        : fileType === "course"
+        ? "courses"
+        : "certifications"
+    }.json`
+  );
 };
 
 const main = async () => {
@@ -165,6 +180,32 @@ const main = async () => {
 
       data.push(newCert);
       console.log(`\nCertification "${name}" added successfully!`);
+
+    } else if (type === "course") {
+      const title = await askQuestion("Course Title: ");
+      const provider = await askQuestion("Provider (e.g., Udemy / Amazon Web Services (AWS)): ");
+      const year = parseInt(await askQuestion("Completion Year (e.g., 2026): "), 10) || new Date().getFullYear();
+      const idDefault = `${title}-${provider}`.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+      const id = (await askQuestion(`Unique ID (default: ${idDefault}): `)) || idDefault;
+      const certificateImage = await askQuestion("Certificate/Badge Image Path (e.g., /assets/course-certificates/my-cert.webp, optional): ");
+      const certificateUrl = await askQuestion("Certificate URL (optional): ");
+      const verificationUrl = await askQuestion("Verification URL (e.g., Credly or Udemy verify URL, optional): ");
+      const courseUrl = await askQuestion("Course Landing Page URL (optional): ");
+
+      const newCourse = {
+        id,
+        title,
+        provider,
+        year,
+        certificateImage: certificateImage || null,
+        certificateUrl: certificateUrl || null,
+        verificationUrl: verificationUrl || null,
+        courseUrl: courseUrl || null,
+      };
+
+      // Insert at the top so newest courses appear first
+      data.unshift(newCourse);
+      console.log(`\nCourse "${title}" added at the top of content/courses.json!`);
     }
 
     fs.writeFileSync(filePath, JSON.stringify(data, null, 2), "utf8");

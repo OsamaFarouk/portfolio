@@ -583,7 +583,7 @@ Courses:       ${courses.length} Completed Technical Courses`,
   {
     name: "courses",
     aliases: ["training", "professional-courses"],
-    description: "Browse 23 completed professional courses",
+    description: `Browse ${courses.length} completed professional courses`,
     category: "Primary Modules",
     usage: "courses [list | search <query> | show <id|num> | open <id|num>]",
     route: "/courses",
@@ -886,7 +886,7 @@ HONORS & AWARDS:
 ${awardsText}
 
 TECHNICAL COURSES (${courses.length} TOTAL):
-Completed 23 technical courses across DevOps, AWS, Kubernetes, VMware, Red Hat, and Software Engineering.`;
+Completed ${courses.length} technical courses across DevOps, AWS, Kubernetes, VMware, Red Hat, and Software Engineering.`;
 
       if (sub === "open") {
         const promptQuestion = "View Education in the Education section? [Y/N]";

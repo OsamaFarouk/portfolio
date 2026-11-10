@@ -5,7 +5,7 @@ import Link from "next/link";
 import { ThemeProvider } from "@/components/ThemeContext";
 import Layout from "@/components/Layout";
 import StickyBackButton from "@/components/StickyBackButton";
-import { courses, Course } from "@/utils/dataLoader";
+import { courses, Course } from "@/data/courses";
 import {
   ArrowLeft,
   ExternalLink,
@@ -357,7 +357,7 @@ export default function CoursesPage() {
               {filteredCourses.map((course, idx) => {
                 const hasCertificate = !!(course.certificateImage || course.certificateUrl);
                 const hasVerification = !!course.verificationUrl;
-                const hasNeither = !hasCertificate && !hasVerification;
+                const hasNeither = !hasCertificate && !hasVerification && !course.courseUrl;
                 const isHighlighted = highlightedId === course.id;
 
                 return (
@@ -463,6 +463,19 @@ export default function CoursesPage() {
                             className="inline-flex items-center gap-1.5 font-mono text-[11px] text-[#32D74B] font-bold hover:underline cursor-pointer focus:outline-none focus-visible:ring-1 focus-visible:ring-[#32D74B]"
                           >
                             <span>VERIFY COMPLETION</span>
+                            <ExternalLink size={12} className="shrink-0" />
+                          </a>
+                        )}
+
+                        {/* VIEW COURSE — shown when a courseUrl is set */}
+                        {course.courseUrl && (
+                          <a
+                            href={course.courseUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 font-mono text-[11px] text-text-secondary font-bold hover:underline cursor-pointer focus:outline-none focus-visible:ring-1 focus-visible:ring-accent-cyan"
+                          >
+                            <span>VIEW COURSE</span>
                             <ExternalLink size={12} className="shrink-0" />
                           </a>
                         )}
