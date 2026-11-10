@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import Analytics from "@/components/Analytics";
 import WebVitalsReporter from "@/components/WebVitalsReporter";
 import ConsoleCursor from "@/components/ConsoleCursor";
@@ -164,7 +163,6 @@ export default function RootLayout({
         {children}
         <Analytics />
         <WebVitalsReporter />
-        <SpeedInsights />
       </body>
     </html>
   );

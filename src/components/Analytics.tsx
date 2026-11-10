@@ -2,34 +2,26 @@
 
 import Script from "next/script";
 import { Analytics as VercelAnalytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { GoogleAnalytics } from "@next/third-parties/google";
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID as string;
 const CLARITY_ID = process.env.NEXT_PUBLIC_CLARITY_ID as string;
 const ANALYTICS_ENABLED = process.env.NEXT_PUBLIC_ANALYTICS_ENABLED === "true";
+const IS_PRODUCTION = process.env.NODE_ENV === "production";
 
 /**
- * Loads Google Analytics 4, Microsoft Clarity, and Vercel Web Analytics.
+ * Loads Google Analytics 4, Microsoft Clarity, Vercel Web Analytics, and
+ * Vercel Speed Insights.
  *
- * All three tools are omitted entirely from the DOM unless
+ * All analytics tools are omitted entirely from the DOM unless
  * NEXT_PUBLIC_ANALYTICS_ENABLED is set to "true" in the environment,
  * which ensures development and local testing traffic is never tracked.
  *
- * GA4 pageview tracking for client-side navigations is handled
- * automatically by gtag.js Enhanced Measurement (no manual router
- * instrumentation required).
- *
- * Clarity session recordings and heatmaps begin automatically after the
- * script loads.
- *
- * Vercel Analytics automatically tracks page views and client-side
- * navigation via the App Router without additional configuration.
- * It requires the "Analytics" feature to be enabled from the Vercel
- * dashboard: Project → Analytics → Enable.
- *
- * NOTE: Vercel Analytics on the Hobby plan provides 2,500 events/month.
- * No extra environment variable is needed — it is activated at the
- * project level in the Vercel dashboard.
+ * Additionally, Vercel Web Analytics and Vercel Speed Insights are strictly
+ * gated to production builds (NODE_ENV === "production") with debug={false}
+ * so their external debug scripts (va.vercel-scripts.com) are never injected
+ * during local development.
  */
 export default function Analytics() {
   if (!ANALYTICS_ENABLED) return null;
@@ -55,11 +47,15 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
       )}
 
       {/*
-       * Vercel Web Analytics — tracks page views and navigation automatically.
-       * mode="auto" activates only in Vercel production deployments;
-       * it is inert in all other environments.
+       * Vercel Web Analytics & Speed Insights — rendered only in production
+       * when analytics is enabled so debug scripts never load in local dev.
        */}
-      <VercelAnalytics mode="auto" />
+      {IS_PRODUCTION && (
+        <>
+          <VercelAnalytics mode="production" debug={false} />
+          <SpeedInsights debug={false} />
+        </>
+      )}
     </>
   );
 }
