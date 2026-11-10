@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React, { useState } from "react";
 import { Mail, Phone, MapPin, Send, CheckCircle2, AlertCircle, ChevronDown, Copy, Check } from "lucide-react";
@@ -259,7 +259,7 @@ export default function Contact() {
                 <MapPin size={16} className="text-accent-cyan mt-0.5 shrink-0" />
                 <div>
                   <span className="block text-[11px] uppercase text-text-secondary/50">REGION</span>
-                  <span className="text-text-primary">Cairo, Egypt Â· UTC+3</span>
+                  <span className="text-text-primary">Cairo, Egypt {"\u00B7"} UTC+3</span>
                 </div>
               </div>
             </div>
@@ -299,21 +299,21 @@ export default function Contact() {
             {submitStatus === "duplicate" && (
               <div className="p-4 rounded bg-amber-500/10 border border-amber-500/40 font-mono text-xs text-amber-400 flex items-center gap-2 animate-fadeIn">
                 <AlertCircle size={16} className="shrink-0" />
-                <span>DUPLICATE MESSAGE DETECTED â€” THIS EXACT MESSAGE HAS ALREADY BEEN TRANSMITTED</span>
+                <span>DUPLICATE MESSAGE DETECTED {"\u2014"} THIS EXACT MESSAGE HAS ALREADY BEEN TRANSMITTED</span>
               </div>
             )}
 
             {submitStatus === "rate_limit" && (
               <div className="p-4 rounded bg-amber-500/10 border border-amber-500/40 font-mono text-xs text-amber-400 flex items-center gap-2 animate-fadeIn">
                 <AlertCircle size={16} className="shrink-0" />
-                <span>TRANSMISSION LIMIT REACHED â€” PLEASE TRY AGAIN LATER</span>
+                <span>TRANSMISSION LIMIT REACHED {"\u2014"} PLEASE TRY AGAIN LATER</span>
               </div>
             )}
 
             {submitStatus === "error" && (
               <div className="p-4 rounded bg-red-500/10 border border-red-500/40 font-mono text-xs text-red-400 flex items-center gap-2 animate-fadeIn">
                 <AlertCircle size={16} className="shrink-0" />
-                <span>TRANSMISSION FAILED â€” PLEASE TRY AGAIN</span>
+                <span>TRANSMISSION FAILED {"\u2014"} PLEASE TRY AGAIN</span>
               </div>
             )}
 

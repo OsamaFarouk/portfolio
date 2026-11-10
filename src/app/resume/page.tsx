@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
@@ -257,7 +257,7 @@ export default function ResumePage() {
                         )}
                       </h3>
                       <span className="font-mono text-xs text-text-secondary print:text-black/70 print:text-[11px]">
-                        {exp.startDate} â€“ {exp.endDate}
+                        {exp.startDate} {"\u2013"} {exp.endDate}
                       </span>
                     </div>
 
@@ -405,7 +405,7 @@ export default function ResumePage() {
                     {resumeCourses.slice(0, 8).map((course) => (
                       <li key={course.id} className="flex justify-between items-baseline gap-2 border-b border-border-muted/20 pb-1.5 print:border-black/10">
                         <span className="font-medium text-text-primary print:text-black truncate">{course.title}</span>
-                        <span className="text-[11px] text-text-secondary/70 print:text-black/60 shrink-0">{course.provider} Â· {course.year}</span>
+                        <span className="text-[11px] text-text-secondary/70 print:text-black/60 shrink-0">{course.provider} {"\u00B7"} {course.year}</span>
                       </li>
                     ))}
                   </ul>
@@ -414,7 +414,7 @@ export default function ResumePage() {
                       href="/courses"
                       className="inline-block mt-3 font-mono text-[11px] text-accent-cyan hover:underline print:hidden"
                     >
-                      VIEW ALL {resumeCourses.length} COURSES â†’
+                      VIEW ALL {resumeCourses.length} COURSES {"\u2192"}
                     </Link>
                   )}
                 </section>
@@ -434,7 +434,7 @@ export default function ResumePage() {
                           {award.name}
                         </h3>
                         <p className="font-mono text-[11px] text-text-secondary print:text-black/70">
-                          {award.organization} Â· {award.year}
+                          {award.organization} {"\u00B7"} {award.year}
                         </p>
                         <p className="text-[11px] text-text-secondary mt-1 print:text-black/80">
                           {award.description}

@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
@@ -189,7 +189,7 @@ export default function Hero() {
               </div>
               <div className="flex justify-end mt-1">
                 <span className="text-text-secondary group-hover:text-accent-cyan group-hover:translate-x-1 transition-all duration-200 text-xs">
-                  â†’
+                  {"\u2192"}
                 </span>
               </div>
             </a>
@@ -207,7 +207,7 @@ export default function Hero() {
               </div>
               <div className="flex justify-end mt-1">
                 <span className="text-text-secondary group-hover:text-accent-cyan group-hover:translate-x-1 transition-all duration-200 text-xs">
-                  â†’
+                  {"\u2192"}
                 </span>
               </div>
             </a>
@@ -225,7 +225,7 @@ export default function Hero() {
               </div>
               <div className="flex justify-end mt-1">
                 <span className="text-text-secondary group-hover:text-accent-cyan group-hover:translate-x-1 transition-all duration-200 text-xs">
-                  â†’
+                  {"\u2192"}
                 </span>
               </div>
             </a>
@@ -243,7 +243,7 @@ export default function Hero() {
               </div>
               <div className="flex justify-end mt-1">
                 <span className="text-text-secondary group-hover:text-accent-cyan group-hover:translate-x-1 transition-all duration-200 text-xs">
-                  â†’
+                  {"\u2192"}
                 </span>
               </div>
             </a>
@@ -283,7 +283,7 @@ export default function Hero() {
         <div className="hidden md:block bg-bg-secondary border border-border-muted rounded-lg p-6 overflow-hidden">
           <div className="flex flex-col sm:flex-row sm:justify-between sm:text-left gap-1.5 sm:gap-4 mb-6">
             <h2 className="font-mono text-xs text-accent-cyan uppercase tracking-wider">{"// PLATFORM_DELIVERY_LIFECYCLE"}</h2>
-            <span className="font-mono text-[11px] text-emerald-100 dark:text-accent-emerald font-bold animate-pulse">â— PIPELINE_ONLINE: 05/05</span>
+            <span className="font-mono text-[11px] text-emerald-100 dark:text-accent-emerald font-bold animate-pulse">{"\u25CF"} PIPELINE_ONLINE: 05/05</span>
           </div>
 
           {/* 5-Column Responsive Grid Layout (Prevents Overflow) */}
