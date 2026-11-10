@@ -169,6 +169,47 @@ const validateCertifications = () => {
   }
 };
 
+// 6. Validate courses.json
+const validateCourses = () => {
+  const file = path.join(contentDir, "courses.json");
+  if (!fs.existsSync(file)) return logError("courses.json does not exist");
+
+  try {
+    const data = JSON.parse(fs.readFileSync(file, "utf8"));
+    if (!Array.isArray(data)) return logError("courses.json must be an array");
+
+    let ok = true;
+    const seenIds = new Set();
+    data.forEach((course, idx) => {
+      const required = ["id", "title", "provider", "year"];
+      for (const key of required) {
+        if (course[key] === undefined || course[key] === null || course[key] === "") {
+          logError(`courses.json [index ${idx}]: Missing field "${key}"`);
+          ok = false;
+        }
+      }
+      if (course.id) {
+        if (seenIds.has(course.id)) {
+          logError(`courses.json [index ${idx}]: Duplicate course id "${course.id}"`);
+          ok = false;
+        }
+        seenIds.add(course.id);
+      }
+      if (course.certificateImage) {
+        const imgPath = path.join(__dirname, "..", "public", course.certificateImage.replace(/^\//, ""));
+        if (!fs.existsSync(imgPath)) {
+          logError(`courses.json [index ${idx} - ${course.id}]: Certificate image not found at public${course.certificateImage}`);
+          ok = false;
+        }
+      }
+    });
+
+    if (ok) logSuccess(`courses.json: Validated ${data.length} entries successfully.`);
+  } catch (e) {
+    logError(`courses.json is invalid JSON: ${e.message}`);
+  }
+};
+
 console.log("\n=== STARTING PORTFOLIO SCHEMA VALIDATION ===\n");
 
 validateProfile();
@@ -176,6 +217,7 @@ validateExperience();
 validateProjects();
 validateSkills();
 validateCertifications();
+validateCourses();
 
 console.log("\n============================================");
 if (hasErrors) {

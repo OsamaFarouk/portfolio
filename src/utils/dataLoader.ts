@@ -4,7 +4,7 @@ import projectsData from "../../content/projects.json";
 import skillsData from "../../content/skills.json";
 import certificationsData from "../../content/certifications.json";
 import educationData from "../../content/education.json";
-import coursesData from "../../content/courses.json";
+import { courses as sortedCourses, type Course } from "@/data/courses";
 import socialLinksData from "../../content/social-links.json";
 import futureSectionsData from "../../content/future-sections.json";
 
@@ -161,15 +161,7 @@ export interface FutureSections {
   awards: { enabled: boolean; items: Award[] };
 }
 
-export interface Course {
-  id: string;
-  title: string;
-  provider: string;
-  year: number;
-  certificateImage: string | null;
-  certificateUrl: string | null;
-  verificationUrl: string | null;
-}
+export type { Course };
 
 export const profile: Profile = profileData as Profile;
 export const experience: Experience[] = experienceData as Experience[];
@@ -178,7 +170,7 @@ export const allProjects: Project[] = projectsData as Project[]; // includes dra
 export const skills: SkillCategory[] = skillsData as SkillCategory[];
 export const certifications: Certification[] = certificationsData as Certification[];
 export const education: EducationData = educationData as EducationData;
-export const courses: Course[] = coursesData as Course[];
+export const courses: Course[] = sortedCourses;
 export const socialLinks: SocialLinks = socialLinksData as SocialLinks;
 export const futureSections: FutureSections = futureSectionsData as FutureSections;
 

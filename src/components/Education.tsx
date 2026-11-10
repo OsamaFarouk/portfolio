@@ -2,7 +2,8 @@
 
 import React from "react";
 import Link from "next/link";
-import { education, courses } from "@/utils/dataLoader";
+import { education } from "@/utils/dataLoader";
+import { courses } from "@/data/courses";
 import { GraduationCap, BookOpen, Calendar, MapPin, Trophy, ArrowRight } from "lucide-react";
 import ConsoleSection from "@/components/ConsoleSection";
 import SectionHeader from "@/components/SectionHeader";
